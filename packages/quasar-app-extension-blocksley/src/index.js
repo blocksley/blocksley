@@ -17,9 +17,7 @@ const extendQuasarConf = function (conf) {
 
   conf.build.vueCompiler = true
   // make sure boot file & component transpiles
-  conf.build.transpileDependencies.push(/quasar-app-extension-blocksley[\\/]src[\\/]/)
-  // conf.build.transpileDependencies.push(/quasar-app-extension-blocksley[\\/]src[\\/]boot/)
-  // conf.build.transpileDependencies.push(/quasar-app-extension-blocksley[\\/]src[\\/]component/)
+  conf.build.transpileDependencies.push(/@blocksley/quasar-app-extension-blocksley[\\/]src[\\/]/)
 
   // make sure blocksley css goes through webpack to avoid ssr issues
   conf.css.push('~@blocksley/blocksley/src/css/blocksley.styl')
@@ -96,7 +94,7 @@ module.exports = function (api) {
       ...cfg.resolve.alias, // This adds the existing alias
       // 'blocksley': path.resolve(__dirname, './component/')
       'blocksley': '@blocksley/blocksley/src'
-      // 'blocksley': path.resolve(api.appDir, './node_modules/quasar-app-extension-blocksley/src/component/'),
+      // 'blocksley': path.resolve(api.appDir, './node_modules/@blocksley/quasar-app-extension-blocksley/src/component/'),
       // 'components': path.resolve(__dirname, 'components')
     }
     console.log('webpack aliases')

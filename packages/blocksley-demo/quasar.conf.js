@@ -98,7 +98,7 @@ module.exports = function (ctx) {
           
           // be sure to change <myextid> below to
           // your App Extension name:
-          '!node_modules/quasar-app-extension-blocksley'
+          '!node_modules/@blocksley/quasar-app-extension-blocksley'
         ]
       }
     },
