@@ -1,0 +1,112 @@
+<template>
+  <editor-shell :vu="this">
+    <q-dialog v-model="showImgChooser">
+      <ImageChooser :select="insertImage" />
+    </q-dialog>
+    <context-menu slot="menu" :vu="this" :editor="editor"/>
+    <floating-menu :editor = "editor" />
+    <!-- <bubble-menu :editor = "editor" /> -->
+    <editor-content class="editor__content" :editor="editor"/>
+  </editor-shell>
+</template>
+
+<script>
+import ContextMenu from './ContextMenu'
+import FloatingMenu from './FloatingMenu'
+// import BubbleMenu from './BubbleMenu'
+import ImageChooser from 'blocksley/ImageChooser'
+import { Editor, EditorContent } from 'tiptap'
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  HorizontalRule,
+  OrderedList,
+  BulletList,
+  ListItem,
+  TodoItem,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  Image,
+  History
+} from 'tiptap-extensions'
+
+import EditorShell from 'blocksley/EditorShell'
+import { BlockEditorMixin } from 'blocksley/mixins'
+
+export default {
+  name: 'HtmlBlockEditor',
+  mixins: [ BlockEditorMixin ],
+  props: ['frame', 'model'],
+  components: {
+    EditorShell,
+    EditorContent,
+    FloatingMenu,
+    ContextMenu,
+    // BubbleMenu,
+    ImageChooser
+  },
+  data () {
+    return {
+      edit: false,
+      editor: new Editor({
+        autoFocus: true,
+        content: this.model.data,
+        extensions: [
+          new Blockquote(),
+          new BulletList(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Heading({ levels: [1, 2, 3] }),
+          new HorizontalRule(),
+          new ListItem(),
+          new OrderedList(),
+          new TodoItem(),
+          new TodoList(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Link(),
+          new Strike(),
+          new Underline(),
+          new Image(),
+          new History()
+        ]
+      }),
+      showImgChooser: false
+    }
+  },
+  mounted () {
+    // this.editor.setContent(this.model.data)
+  },
+  beforeDestroy () {
+    this.model.data = this.editor.getHTML()
+    this.editor.destroy()
+  },
+  methods: {
+    editText () {
+      this.$router.push(`/pages/${this.id}/text`)
+    },
+    showImagePrompt (command) {
+      this.showImgChooser = true
+    },
+    insertImage (image) {
+      const src = image.src
+      this.editor.commands.image({ src })
+      this.showImgChooser = false
+    }
+  }
+}
+</script>
+
+<style lang="stylus">
+.editor {
+  position: relative;
+}
+</style>
