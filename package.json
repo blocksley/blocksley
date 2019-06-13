@@ -25,9 +25,7 @@
     "lint:all": "npm run lint 'packages/*/src/**/*.ts*'",
     "lint:staged": "lint-staged"
   },
-  "devDependencies": {
-    "lerna": "^3.15.0"
-  },
+  "devDependencies": {},
   "workspaces": [
     "packages/*"
   ],
