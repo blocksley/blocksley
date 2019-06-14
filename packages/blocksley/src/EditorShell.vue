@@ -8,8 +8,8 @@
       </q-menu>
     </div>
     
-    <div id="actions" class="col-auto shell-actions">
-      <div class="cursor-pointer" :class="{ grippy }" @click="detectClick($event)">
+    <div id="actions" class="col-auto shell-actions" :class="{ grippy }" @click="detectClick($event)">
+      <div class="cursor-pointer">
         <q-icon :name="grippyIcon"/>
         <q-menu v-model="showMenu" :no-parent-event="true" auto-close content-class="bg-black text-white">
           <q-btn-group>
