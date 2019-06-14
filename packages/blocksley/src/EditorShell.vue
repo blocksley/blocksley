@@ -171,6 +171,7 @@ export default {
   top: 16px;
   width: 200px;
   margin-left: -100px;
+  z-index: 32;
   // margin: 5px;
   // opacity: .75;
 }
