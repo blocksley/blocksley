@@ -1,18 +1,13 @@
 // import views from '../views'
 
 export default {
-  data () {
-    return {
-      grippy: false
-    }
-  },
   mounted () {
     this.$emit('active', this)
   },
   methods: {
     view () {
-      // this.frame.vu = views[this.model.type].viewer
-      this.frame.deactivate()
+      // this.vu = views[this.model.type].viewer
+      this.deactivate()
     },
     add () {
       this.$emit('action', { type: 'add', model: this.model })
@@ -25,12 +20,6 @@ export default {
     },
     floatRight () {
       this.model.class = ['float-right']
-    },
-    onDragStart () {
-      console.log('frame drag started')
-    },
-    onDragEnd () {
-      this.grippy = false
     }
   }
 }

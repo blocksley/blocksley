@@ -2,6 +2,8 @@
   <div>
     <draggable v-model="blocks"
       handle=".grippy"
+      @start="onDragStart()"
+      @end="onDragEnd()"
     >
       <frame v-for="block in blocks" :key="block.id" :model="block" @action="onAction" @active="onActive"/>
     </draggable>
@@ -52,6 +54,13 @@ export default {
   beforeDestroy () {
   },
   methods: {
+    onDragStart () {
+      console.log('drag start')
+    },
+    onDragEnd () {
+      console.log(this.active.vu)
+      this.active.model.grippy = false
+    },
     onAction (action) {
       var model, ndx
       console.log(action)

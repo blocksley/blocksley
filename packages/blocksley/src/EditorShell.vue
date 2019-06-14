@@ -8,14 +8,14 @@
       </q-menu>
     </div>
     
-    <div id="actions" class="col-auto shell-actions" :class="{ grippy }">
-      <div class="cursor-pointer">
+    <div id="actions" class="col-auto shell-actions">
+      <div class="cursor-pointer" :class="{ grippy }" @dblclick="toggleGrippy()">
         <q-icon :name="grippyIcon"/>
         <q-menu auto-close content-class="bg-black text-white">
           <q-btn-group>
             <q-btn icon="visibility" @click="vu.view()"/>
             <q-btn icon="playlist_add" @click="vu.add()"/>
-            <q-btn icon="unfold_more" @click="grippy = !grippy"/>
+            <q-btn icon="unfold_more" @click="toggleGrippy()"/>
             <q-btn icon="keyboard_arrow_up" />
             <q-btn icon="keyboard_arrow_down" />
             <q-btn icon="delete" @click="vu.remove()"/>
@@ -59,16 +59,26 @@ export default {
   },
   data () {
     return {
+      model: { grippy: false },
       showMenu: true,
-      grippy: false
     }
   },
   computed: {
+    grippy: {
+      get () {
+        return this.model.grippy
+      },
+      set (val) {
+        this.model.grippy = val
+      }
+    },
     grippyIcon () {
       return this.grippy ? 'unfold_more' : 'more_vert'
     }
   },
   mounted () {
+    this.model = this.vu.model
+    console.log(this.model)
   },
   beforeDestroy () {
   },
@@ -84,6 +94,9 @@ export default {
     },
     deactivate () {
       this.isActive = false
+    },
+    toggleGrippy () {
+      this.grippy = !this.grippy
     }
   }
 }
