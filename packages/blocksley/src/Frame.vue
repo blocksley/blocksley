@@ -1,5 +1,7 @@
 <template>
-  <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
+  <div>
+    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
+  </div>
 </template>
 
 <script>

@@ -1,15 +1,15 @@
 <template>
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <q-menu context-menu auto-close content-class="bg-black text-white">
-      <slot name="menu"/>
-    </q-menu>
     <div class="col">
-    <slot/>
+      <slot/>
+      <q-menu context-menu auto-close content-class="bg-black text-white">
+        <slot name="menu"/>
+      </q-menu>
     </div>
-    <!--
-    <div id="actions" class="shell-actions col-auto">
-      <div class="cursor-pointer">
+    
+    <div id="actions" class="col-auto shell-actions">
+      <div class="cursor-pointer  grippy">
         <q-icon name="more_vert"/>
         <q-menu auto-close content-class="bg-black text-white">
           <q-btn-group>
@@ -26,7 +26,8 @@
         </q-menu>
       </div>
     </div>
-    -->
+    
+    <!--
     <div class="shell-actions col-auto" style="z-index:16">
       <q-fab
         size="sm"
@@ -42,6 +43,7 @@
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
+    -->
   </div>
 </template>
 

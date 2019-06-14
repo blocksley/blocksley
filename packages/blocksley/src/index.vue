@@ -1,6 +1,10 @@
 <template>
   <div>
-    <draggable v-model="blocks" handle=".grippy">
+    <draggable v-model="blocks"
+      delay="10"
+      delayOnTouchOnly="true"
+      handle=".grippy"
+    >
       <frame v-for="block in blocks" :key="block.id" :model="block" @action="onAction" @active="onActive"/>
     </draggable>
   </div>
@@ -89,3 +93,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+.grippy {
+}
+</style>
