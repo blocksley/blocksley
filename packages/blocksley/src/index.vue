@@ -1,8 +1,7 @@
 <template>
   <div>
     <draggable v-model="blocks"
-      delay="10"
-      delayOnTouchOnly="true"
+      :touchStartThreshold="16"
       handle=".grippy"
     >
       <frame v-for="block in blocks" :key="block.id" :model="block" @action="onAction" @active="onActive"/>
