@@ -17,7 +17,7 @@ const extendQuasarConf = function (conf) {
 
   conf.build.vueCompiler = true
   // make sure boot file & component transpiles
-  conf.build.transpileDependencies.push(/@blocksley/quasar-app-extension-blocksley[\\/]src[\\/]/)
+  conf.build.transpileDependencies.push(/@blocksley[\\/]quasar-app-extension-blocksley[\\/]src[\\/]/)
 
   // make sure blocksley css goes through webpack to avoid ssr issues
   conf.css.push('~@blocksley/blocksley/src/css/blocksley.styl')

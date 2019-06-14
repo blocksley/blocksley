@@ -1,3 +1,3 @@
 [build]
-  command = "yarn babel-node ./scripts/deploy.js"
+  command = "yarn deploy"
   publish = "dist"
