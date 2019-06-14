@@ -7,6 +7,7 @@
     <div class="col">
     <slot/>
     </div>
+    <!--
     <div id="actions" class="shell-actions col-auto">
       <div class="cursor-pointer">
         <q-icon name="more_vert"/>
@@ -24,6 +25,22 @@
           </q-btn-group>
         </q-menu>
       </div>
+    </div>
+    -->
+    <div class="shell-actions col-auto" style="z-index:16">
+      <q-fab
+        size="sm"
+        icon="more_vert"
+        direction="left"
+        color="primary"
+      >
+        <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
+        <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
+        <q-fab-action icon="unfold_more" color="primary" class="grippy"/>
+        <q-fab-action icon="keyboard_arrow_up" color="primary"/>
+        <q-fab-action icon="keyboard_arrow_down" color="primary"/>
+        <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
+      </q-fab>
     </div>
   </div>
 </template>
@@ -87,7 +104,7 @@ export default {
   // right: 0;
   // top: -5px;
   margin: 5px;
-  opacity: .5;
+  opacity: .75;
 }
 
 </style>

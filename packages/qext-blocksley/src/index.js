@@ -8,20 +8,20 @@ const path = require('path')
 
 const extendQuasarConf = function (conf) {
   console.log('extend quasar config')
-  console.log(conf)
+  // console.log(conf)
   // make sure qactivity boot file is registered
+  // console.log(` App Extension (blocksley) Info: 'Adding blocksley boot reference to your quasar.conf.js'`)
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/blocksley.js')
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/resizable.js')
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/draggable.js')
-  console.log(` App Extension (qactivity) Info: 'Adding blocksley boot reference to your quasar.conf.js'`)
 
   conf.build.vueCompiler = true
   // make sure boot file & component transpiles
   conf.build.transpileDependencies.push(/@blocksley[\\/]quasar-app-extension-blocksley[\\/]src[\\/]/)
 
   // make sure blocksley css goes through webpack to avoid ssr issues
+  // console.log(` App Extension (blocksley) Info: 'Adding blocksley.styl css reference to your quasar.conf.js'`)
   conf.css.push('~@blocksley/blocksley/src/css/blocksley.styl')
-  console.log(` App Extension (blocksley) Info: 'Adding blocksley.styl css reference to your quasar.conf.js'`)
   //Material Design Icons
   conf.extras.push('mdi-v3')
 
@@ -56,6 +56,7 @@ const extendQuasarConf = function (conf) {
     'QTooltip',
     'QFab',
     'QFabAction',
+    'QPageSticky',
     'QMenu',
     'QPopupProxy'
   ]
@@ -97,8 +98,8 @@ module.exports = function (api) {
       // 'blocksley': path.resolve(api.appDir, './node_modules/@blocksley/quasar-app-extension-blocksley/src/component/'),
       // 'components': path.resolve(__dirname, 'components')
     }
-    console.log('webpack aliases')
-    console.log(cfg.resolve.alias)
-    console.log(cfg)
+    // console.log('webpack aliases')
+    // console.log(cfg.resolve.alias)
+    // console.log(cfg)
   })
 }
