@@ -37,8 +37,10 @@
         color="primary"
       >
         <q-fab-action icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+        <!--
         <q-fab-action icon="keyboard_arrow_up" color="primary"/>
         <q-fab-action icon="keyboard_arrow_down" color="primary"/>
+        -->
         <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
         <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
