@@ -7,14 +7,15 @@
         <slot name="menu"/>
       </q-menu>
     </div>
-    <!--
-    <div id="actions" class="col-auto shell-actions">
+    
+    <div id="actions" class="col-auto shell-actions" :class="{ grippy }">
       <div class="cursor-pointer">
-        <q-icon name="more_vert"/>
+        <q-icon :name="grippyIcon"/>
         <q-menu auto-close content-class="bg-black text-white">
           <q-btn-group>
             <q-btn icon="visibility" @click="vu.view()"/>
             <q-btn icon="playlist_add" @click="vu.add()"/>
+            <q-btn icon="unfold_more" @click="grippy = !grippy"/>
             <q-btn icon="keyboard_arrow_up" />
             <q-btn icon="keyboard_arrow_down" />
             <q-btn icon="delete" @click="vu.remove()"/>
@@ -26,11 +27,11 @@
         </q-menu>
       </div>
     </div>
-    -->
     
-    <div class="shell-actions col-auto"  :class="{ grippy }">
+    <!--
+    <div class="shell-actions col-auto" :class="{ grippy }" >
       <q-fab
-        size="sm"
+        flat
         icon="more_vert"
         direction="left"
         color="primary"
@@ -43,7 +44,7 @@
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
-    
+    -->
   </div>
 </template>
 
@@ -64,7 +65,7 @@ export default {
   },
   computed: {
     grippyIcon () {
-      this.grippy ? 'unfold_more' : 'more_vert'
+      return this.grippy ? 'unfold_more' : 'more_vert'
     }
   },
   mounted () {
