@@ -9,9 +9,9 @@
     </div>
     
     <div id="actions" class="col-auto shell-actions">
-      <div class="cursor-pointer" :class="{ grippy }" @dblclick="toggleGrippy()">
+      <div class="cursor-pointer" :class="{ grippy }" @click="detectClick($event)">
         <q-icon :name="grippyIcon"/>
-        <q-menu auto-close content-class="bg-black text-white">
+        <q-menu v-model="showMenu" :no-parent-event="true" auto-close content-class="bg-black text-white">
           <q-btn-group>
             <q-btn icon="visibility" @click="vu.view()"/>
             <q-btn icon="playlist_add" @click="vu.add()"/>
@@ -60,7 +60,11 @@ export default {
   data () {
     return {
       model: { grippy: false },
-      showMenu: true,
+      showMenu: false,
+      clickCount: 0,
+      clickTimer: null,
+      delay: 200,
+      numClicks: 0
     }
   },
   computed: {
@@ -95,9 +99,31 @@ export default {
     deactivate () {
       this.isActive = false
     },
+    toggleMenu () {
+      this.showMenu = !this.showMenu
+    },
     toggleGrippy () {
       this.grippy = !this.grippy
-    }
+    },
+    detectClick (e) {
+      // console.log('handle click')
+      e.preventDefault()
+      this.numClicks++;
+      if (this.numClicks === 1) {          // the first click in .2s
+          setTimeout(() => {
+              switch(this.numClicks) {     // check the event type
+                    case 1:
+                      // console.log('single click')
+                      this.toggleMenu()
+                      break;
+                    default:
+                      // console.log('double click')
+                      this.toggleGrippy()
+              }
+              this.numClicks = 0               // reset the first click
+          }, this.delay);                              // wait 0.2s
+      }
+    } 
   }
 }
 </script>
