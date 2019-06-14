@@ -1,7 +1,7 @@
 <template>
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <div class="col" :class="{ grippy }">
+    <div class="col">
       <slot/>
       <q-menu context-menu auto-close content-class="bg-black text-white">
         <slot name="menu"/>
@@ -28,7 +28,7 @@
     </div>
     -->
     
-    <div class="shell-actions col-auto">
+    <div class="shell-actions col-auto"  :class="{ grippy }">
       <q-fab
         size="sm"
         icon="more_vert"
@@ -63,6 +63,9 @@ export default {
     }
   },
   computed: {
+    grippyIcon () {
+      this.grippy ? 'unfold_more' : 'more_vert'
+    }
   },
   mounted () {
   },
