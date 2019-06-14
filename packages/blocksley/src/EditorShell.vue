@@ -7,7 +7,7 @@
         <slot name="menu"/>
       </q-menu>
     </div>
-    
+    <!--
     <div id="actions" class="col-auto shell-actions" :class="{ grippy }" @click="detectClick($event)">
       <div class="cursor-pointer">
         <q-icon :name="grippyIcon"/>
@@ -27,24 +27,24 @@
         </q-menu>
       </div>
     </div>
+    -->
     
-    <!--
-    <div class="shell-actions col-auto" :class="{ grippy }" >
+    <div class="shell-actions col-auto" :class="{ grippy }">
       <q-fab
         flat
-        icon="more_vert"
+        :icon="grippyIcon"
         direction="left"
         color="primary"
       >
-        <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
-        <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-fab-action icon="unfold_more" color="primary" @click="grippy = !grippy"/>
         <q-fab-action icon="keyboard_arrow_up" color="primary"/>
         <q-fab-action icon="keyboard_arrow_down" color="primary"/>
+        <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
+        <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
-    -->
+    
   </div>
 </template>
 
@@ -144,13 +144,13 @@ export default {
 }
 
 .shell-actions {
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
   // position: relative;
   // position: absolute;
   // right: 0;
   // top: -5px;
-  margin: 5px;
-  opacity: .75;
+  // margin: 5px;
+  // opacity: .75;
 }
 
 </style>
