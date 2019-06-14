@@ -1,7 +1,6 @@
 <template>
   <div>
     <draggable v-model="blocks"
-      :options="{delay:250}"
       handle=".grippy"
     >
       <frame v-for="block in blocks" :key="block.id" :model="block" @action="onAction" @active="onActive"/>

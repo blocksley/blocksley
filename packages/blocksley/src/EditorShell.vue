@@ -1,15 +1,15 @@
 <template>
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <div class="col">
+    <div class="col" :class="{ grippy }">
       <slot/>
       <q-menu context-menu auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
     </div>
-    
+    <!--
     <div id="actions" class="col-auto shell-actions">
-      <div class="cursor-pointer  grippy">
+      <div class="cursor-pointer">
         <q-icon name="more_vert"/>
         <q-menu auto-close content-class="bg-black text-white">
           <q-btn-group>
@@ -26,9 +26,9 @@
         </q-menu>
       </div>
     </div>
+    -->
     
-    <!--
-    <div class="shell-actions col-auto" style="z-index:16">
+    <div class="shell-actions col-auto">
       <q-fab
         size="sm"
         icon="more_vert"
@@ -37,13 +37,13 @@
       >
         <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
         <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
-        <q-fab-action icon="unfold_more" color="primary" class="grippy"/>
+        <q-fab-action icon="unfold_more" color="primary" @click="grippy = !grippy"/>
         <q-fab-action icon="keyboard_arrow_up" color="primary"/>
         <q-fab-action icon="keyboard_arrow_down" color="primary"/>
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
-    -->
+    
   </div>
 </template>
 
@@ -58,7 +58,8 @@ export default {
   },
   data () {
     return {
-      showMenu: true
+      showMenu: true,
+      grippy: false
     }
   },
   computed: {
