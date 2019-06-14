@@ -30,7 +30,7 @@
     -->
     
     <div class="shell-actions col-auto" :class="{ grippy }">
-      <q-fab
+      <q-fab ref="shellMenu"
         flat
         :icon="grippyIcon"
         direction="left"
@@ -83,6 +83,9 @@ export default {
   mounted () {
     this.model = this.vu.model
     console.log(this.model)
+    if (this.$q.platform.is.mobile) {
+      this.$refs.shellMenu.$on('click', this.detectClick)
+    }
   },
   beforeDestroy () {
   },
