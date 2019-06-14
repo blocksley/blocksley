@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
-  </div>
+  <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
 </template>
 
 <script>
@@ -32,7 +30,7 @@ export default {
   },
   computed: {
   },
-  watch: {
+  /* watch: {
     model: {
       deep: true,
       handler () {
@@ -40,7 +38,7 @@ export default {
         console.log(this.model)
       }
     }
-  },
+  }, */
   mounted () {
     console.log(this.model)
     if (this.model.state === 'create') {
