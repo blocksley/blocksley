@@ -63,7 +63,7 @@ export default {
       showMenu: false,
       clickCount: 0,
       clickTimer: null,
-      delay: 200,
+      delay: 250,
       numClicks: 0
     }
   },
