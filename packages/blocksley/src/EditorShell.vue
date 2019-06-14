@@ -29,7 +29,7 @@
     </div>
     -->
     
-    <div class="shell-actions col-auto" :class="{ grippy }" @click="detectClick($event)">
+    <div class="shell-actions col-auto" :class="{ grippy }">
       <q-fab
         flat
         :icon="grippyIcon"
