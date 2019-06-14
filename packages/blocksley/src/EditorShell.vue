@@ -44,7 +44,11 @@
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
-    
+    <div v-if="grippy" class="grippy-menu">
+      <q-btn fab icon="keyboard_arrow_up" color="primary"/>
+      <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+      <q-btn fab icon="keyboard_arrow_down" color="primary"/>
+    </div>
   </div>
 </template>
 
@@ -83,9 +87,11 @@ export default {
   mounted () {
     this.model = this.vu.model
     console.log(this.model)
+    /*
     if (this.$q.platform.is.mobile) {
       this.$refs.shellMenu.$on('click', this.detectClick)
     }
+    */
   },
   beforeDestroy () {
   },
@@ -109,7 +115,7 @@ export default {
       this.grippy = !this.grippy
     },
     detectClick (e) {
-      // console.log('handle click')
+      console.log('detect click')
       e.preventDefault()
       this.numClicks++;
       if (this.numClicks === 1) {          // the first click in .2s
@@ -155,5 +161,18 @@ export default {
   // margin: 5px;
   // opacity: .75;
 }
-
+.grippy-menu {
+  // font-size: 1.5rem;
+  // position: relative;
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  width: 200px;
+  margin-left: -100px;
+  // margin: 5px;
+  // opacity: .75;
+}
+.grippy-menu > * {
+    margin: 5px;
+}
 </style>
