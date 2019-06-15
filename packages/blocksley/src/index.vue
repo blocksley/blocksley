@@ -59,7 +59,7 @@ export default {
     },
     onDragEnd () {
       console.log(this.active.vu)
-      this.active.model.grippy = false
+      this.active.grippy = false
     },
     onAction (action) {
       var model, ndx
@@ -103,7 +103,7 @@ export default {
 
 <style lang="stylus">
 .blocksley-editor {
-  padding-bottom: 32px;
+  padding: 16px;
   overflow: hidden;
 }
 .grippy {

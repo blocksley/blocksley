@@ -8,28 +8,14 @@
       </q-menu>
     </div>
     <div class="shell-actions col-auto">
-    <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
-      <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-      <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
-      <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
-      <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-    </shell-fab>
+      <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
+        <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
+        <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
+        <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
+        <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+      </shell-fab>
     </div>
-    <!--
-    <div class="shell-actions col-auto" :class="{ grippy }">
-      <q-fab ref="shellMenu"
-        flat
-        :icon="grippyIcon"
-        direction="left"
-        color="primary"
-      >
-        <q-fab-action icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-        <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
-        <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
-        <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
-      </q-fab>
-    </div>
-    -->
+
     <div v-if="grippy" class="grippy-menu">
       <q-btn fab icon="keyboard_arrow_up" color="primary"/>
       <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
@@ -51,20 +37,20 @@ export default {
   },
   data () {
     return {
-      model: { grippy: false },
+      frame: { grippy: false },
+      model: {},
       showMenu: false,
       delay: 250,
-      numClicks: 0,
-      actions: []
+      numClicks: 0
     }
   },
   computed: {
     grippy: {
       get () {
-        return this.model.grippy
+        return this.frame.grippy
       },
       set (val) {
-        this.model.grippy = val
+        this.frame.grippy = val
       }
     },
     grippyIcon () {
@@ -72,14 +58,9 @@ export default {
     }
   },
   mounted () {
+    this.frame = this.vu.frame
     this.model = this.vu.model
     console.log(this.model)
-    this.actions = [
-      { icon: "unfold_more", click: this.toggleGrippy },
-      { icon: "visibility", click: () => this.vu.view() },
-      { icon: "playlist_add", click: () => this.vu.add() },
-      { icon: "delete", click: () => this.vu.remove() }
-    ]
     /*
     if (this.$q.platform.is.mobile) {
       this.$refs.shellMenu.$on('click', this.detectClick)
@@ -159,7 +140,7 @@ export default {
   // position: relative;
   position: absolute;
   left: 50%;
-  top: 16px;
+  top: -8px;
   width: 200px;
   margin-left: -100px;
   z-index: 990;

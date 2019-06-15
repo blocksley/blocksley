@@ -27,7 +27,8 @@ export default {
   data () {
     return {
       vu: null,
-      isActive: false
+      isActive: false,
+      grippy: false
     }
   },
   computed: {
@@ -71,6 +72,12 @@ export default {
     deactivate () {
       this.isActive = false
       this.vu = views[this.model.type].viewer
+    },
+    onDragStart () {
+      console.log('frame drag started')
+    },
+    onDragEnd () {
+      this.grippy = false
     }
   }
 }

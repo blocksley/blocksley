@@ -8,7 +8,6 @@ class Model {
     this.width = 16
     this.height = 16
     this.class = []
-    this.grippy = false
     Object.assign(this, options)
   }
 }

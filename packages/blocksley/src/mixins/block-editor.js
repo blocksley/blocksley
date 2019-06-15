@@ -3,7 +3,6 @@
 export default {
   data () {
     return {
-      grippy: false
     }
   },
   mounted () {
@@ -25,12 +24,6 @@ export default {
     },
     floatRight () {
       this.model.class = ['float-right']
-    },
-    onDragStart () {
-      console.log('frame drag started')
-    },
-    onDragEnd () {
-      this.grippy = false
     }
   }
 }
