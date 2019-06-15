@@ -1,6 +1,6 @@
 <template>
   <div class="shell-fab" v-clickaway="hide">
-    <q-btn fab-mini flat class="shell-fab-btn" :icon="icon" @click="visible=!visible"/>
+    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="visible=!visible"/>
 
     <transition
       appear
@@ -18,7 +18,11 @@
 
 export default {
   props: {
-    icon: ''
+    icon: '',
+    color: {
+      type: String,
+      default: 'primary'
+    }
   },
   components: {
   },
@@ -55,6 +59,7 @@ export default {
 .shell-fab {
 }
 .shell-fab-btn {
+  z-index: 990;
 }
 .shell-fab-actions {
   position: absolute;

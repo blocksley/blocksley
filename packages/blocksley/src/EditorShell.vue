@@ -8,7 +8,7 @@
       </q-menu>
     </div>
     <div class="shell-actions col-auto">
-    <shell-fab :icon="grippyIcon" :class="{ grippy }">
+    <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
       <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
       <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
       <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
