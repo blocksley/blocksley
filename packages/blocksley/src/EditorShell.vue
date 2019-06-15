@@ -7,28 +7,15 @@
         <slot name="menu"/>
       </q-menu>
     </div>
-    <!--
-    <div id="actions" class="col-auto shell-actions" :class="{ grippy }" @click="detectClick($event)">
-      <div class="cursor-pointer">
-        <q-icon :name="grippyIcon"/>
-        <q-menu v-model="showMenu" :no-parent-event="true" auto-close content-class="bg-black text-white">
-          <q-btn-group>
-            <q-btn icon="visibility" @click="vu.view()"/>
-            <q-btn icon="playlist_add" @click="vu.add()"/>
-            <q-btn icon="unfold_more" @click="toggleGrippy()"/>
-            <q-btn icon="keyboard_arrow_up" />
-            <q-btn icon="keyboard_arrow_down" />
-            <q-btn icon="delete" @click="vu.remove()"/>
-          </q-btn-group>
-          <q-btn-group>
-            <q-btn icon="mdi-format-align-left" @click="vu.floatLeft()"/>
-            <q-btn icon="mdi-format-align-right" @click="vu.floatRight()"/>
-          </q-btn-group>
-        </q-menu>
-      </div>
+    <div class="shell-actions col-auto" :class="{ grippy }">
+    <shell-fab :icon="grippyIcon">
+      <q-btn fab icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+      <q-btn fab icon="visibility" color="primary" @click="vu.view()"/>
+      <q-btn fab icon="playlist_add" color="primary" @click="vu.add()"/>
+      <q-btn fab icon="delete" color="primary" @click="vu.remove()"/>
+    </shell-fab>
     </div>
-    -->
-    
+    <!--
     <div class="shell-actions col-auto" :class="{ grippy }">
       <q-fab ref="shellMenu"
         flat
@@ -37,15 +24,12 @@
         color="primary"
       >
         <q-fab-action icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-        <!--
-        <q-fab-action icon="keyboard_arrow_up" color="primary"/>
-        <q-fab-action icon="keyboard_arrow_down" color="primary"/>
-        -->
         <q-fab-action icon="visibility" color="primary" @click="vu.view()"/>
         <q-fab-action icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-fab-action icon="delete" color="primary" @click="vu.remove()"/>
       </q-fab>
     </div>
+    -->
     <div v-if="grippy" class="grippy-menu">
       <q-btn fab icon="keyboard_arrow_up" color="primary"/>
       <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
@@ -55,6 +39,7 @@
 </template>
 
 <script>
+import ShellFab from './ShellFab'
 
 export default {
   name: 'EditorShell',
@@ -62,6 +47,7 @@ export default {
     vu: null
   },
   components: {
+    ShellFab
   },
   data () {
     return {
@@ -171,7 +157,7 @@ export default {
   top: 16px;
   width: 200px;
   margin-left: -100px;
-  z-index: 32;
+  z-index: 990;
   // margin: 5px;
   // opacity: .75;
 }

@@ -60,6 +60,11 @@ const extendQuasarConf = function (conf) {
     'QMenu',
     'QPopupProxy'
   ]
+  conf.animations = [
+    ...conf.animations,
+    'fadeInRight',
+    'fadeOutRight'
+  ]
 }
 module.exports = function (api) {
   // console.log(api)

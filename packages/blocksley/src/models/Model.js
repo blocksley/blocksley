@@ -13,22 +13,3 @@ class Model {
   }
 }
 export default Model
-
-/*
-import Vue from 'vue'
-import Component from 'vue-class-component'
-
-import nanoid from 'nanoid'
-
-@Component
-class Model extends Vue {
-  constructor (type, options) {
-    super()
-    this.type = type
-    this.id = nanoid()
-    this.class = []
-    Object.assign(this, options)
-  }
-}
-export default Model
-*/
