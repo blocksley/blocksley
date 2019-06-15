@@ -7,12 +7,12 @@
         <slot name="menu"/>
       </q-menu>
     </div>
-    <div class="shell-actions col-auto" :class="{ grippy }">
-    <shell-fab :icon="grippyIcon">
-      <q-btn fab icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-      <q-btn fab icon="visibility" color="primary" @click="vu.view()"/>
-      <q-btn fab icon="playlist_add" color="primary" @click="vu.add()"/>
-      <q-btn fab icon="delete" color="primary" @click="vu.remove()"/>
+    <div class="shell-actions col-auto">
+    <shell-fab :icon="grippyIcon" :class="{ grippy }">
+      <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+      <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
+      <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
+      <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
     </shell-fab>
     </div>
     <!--
@@ -53,10 +53,9 @@ export default {
     return {
       model: { grippy: false },
       showMenu: false,
-      clickCount: 0,
-      clickTimer: null,
       delay: 250,
-      numClicks: 0
+      numClicks: 0,
+      actions: []
     }
   },
   computed: {
@@ -75,6 +74,12 @@ export default {
   mounted () {
     this.model = this.vu.model
     console.log(this.model)
+    this.actions = [
+      { icon: "unfold_more", click: this.toggleGrippy },
+      { icon: "visibility", click: () => this.vu.view() },
+      { icon: "playlist_add", click: () => this.vu.add() },
+      { icon: "delete", click: () => this.vu.remove() }
+    ]
     /*
     if (this.$q.platform.is.mobile) {
       this.$refs.shellMenu.$on('click', this.detectClick)
