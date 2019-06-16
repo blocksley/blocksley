@@ -1,6 +1,6 @@
 <template>
   <div class="shell-fab" v-clickaway="hide">
-    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="visible=!visible"/>
+    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick()"/>
 
     <transition
       appear
@@ -32,10 +32,21 @@ export default {
   },
   data () {
     return {
-      visible: false
+      visible: false,
+      fabParent: null
     }
   },
   computed: {
+  },
+  watch: {
+    visible () {
+      if(!this.visible && this.fabParent) {
+        this.$el.parentElement.replaceChild(this.fabParent.$el, this.$el)
+        setTimeout(() => {
+          this.fabParent.toggle()
+        }, 100)
+      }
+    }
   },
   mounted () {
     console.log('shell fab mounted')
@@ -43,13 +54,14 @@ export default {
     for (var i = 0; i < this.$slots.default.length; i++) {
       const vnode = this.$slots.default[i]
       const child = vnode.componentInstance
+      child.fabParent = this
       console.log(child)
       if(child.$options._componentTag === 'shell-fab') {
         this.createProxy(child)
       } else {
         child.$on('click', (evt) => {
           console.log('shell fab button click')
-          // this.hide()
+          this.hide()
         })
       }
     }
@@ -57,6 +69,9 @@ export default {
   beforeDestroy () {
   },
   methods: {
+    onClick () {
+      this.toggle()
+    },
     hide () {
       this.visible = false
     },
