@@ -9,7 +9,9 @@
 
 <script>
 import { BlockCreatorMixin } from 'blocksley/mixins'
-import { EditorShell, ImageChooser } from 'blocksley/components'
+// Have to import separately to avoid circular dependency
+import EditorShell from 'blocksley/components/EditorShell'
+import ImageChooser from 'blocksley/components/ImageChooser'
 
 export default {
   name: 'ImageBlockCreator',

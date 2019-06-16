@@ -1,6 +1,6 @@
 <template>
   <viewer-shell :vu="this">
-    <img :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover"/>
+    <img :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover; padding:16px"/>
   </viewer-shell>
 </template>
 
