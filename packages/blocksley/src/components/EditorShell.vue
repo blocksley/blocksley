@@ -23,13 +23,13 @@
     </div>
     -->
     <div class="col-auto">
-      <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
+      <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
         <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
         <shell-fab fab-mini icon="unfold_more" color="primary">
           <q-btn fab icon="keyboard_arrow_up" color="primary"/>
-          <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+          <q-btn fab class="grippy" icon="unfold_more" color="primary"/>
           <q-btn fab icon="keyboard_arrow_down" color="primary"/>
         </shell-fab>
       </shell-fab>
