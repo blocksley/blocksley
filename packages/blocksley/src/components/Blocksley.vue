@@ -15,7 +15,7 @@ import BlocksleyStore from 'blocksley/store'
 
 import nanoid from 'nanoid'
 import { UiMixin } from 'blocksley/mixins'
-import { Title, Paragraph, List, Image } from './models'
+import { Title, Paragraph, List, Image } from 'blocksley/models'
 import Frame from './Frame'
 
 export default {

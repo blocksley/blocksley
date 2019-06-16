@@ -1,4 +1,4 @@
-import Blocksley from '@blocksley/blocksley'
+import { Blocksley } from '@blocksley/blocksley'
 
 export default (options) => {
   const { Vue } = options

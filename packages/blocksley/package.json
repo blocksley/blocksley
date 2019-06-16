@@ -4,7 +4,7 @@
   "description": "A Quasar Block Editor",
   "author": "Kurtis Fields <kurtisfields@gmail.com>",
   "license": "MIT",
-  "main": "src/index.vue",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
   },

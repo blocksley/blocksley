@@ -1,5 +1,5 @@
 import { Node } from 'tiptap'
-import EFrame from '../EFrame'
+import EFrame from '../components/EFrame'
 import TitleModel from '../models/Title'
 
 export default class Title extends Node {

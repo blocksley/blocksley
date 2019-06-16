@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ViewerShell from 'blocksley/ViewerShell'
+import ViewerShell from 'blocksley/components/ViewerShell'
 import { BlockViewerMixin } from 'blocksley/mixins'
 export default {
   name: 'TitleBlockViewer',

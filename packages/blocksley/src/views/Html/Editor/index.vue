@@ -12,7 +12,7 @@
 <script>
 import ContextMenu from './ContextMenu'
 import FloatingMenu from './FloatingMenu'
-import ImageChooser from 'blocksley/ImageChooser'
+import { ImageChooser } from 'blocksley/components'
 import { Editor, EditorContent } from 'tiptap'
 import {
   Blockquote,
@@ -38,7 +38,7 @@ import {
 import Image from 'blocksley/nodes/Image'
 import ImageBlock from 'blocksley/nodes/ImageBlock'
 
-import EditorShell from 'blocksley/EditorShell'
+import EditorShell from 'blocksley/components/EditorShell'
 import { BlockEditorMixin } from 'blocksley/mixins'
 
 export default {

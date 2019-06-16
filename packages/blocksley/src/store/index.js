@@ -1,7 +1,9 @@
+import components from '../components'
 import views from '../views'
 import models from '../models'
 
 const state = {
+  components: null,
   models: null,
   views: null,
   leftDrawerOpen: false,
@@ -14,6 +16,7 @@ const state = {
 }
 
 const getters = {
+  components: (state) => components,
   models: (state) => models,
   views: (state) => views,
   leftDrawerOpen: (state) => state.leftDrawerOpen,

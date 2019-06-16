@@ -7,6 +7,7 @@
         <slot name="menu"/>
       </q-menu>
     </div>
+    <!--
     <div class="shell-actions col-auto">
       <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
@@ -15,16 +16,29 @@
         <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
       </shell-fab>
     </div>
-
     <div v-if="grippy" class="grippy-menu">
       <q-btn fab icon="keyboard_arrow_up" color="primary"/>
       <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
       <q-btn fab icon="keyboard_arrow_down" color="primary"/>
     </div>
+    -->
+    <div class="col-auto">
+      <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
+        <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
+        <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
+        <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
+        <shell-fab fab-mini icon="unfold_more" color="primary">
+          <q-btn fab icon="keyboard_arrow_up" color="primary"/>
+          <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
+          <q-btn fab icon="keyboard_arrow_down" color="primary"/>
+        </shell-fab>
+      </shell-fab>
+    </div>
   </div>
 </template>
 
 <script>
+import ShellActions from './ShellActions'
 import ShellFab from './ShellFab'
 
 export default {
@@ -33,6 +47,7 @@ export default {
     vu: null
   },
   components: {
+    ShellActions,
     ShellFab
   },
   data () {
@@ -126,15 +141,6 @@ export default {
   top: -42px;
 }
 
-.shell-actions {
-  // font-size: 1.5rem;
-  // position: relative;
-  // position: absolute;
-  // right: 0;
-  // top: -5px;
-  // margin: 5px;
-  // opacity: .75;
-}
 .grippy-menu {
   // font-size: 1.5rem;
   // position: relative;

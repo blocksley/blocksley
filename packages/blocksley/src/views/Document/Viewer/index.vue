@@ -7,7 +7,7 @@
 <script>
 
 import { BlockViewerMixin } from 'blocksley/mixins'
-import ViewerShell from 'blocksley/ViewerShell'
+import ViewerShell from 'blocksley/components/ViewerShell'
 
 export default {
   name: 'DocumentViewer',

@@ -8,9 +8,8 @@
 </template>
 
 <script>
-import EditorShell from 'blocksley/EditorShell'
 import { BlockCreatorMixin } from 'blocksley/mixins'
-import ImageChooser from 'blocksley/ImageChooser'
+import { EditorShell, ImageChooser } from 'blocksley/components'
 
 export default {
   name: 'ImageBlockCreator',

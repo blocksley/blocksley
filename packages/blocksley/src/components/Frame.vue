@@ -6,7 +6,7 @@
 
 <script>
 
-import views from './views'
+import views from 'blocksley/views'
 export default {
   props: {
     embedded: {

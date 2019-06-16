@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import EditorShell from 'blocksley/EditorShell'
+import EditorShell from 'blocksley/components/EditorShell'
 import { BlockEditorMixin } from 'blocksley/mixins'
 
 export default {

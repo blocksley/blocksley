@@ -8,7 +8,7 @@
 
 <script>
 import { BlockEditorMixin } from 'blocksley/mixins'
-import EditorShell from 'blocksley/EditorShell'
+import EditorShell from 'blocksley/components/EditorShell'
 import ContextMenu from './ContextMenu'
 
 export default {

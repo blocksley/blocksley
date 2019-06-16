@@ -1,5 +1,5 @@
 import { Node } from 'tiptap'
-import Frame from '../Frame'
+import Frame from '../components/Frame'
 import ImageBlock from '../models/Image'
 
 export default class Image extends Node {

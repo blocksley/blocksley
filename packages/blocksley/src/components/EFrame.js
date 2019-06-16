@@ -1,4 +1,4 @@
-import Views from './views'
+import Views from 'blocksley/views'
 
 export default {
   template: `
