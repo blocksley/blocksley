@@ -2,8 +2,8 @@
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
-    <div class="col">
-      <q-menu ref="menu" :target="true" context-menu touch-position auto-close content-class="bg-black text-white">
+    <div class="col" @contextmenu.prevent.stop="onContext">
+      <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
       <slot/>
@@ -86,6 +86,8 @@ export default {
     },
     onContext(e) {
       console.log('context click')
+      //Prevent @contextclick from propagating
+      /*
       e.preventDefault()
       this.showMenu = !this.showMenu
       if (this.showMenu) {
@@ -93,6 +95,7 @@ export default {
       } else {
         this.$refs.menu.hide(e)
       }
+      */
     },
     hideMenu (e) {
       console.log('click away')

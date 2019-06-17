@@ -60,7 +60,10 @@ export default class Image extends Node {
   get view () {
     return EFrame
   }
-  commands ({ type }) {
+  commands (cmd) {
+    console.log('command')
+    console.log(cmd)
+    const { type } = cmd
     return attrs => (state, dispatch) => {
       const { selection } = state
       const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos

@@ -56,12 +56,12 @@ export default {
   mounted () {
     console.log('shell fab mounted')
     const slots = this.$slots.default 
-    console.log(slots)
+    // console.log(slots)
     for (var i = 0; i < slots.length; i++) {
       const child = slots[i].componentInstance
       child.fabParent = this
       child.fabRoot = this.fabRoot ? this.fabRoot : this
-      console.log(child)
+      // console.log(child)
       if(child.$options._componentTag === 'shell-fab') {
         this.createProxy(child)
       } else {

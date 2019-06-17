@@ -1,5 +1,5 @@
 <template>
-  <root-frame :model="model"/>
+  <frame ref="frame" :model="model"/>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ import BlocksleyStore from 'blocksley/store'
 import nanoid from 'nanoid'
 import { UiMixin } from 'blocksley/mixins'
 import { Title, List, Image, Paragraph, Html, Document } from 'blocksley/models'
-import RootFrame from './RootFrame'
+import Frame from './Frame'
 
 export default {
   mixins: [ UiMixin ],
@@ -25,7 +25,7 @@ export default {
     }
   },
   components: {
-    RootFrame
+    Frame
   },
   data () {
     return {
@@ -42,6 +42,7 @@ export default {
     this.$store.registerModule('blocksley', BlocksleyStore)
   },
   mounted () {
+    this.$refs.frame.activate()
   },
   beforeDestroy () {
   },
