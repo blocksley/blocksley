@@ -84,11 +84,6 @@ export default {
     showImagePrompt (command) {
       console.log(this.view)
       this.view.showImagePrompt(command)
-      /*
-      const src = prompt('Enter the url of your image here')
-      if (src !== null) {
-        command({ src })
-      } */
     }
   }
 }
