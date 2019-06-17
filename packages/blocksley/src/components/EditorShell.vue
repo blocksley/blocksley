@@ -1,9 +1,9 @@
 <template>
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <div class="col">
+    <div class="col" @contextmenu.stop="onContext" @click="hideMenu">
       <slot/>
-      <q-menu ref="menu" v-model="showMenu" no-parent-event @contextmenu.prevent="onContext($event)" auto-close content-class="bg-black text-white">
+      <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
     </div>
@@ -82,11 +82,26 @@ export default {
     deactivate () {
       this.isActive = false
     },
-    onContext(evt) {
-      this.$refs.menu.show(evt)
+    onContext(e) {
+      console.log('context click')
+      e.preventDefault()
+      this.showMenu = !this.showMenu
+      if (this.showMenu) {
+        this.$refs.menu.show(e)
+      } else {
+        this.$refs.menu.hide(e)
+      }
+    },
+    hideMenu (e) {
+      console.log('click away')
+      this.showMenu = false
+      this.$refs.menu.hide(e)
     },
     toggleMenu () {
       this.showMenu = !this.showMenu
+      if (this.showMenu) {
+        this.$refs.menu.show(e)
+      }
     },
     toggleGrippy () {
       this.grippy = !this.grippy
