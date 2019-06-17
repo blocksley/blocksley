@@ -2,7 +2,7 @@ import kits from 'blocksley/kits'
 
 export default {
   template: `
-  <div>
+  <div v-clickaway="deactivate">
     <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
   </div>`,
   props: ['node', 'updateAttrs', 'view', 'getPos'],
@@ -51,6 +51,7 @@ export default {
       this.vu = kits[this.model.type].editor
     },
     deactivate () {
+      console.log('deactivate')
       this.isActive = false
       this.vu = kits[this.model.type].viewer
     }
