@@ -2,7 +2,7 @@
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
-    <div class="col" tabindex="0">
+    <div class="col" tabindex="0" @touchstart.stop @mousedown.stop>
       <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
