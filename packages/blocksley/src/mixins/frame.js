@@ -1,12 +1,9 @@
-// import views from '../views'
-
 export default {
   mounted () {
     this.$emit('active', this)
   },
   methods: {
     view () {
-      // this.vu = views[this.model.type].viewer
       this.deactivate()
     },
     add () {

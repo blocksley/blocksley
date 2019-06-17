@@ -1,4 +1,4 @@
-import Views from 'blocksley/views'
+import kits from 'blocksley/kits'
 
 export default {
   template: `
@@ -23,15 +23,15 @@ export default {
     console.log(this.node)
     console.log(this.view)
     if (this.model.state === 'create') {
-      if (Views[this.model.type].creator) {
-        this.vu = Views[this.model.type].creator
+      if (kits[this.model.type].creator) {
+        this.vu = kits[this.model.type].creator
       } else {
         console.log(this.model.type)
         this.model.state = 'normal'
-        this.vu = Views[this.model.type].editor
+        this.vu = kits[this.model.type].editor
       }
     } else {
-      this.vu = Views[this.model.type].viewer
+      this.vu = kits[this.model.type].viewer
     }
   },
   beforeDestroy () {
@@ -48,11 +48,11 @@ export default {
       this.$emit('active', this)
     },
     activate () {
-      this.vu = Views[this.model.type].editor
+      this.vu = kits[this.model.type].editor
     },
     deactivate () {
       this.isActive = false
-      this.vu = Views[this.model.type].viewer
+      this.vu = kits[this.model.type].viewer
     }
   }
 }

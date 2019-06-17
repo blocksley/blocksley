@@ -1,5 +1,3 @@
-// import views from '../views'
-
 export default {
   data () {
     return {
@@ -10,7 +8,6 @@ export default {
   },
   methods: {
     view () {
-      // this.frame.vu = views[this.model.type].viewer
       this.frame.deactivate()
     },
     add () {

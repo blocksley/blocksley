@@ -1,12 +1,12 @@
-import views from '../views'
+import kits from '../kits'
 export default {
   mounted () {
   },
   methods: {
     edit () {
       console.log('edit')
-      console.log(views[this.model.type].editor)
-      this.frame.vu = views[this.model.type].editor
+      console.log(kits[this.model.type].editor)
+      this.frame.vu = kits[this.model.type].editor
     },
     add () {
       this.$emit('action', { type: 'add', model: this.model })

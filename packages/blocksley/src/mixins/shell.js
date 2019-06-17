@@ -1,5 +1,3 @@
-// import views from '../views'
-
 export default {
   name: 'ShellMixin',
   props: {

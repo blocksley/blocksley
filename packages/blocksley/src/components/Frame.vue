@@ -6,7 +6,7 @@
 
 <script>
 
-import views from 'blocksley/views'
+import kits from 'blocksley/kits'
 export default {
   props: {
     embedded: {
@@ -45,15 +45,15 @@ export default {
   mounted () {
     console.log(this.model)
     if (this.model.state === 'create') {
-      if (views[this.model.type].creator) {
-        this.vu = views[this.model.type].creator
+      if (kits[this.model.type].creator) {
+        this.vu = kits[this.model.type].creator
       } else {
         // TODO:  Throw an error?
         this.model.state = 'normal'
-        this.vu = views[this.model.type].editor
+        this.vu = kits[this.model.type].editor
       }
     } else {
-      this.vu = views[this.model.type].viewer
+      this.vu = kits[this.model.type].viewer
     }
   },
   beforeDestroy () {
@@ -67,11 +67,11 @@ export default {
       this.$emit('active', this)
     },
     activate () {
-      this.vu = views[this.model.type].editor
+      this.vu = kits[this.model.type].editor
     },
     deactivate () {
       this.isActive = false
-      this.vu = views[this.model.type].viewer
+      this.vu = kits[this.model.type].viewer
     },
     onDragStart () {
       console.log('frame drag started')

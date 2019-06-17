@@ -1,11 +1,10 @@
-import components from '../components'
-import views from '../views'
+// TODO:FIXME:  importing kits and models here to avoid circular references
+import kits from '../kits'
 import models from '../models'
 
 const state = {
-  components: null,
   models: null,
-  views: null,
+  kits: null,
   leftDrawerOpen: false,
   view: null,
   page: null,
@@ -16,9 +15,8 @@ const state = {
 }
 
 const getters = {
-  components: (state) => components,
   models: (state) => models,
-  views: (state) => views,
+  kits: (state) => kits,
   leftDrawerOpen: (state) => state.leftDrawerOpen,
   view: (state) => state.view,
   page: (state) => state.page,
