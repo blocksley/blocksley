@@ -1,8 +1,8 @@
 import Block from './Block'
 
 export default class Document extends Block {
-  constructor (content) {
+  constructor (children) {
     super('document')
-    this.data = content
+    this.children = children
   }
 }

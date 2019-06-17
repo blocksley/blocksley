@@ -1,43 +1,21 @@
 <template>
-  <editor-shell :vu="this">
-    <q-dialog v-model="showImgChooser">
-      <image-chooser :select="insertImage" />
-    </q-dialog>
-    <context-menu slot="menu" :vu="this" :editor="editor"/>
-    <floating-menu :editor="editor" />
-    <editor-content class="editor__content" :editor="editor" />
-  </editor-shell>
+  <div class="blocksley-editor">
+    <draggable v-model="model.children"
+      handle=".grippy"
+      @start="onDragStart()"
+      @end="onDragEnd()"
+    >
+      <frame v-for="child in model.children" :key="child.id" :model="child" @action="onAction" @active="onActive"/>
+    </draggable>
+  </div>
 </template>
 
 <script>
 import ContextMenu from './ContextMenu'
 import FloatingMenu from './FloatingMenu'
-import { ImageChooser } from 'blocksley/components'
-import { Editor, EditorContent } from 'tiptap'
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  // Heading,
-  HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Bold,
-  Code,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  // Image,
-  History
-} from 'tiptap-extensions'
-
-import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
 
 import { BlockEditorMixin } from 'blocksley/mixins'
+import Frame from 'blocksley/components/Frame'
 import EditorShell from 'blocksley/components/EditorShell'
 
 export default {
@@ -45,79 +23,75 @@ export default {
   mixins: [ BlockEditorMixin ],
   props: ['frame', 'model'],
   components: {
-    EditorContent,
+    Frame,
     EditorShell,
     ContextMenu,
-    FloatingMenu,
-    ImageChooser
+    FloatingMenu
   },
   data () {
     return {
-      edit: false,
-      editor: new Editor({
-        autoFocus: true,
-        content: this.model.data,
-        extensions: [
-          new Blockquote(),
-          new BulletList(),
-          new CodeBlock(),
-          new HardBreak(),
-          new Heading({ levels: [1, 2, 3] }),
-          new HorizontalRule(),
-          new ListItem(),
-          new OrderedList(),
-          new TodoItem(),
-          new TodoList(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Link(),
-          new Strike(),
-          new Underline(),
-          new Image(),
-          new History(),
-          new ImageBlock(),
-          new Title()
-        ]
-      }),
-      showImgChooser: false
+      active: null
     }
   },
   mounted () {
     console.log('editor mounted')
-    console.log(this.editor)
-    // this.editor.setContent(this.model.data)
   },
   beforeDestroy () {
     console.log('editor destroyed')
-    this.model.data = this.editor.getHTML()
-    // this.model.data = this.editor.getJSON()
-    console.log(this.editor.getJSON())
-    console.log(this.editor)
-    this.editor.destroy()
   },
   methods: {
-    editText () {
-      this.$router.push(`/pages/${this.id}/text`)
+    onDragStart () {
+      console.log('drag start')
     },
-    showImagePrompt () {
-      this.showImgChooser = true
+    onDragEnd () {
+      console.log(this.active.vu)
+      this.active.grippy = false
     },
-    insertImage (image) {
-      const src = image.src
-      this.editor.commands.image({ src })
-      this.showImgChooser = false
+    onAction (action) {
+      var model, ndx
+      console.log(action)
+      switch (action.type) {
+        case 'add':
+          model = { type: 'new', id: nanoid() }
+          ndx = this.blocks.indexOf(action.model) + 1
+          this.blocks.splice(ndx, 0, model)
+          break
+        case 'remove':
+          ndx = this.blocks.indexOf(action.model)
+          this.blocks.splice(ndx, 1)
+          break
+        case 'new':
+          switch (action.kind) {
+            case 'paragraph':
+              model = new Paragraph()
+              break
+            case 'list':
+              model = new List()
+              break
+            case 'image':
+              model = new Image()
+              break
+          }
+          ndx = this.blocks.indexOf(action.model)
+          this.blocks.splice(ndx, 1, model)
+          break
+      }
     },
-    insertImageBlock () {
-      this.editor.commands.imageBlock()
-    },
-    onSwitch () {
-      // this.setEditor(this.editor)
-      // this.setToolbar(Toolbar)
+    onActive (frame) {
+      if (this.active && this.active !== frame) {
+        this.active.deactivate()
+      }
+      this.active = frame
     }
   }
 }
 </script>
 
 <style lang="stylus">
+.blocksley-editor {
+  padding: 16px;
+  overflow: hidden;
+}
+.grippy {
+}
 </style>

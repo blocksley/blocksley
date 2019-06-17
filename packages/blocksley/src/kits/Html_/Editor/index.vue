@@ -12,13 +12,13 @@
 <script>
 import ContextMenu from './ContextMenu'
 import FloatingMenu from './FloatingMenu'
-import ImageChooser from 'blocksley/components/ImageChooser'
+import { ImageChooser } from 'blocksley/components'
 import { Editor, EditorContent } from 'tiptap'
 import {
   Blockquote,
   CodeBlock,
   HardBreak,
-  // Heading,
+  Heading,
   HorizontalRule,
   OrderedList,
   BulletList,
@@ -35,10 +35,11 @@ import {
   History
 } from 'tiptap-extensions'
 
-import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
+import Image from 'blocksley/nodes/Image'
+import ImageBlock from 'blocksley/nodes/ImageBlock'
 
-import { BlockEditorMixin } from 'blocksley/mixins'
 import EditorShell from 'blocksley/components/EditorShell'
+import { BlockEditorMixin } from 'blocksley/mixins'
 
 export default {
   name: 'HtmlBlockEditor',
@@ -75,17 +76,14 @@ export default {
           new Strike(),
           new Underline(),
           new Image(),
-          new History(),
           new ImageBlock(),
-          new Title()
+          new History()
         ]
       }),
       showImgChooser: false
     }
   },
   mounted () {
-    console.log('editor mounted')
-    console.log(this.editor)
     // this.editor.setContent(this.model.data)
   },
   beforeDestroy () {
@@ -104,7 +102,7 @@ export default {
       this.showImgChooser = true
     },
     insertImage (image) {
-      const src = image.src
+      const src = process.env.SERVER_URL + '/images/' + image.filename
       this.editor.commands.image({ src })
       this.showImgChooser = false
     },

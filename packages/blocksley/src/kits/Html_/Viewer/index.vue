@@ -10,7 +10,7 @@ import { BlockViewerMixin } from 'blocksley/mixins'
 import ViewerShell from 'blocksley/components/ViewerShell'
 
 export default {
-  name: 'DocumentViewer',
+  name: 'HtmlBlockViewer',
   mixins: [ BlockViewerMixin ],
   props: ['frame', 'model'],
   components: {
