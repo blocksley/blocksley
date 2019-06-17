@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { Add, Title, List, Image, Paragraph, Html, Document } from 'blocksley/models'
+
 import ContextMenu from './ContextMenu'
 import FloatingMenu from './FloatingMenu'
 
@@ -52,13 +54,11 @@ export default {
       console.log(action)
       switch (action.type) {
         case 'add':
-          model = { type: 'new', id: nanoid() }
-          ndx = this.blocks.indexOf(action.model) + 1
-          this.blocks.splice(ndx, 0, model)
+          model = new Add()
+          this.model.insertAfter(action.model, model)
           break
         case 'remove':
-          ndx = this.blocks.indexOf(action.model)
-          this.blocks.splice(ndx, 1)
+          this.model.removeChild(action.model)
           break
         case 'new':
           switch (action.kind) {
@@ -72,8 +72,11 @@ export default {
               model = new Image()
               break
           }
+          /*
           ndx = this.blocks.indexOf(action.model)
           this.blocks.splice(ndx, 1, model)
+          */
+          this.model.replaceChild(action.model, model)
           break
       }
     },

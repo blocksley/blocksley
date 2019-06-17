@@ -46,49 +46,6 @@ export default {
   beforeDestroy () {
   },
   methods: {
-    onDragStart () {
-      console.log('drag start')
-    },
-    onDragEnd () {
-      console.log(this.active.vu)
-      this.active.grippy = false
-    },
-    onAction (action) {
-      var model, ndx
-      console.log(action)
-      switch (action.type) {
-        case 'add':
-          model = { type: 'new', id: nanoid() }
-          ndx = this.blocks.indexOf(action.model) + 1
-          this.blocks.splice(ndx, 0, model)
-          break
-        case 'remove':
-          ndx = this.blocks.indexOf(action.model)
-          this.blocks.splice(ndx, 1)
-          break
-        case 'new':
-          switch (action.kind) {
-            case 'paragraph':
-              model = new Paragraph()
-              break
-            case 'list':
-              model = new List()
-              break
-            case 'image':
-              model = new Image()
-              break
-          }
-          ndx = this.blocks.indexOf(action.model)
-          this.blocks.splice(ndx, 1, model)
-          break
-      }
-    },
-    onActive (frame) {
-      if (this.active && this.active !== frame) {
-        this.active.deactivate()
-      }
-      this.active = frame
-    }
   }
 }
 </script>

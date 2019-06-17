@@ -14,17 +14,21 @@ class Model {
   addChild (child) {
     this.children.push(child)
   }
+  insertBefore (model, child) {
+    const ndx = this.children.indexOf(model)
+    this.children.splice(ndx, 0, child)
+  }
+  insertAfter (model, child) {
+    const ndx = this.children.indexOf(model) + 1
+    this.children.splice(ndx, 0, child)
+  }
   removeChild (child) {
     const ndx = this.children.indexOf(child)
     this.children.splice(ndx, 1)
   }
-  insertBefore (model, child) {
-    const ndx = this.blocks.indexOf(model)
-    this.blocks.splice(ndx, 0, child)
-  }
-  insertAfter (model, child) {
-    const ndx = this.blocks.indexOf(model) + 1
-    this.blocks.splice(ndx, 0, child)
+  replaceChild(model, child) {
+    const ndx = this.children.indexOf(model)
+    this.children.splice(ndx, 1, child)
   }
 }
 export default Model

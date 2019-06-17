@@ -1,4 +1,4 @@
-import New from './New'
+import Add from './Add'
 import Document from './Document'
 import Html from './Html'
 import Title from './Title'
@@ -7,7 +7,7 @@ import List from './List'
 import Image from './Image'
 
 export default {
-  'new': New,
+  'add': Add,
   'document': Document,
   'html': Html,
   'title': Title,

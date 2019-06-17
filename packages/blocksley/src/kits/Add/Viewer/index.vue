@@ -21,7 +21,7 @@
 <script>
 
 export default {
-  name: 'NewBlockViewer',
+  name: 'AddBlockViewer',
   mixins: [],
   props: ['frame', 'model'],
   components: {

@@ -3,25 +3,10 @@
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <div class="col">
       <slot/>
-      <q-menu context-menu auto-close content-class="bg-black text-white">
+      <q-menu ref="menu" v-model="showMenu" no-parent-event @contextmenu.prevent="onContext($event)" auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
     </div>
-    <!--
-    <div class="shell-actions col-auto">
-      <shell-fab :icon="grippyIcon" color="primary" :class="{ grippy }">
-        <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
-        <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-        <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
-        <q-btn fab-mini icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-      </shell-fab>
-    </div>
-    <div v-if="grippy" class="grippy-menu">
-      <q-btn fab icon="keyboard_arrow_up" color="primary"/>
-      <q-btn fab :class="{ grippy }" icon="unfold_more" color="primary" @click="grippy = !grippy"/>
-      <q-btn fab icon="keyboard_arrow_down" color="primary"/>
-    </div>
-    -->
     <div class="col-auto">
       <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
@@ -96,6 +81,9 @@ export default {
     },
     deactivate () {
       this.isActive = false
+    },
+    onContext(evt) {
+      this.$refs.menu.show(evt)
     },
     toggleMenu () {
       this.showMenu = !this.showMenu
