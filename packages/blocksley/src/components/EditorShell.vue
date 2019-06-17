@@ -1,11 +1,13 @@
 <template>
   <div class="editor-shell row">
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <div class="col" @contextmenu.stop="onContext" @click="hideMenu">
-      <slot/>
-      <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white">
+    <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
+    <div class="col">
+      <q-menu ref="menu" :target="true" context-menu touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
+      <slot/>
+      <!-- <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white"> -->
     </div>
     <div class="col-auto">
       <shell-fab icon="more_vert" color="primary">

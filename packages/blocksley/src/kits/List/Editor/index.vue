@@ -1,9 +1,9 @@
 <template>
-  <editor-shell :view="this">
+  <editor-shell :vu="this">
     <q-dialog v-model="showImgChooser">
       <ImageChooser :select="insertImage" />
     </q-dialog>
-    <context-menu :view="this" :editor="editor"/>
+    <context-menu :vu="this" :editor="editor"/>
     <floating-menu :editor = "editor" />
     <bubble-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
