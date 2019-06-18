@@ -1,6 +1,7 @@
 <template>
   <div class="editor-shell">
-    <q-bar class="shell-toolbar text-primary">
+    <q-bar class="shell-toolbar text-primary" style="padding:0px">
+      <q-icon name="drag_indicator" class="grippy"/>
       <slot name="title"/>
       <q-space />
       <shell-fab icon="more_vert" color="primary">
@@ -16,10 +17,12 @@
     </q-bar>
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
+    <div>
+      <slot/>
       <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
-      <slot/>
+    </div>
       <!-- <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white"> -->
   </div>
 </template>

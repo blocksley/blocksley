@@ -1,5 +1,5 @@
 <template>
-  <viewer-shell :vu="this" style="margin-top:16px">
+  <viewer-shell :vu="this">
     <div v-if="this.model.data" v-html="`<h1>${this.model.data}</h1>`"/>
     <div v-else style="opacity:.55"><h1>Your title here ...</h1></div>
   </viewer-shell>

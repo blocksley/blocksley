@@ -1,5 +1,5 @@
 <template>
-  <div class="blocksley-editor">
+  <div class="document-editor">
     <draggable v-model="model.children"
       handle=".grippy"
       @start="onDragStart()"
@@ -91,10 +91,15 @@ export default {
 </script>
 
 <style lang="stylus">
-.blocksley-editor {
-  padding: 16px;
+.document-editor {
+  // padding: 16px;
+  padding: 34px 16px 16px 16px;
   overflow: hidden;
 }
 .grippy {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
 }
 </style>

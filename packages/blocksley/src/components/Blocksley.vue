@@ -55,9 +55,5 @@ export default {
 
 <style lang="stylus">
 .blocksley-editor {
-  //padding: 16px;
-  //overflow: hidden;
-}
-.grippy {
 }
 </style>
