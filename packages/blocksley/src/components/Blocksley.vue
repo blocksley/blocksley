@@ -1,6 +1,6 @@
 <template>
   <div class="blocksley-editor">
-    <frame ref="frame" :model="model"/>
+    <frame ref="frame" :root="true" :model="model"/>
   </div>
 </template>
 

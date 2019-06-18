@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-clickaway="onClickAway">
     <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
   </div>
 </template>
@@ -9,6 +9,10 @@
 import kits from 'blocksley/kits'
 export default {
   props: {
+    root: {
+      type: Boolean,
+      default: false
+    },
     embedded: {
       type: Boolean,
       default: false
@@ -78,6 +82,10 @@ export default {
     },
     onDragEnd () {
       this.grippy = false
+    },
+    onClickAway () {
+      if(!this.root)
+        this.deactivate()
     }
   }
 }
