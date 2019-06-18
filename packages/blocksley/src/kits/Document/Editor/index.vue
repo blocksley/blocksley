@@ -1,11 +1,18 @@
 <template>
   <div class="document-editor">
     <draggable v-model="model.children"
+      group="blocks"
       handle=".grippy"
       @start="onDragStart()"
       @end="onDragEnd()"
     >
-      <frame v-for="child in model.children" :key="child.id" :model="child" @action="onAction" @active="onActive"/>
+      <frame v-for="child in model.children"
+        :key="child.id"
+        :model="child"
+        class="sortable"
+        @action="onAction"
+        @active="onActive"
+        />
     </draggable>
   </div>
 </template>
@@ -101,5 +108,14 @@ export default {
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+}
+.sortable{
+-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 </style>

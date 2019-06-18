@@ -65,7 +65,9 @@ const extendQuasarConf = function (conf) {
   conf.animations = [
     ...conf.animations,
     'fadeInRight',
-    'fadeOutRight'
+    'fadeOutRight',
+    'fadeInLeft',
+    'fadeOutLeft'
   ]
 }
 module.exports = function (api) {

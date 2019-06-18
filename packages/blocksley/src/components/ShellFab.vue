@@ -2,15 +2,25 @@
   <div class="shell-fab" v-clickaway="hide">
     <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick()"/>
 
-    <transition
+    <transition v-if="direction=='left'"
       appear
       enter-active-class="animated fadeInRight"
       leave-active-class="animated fadeOutRight"
     >
-    <div ref="container" v-show="visible" class="shell-fab-actions">
-      <slot />
-    </div>
+      <div ref="container" v-show="visible" class="shell-fab-actions-left">
+        <slot />
+      </div>
     </transition>
+    <transition v-else-if="direction=='right'"
+      appear
+      enter-active-class="animated fadeInLeft"
+      leave-active-class="animated fadeOutLeft"
+    >
+      <div ref="container" v-show="visible" class="shell-fab-actions-right">
+        <slot />
+      </div>
+    </transition>
+
   </div>
 </template>
 
@@ -25,6 +35,10 @@ export default {
     color: {
       type: String,
       default: 'primary'
+    },
+    direction: {
+      type: String,
+      default: 'left'
     }
   },
   components: {
@@ -113,13 +127,21 @@ export default {
 }
 .shell-fab-btn {
   z-index: 990;
+  position relative
 }
-.shell-fab-actions {
+.shell-fab-actions-left {
   position: absolute;
   z-index: 990;
   top:-4px;
   right:48px;
 }
+.shell-fab-actions-right {
+  position: absolute;
+  z-index: 990;
+  top:-4px;
+  left:48px;
+}
+
 .shell-fab-actions > * {
     margin: 4px;
 }

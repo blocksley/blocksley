@@ -1,10 +1,16 @@
 <template>
   <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)">
     <q-bar class="shell-toolbar text-primary">
-      <div class="grippy ">
+      <!-- <div class="grippy ">
         <q-icon name="drag_indicator" class="grippy-icon"/>
         <slot name="title"/>
-      </div>
+      </div> -->
+      <shell-fab direction="right" icon="drag_indicator" color="primary">
+        <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+        <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
+        <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+      </shell-fab>
+      <slot name="title"/>
       <q-space />
       <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
