@@ -1,7 +1,8 @@
 <template>
   <div class="editor-shell">
-    <q-toolbar class="shell-toolbar text-primary">
-      <q-toolbar-title>Paragraph</q-toolbar-title>
+    <q-bar class="shell-toolbar text-primary">
+      <div>Paragraph</div>
+      <q-space />
       <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
@@ -12,7 +13,7 @@
           <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
         </shell-fab>
       </shell-fab>
-    </q-toolbar>
+    </q-bar>
     <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
       <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
@@ -138,25 +139,32 @@ export default {
 .editor-shell {
   position: relative;
   max-width: 1080px;
-  border-radius: 3px;
   background-color: white;
   background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
-  background-position: 0px -42px;
+  background-position: 0px -32px;
   background-repeat: no-repeat;
+  border-bottom 1px solid rgba(0,0,0,.27);
+  box-shadow:
+    0px 11px 8px -10px #CCC;
 }
 
 .shell-toolbar {
+  width: 100%;
   position: absolute;
   left: 0;
-  top: -42px;
+  top: -32px;
   background-color: white;
   background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
-  // border-radius: 10px 10px 0 0;
+  border-top 1px solid rgba(0,0,0,.27);
+  box-shadow:
+    0px -11px 8px -10px #CCC; 
+
+  border: 1px 1px  #CCC solid;
 }
 .shell-menu {
   position: absolute;
   left: 0;
-  top: -42px;
+  top: -32px;
 }
 
 .grippy-menu {

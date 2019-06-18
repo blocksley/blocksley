@@ -54,6 +54,7 @@ const extendQuasarConf = function (conf) {
     'QCardActions',
     'QBar',
     'QSpace',
+    'QBar',
     'QTooltip',
     'QFab',
     'QFabAction',
