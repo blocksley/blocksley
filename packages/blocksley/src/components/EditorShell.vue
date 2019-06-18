@@ -1,5 +1,5 @@
 <template>
-  <div ref="shell" tabindex="-1" class="editor-shell">
+  <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu">
     <q-bar class="shell-toolbar text-primary">
       <q-icon name="drag_indicator" class="grippy grippy-icon"/>
       <slot name="title"/>
@@ -17,7 +17,7 @@
     </q-bar>
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
     <!-- <div> -->
-    <div class="col" @contextmenu="onContext($event)" @click.prevent="hideMenu">
+    <div class="col" style="position: relative;">
       <slot/>
       <!-- <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white"> -->
       <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white">

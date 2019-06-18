@@ -2,7 +2,14 @@
   <editor-shell ref="shell" :vu="this">
     <span slot="title">Image</span>
     <context-menu slot="menu" :vu="this"/>
-    <vue-draggable-resizable :draggable="false" @resizing="onResizing" :w="this.model.width" :h="this.model.height" :z="16"/>
+    <vue-draggable-resizable 
+      :draggable="false"
+      @resizing="onResizing"
+      :w="this.model.width"
+      :h="this.model.height"
+      :z="16"
+      class="resizer"
+    />
     <img ref="image" :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover;"/>
   </editor-shell>
 </template>
@@ -38,4 +45,9 @@ export default {
 </script>
 
 <style lang="stylus">
+.resizer {
+  position: absolute;
+  left: 0;
+  top: 32px;
+}
 </style>
