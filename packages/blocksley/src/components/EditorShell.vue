@@ -1,15 +1,7 @@
 <template>
-  <div class="editor-shell row">
-    <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
-    <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
-    <div class="col">
-      <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
-        <slot name="menu"/>
-      </q-menu>
-      <slot/>
-      <!-- <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white"> -->
-    </div>
-    <div class="col-auto">
+  <div class="editor-shell">
+    <q-toolbar class="shell-toolbar text-primary">
+      <q-toolbar-title>Paragraph</q-toolbar-title>
       <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
@@ -20,7 +12,14 @@
           <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
         </shell-fab>
       </shell-fab>
-    </div>
+    </q-toolbar>
+    <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
+    <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
+      <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
+        <slot name="menu"/>
+      </q-menu>
+      <slot/>
+      <!-- <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white"> -->
   </div>
 </template>
 
@@ -140,9 +139,20 @@ export default {
   position: relative;
   max-width: 1080px;
   border-radius: 3px;
+  background-color: white;
   background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
+  background-position: 0px -42px;
+  background-repeat: no-repeat;
 }
 
+.shell-toolbar {
+  position: absolute;
+  left: 0;
+  top: -42px;
+  background-color: white;
+  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
+  // border-radius: 10px 10px 0 0;
+}
 .shell-menu {
   position: absolute;
   left: 0;
