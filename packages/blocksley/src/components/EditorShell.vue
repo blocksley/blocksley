@@ -1,6 +1,6 @@
 <template>
   <div class="editor-shell">
-    <q-bar class="shell-toolbar text-primary" style="padding:0px">
+    <q-bar class="shell-toolbar text-primary">
       <q-icon name="drag_indicator" class="grippy grippy-icon"/>
       <slot name="title"/>
       <q-space />
@@ -15,11 +15,12 @@
         </shell-fab>
       </shell-fab>
     </q-bar>
-    <!-- <q-menu context-menu touch-position auto-close content-class="bg-black text-white"> -->
     <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
-    <div>
+    <!-- <div> -->
+    <div class="col" @contextmenu="onContext">
       <slot/>
-      <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white">
+      <!-- <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white"> -->
+      <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white">
         <slot name="menu"/>
       </q-menu>
     </div>
@@ -90,8 +91,10 @@ export default {
     },
     onContext(e) {
       console.log('context click')
+      if(e.defaultPrevented) {
+        return;
+      }
       //Prevent @contextclick from propagating
-      /*
       e.preventDefault()
       this.showMenu = !this.showMenu
       if (this.showMenu) {
@@ -99,7 +102,6 @@ export default {
       } else {
         this.$refs.menu.hide(e)
       }
-      */
     },
     hideMenu (e) {
       console.log('click away')
@@ -154,9 +156,8 @@ export default {
 
 .shell-toolbar {
   width: 100%;
-  position: absolute;
-  left: 0;
-  top: -32px;
+  margin-top: -32px;
+  padding:0px
   background-color: white;
   background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
   border-top 1px solid rgba(0,0,0,.27);
