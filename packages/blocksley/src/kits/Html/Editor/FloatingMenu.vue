@@ -94,6 +94,7 @@ export default {
 .editor
   &__floating-menu
     position: absolute
+    z-index: 500;
     margin-top: -0.25rem
     visibility: hidden
     opacity: 0
