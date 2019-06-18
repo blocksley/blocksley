@@ -1,7 +1,7 @@
 <template>
   <div class="editor-shell">
     <q-bar class="shell-toolbar text-primary" style="padding:0px">
-      <q-icon name="drag_indicator" class="grippy"/>
+      <q-icon name="drag_indicator" class="grippy grippy-icon"/>
       <slot name="title"/>
       <q-space />
       <shell-fab icon="more_vert" color="primary">
@@ -44,6 +44,7 @@ export default {
     return {
       frame: { grippy: false },
       model: {},
+      showBar: false,
       showMenu: false,
       delay: 250,
       numClicks: 0
@@ -168,6 +169,14 @@ export default {
   position: absolute;
   left: 0;
   top: -32px;
+}
+.grippy-icon {
+  // font-size: 1.5rem;
+  // position: relative;
+  // position: absolute;
+  margin-right: 8px;
+  // z-index: 990;
+  // opacity: .75;
 }
 
 .grippy-menu {
