@@ -1,5 +1,7 @@
 <template>
-  <frame ref="frame" :model="model"/>
+  <div class="blocksley-editor">
+    <frame ref="frame" :model="model"/>
+  </div>
 </template>
 
 <script>
@@ -53,8 +55,8 @@ export default {
 
 <style lang="stylus">
 .blocksley-editor {
-  padding: 16px;
-  overflow: hidden;
+  //padding: 16px;
+  //overflow: hidden;
 }
 .grippy {
 }

@@ -1,5 +1,6 @@
 <template>
   <editor-shell ref="shell" :vu="this">
+    <span slot="title">Image</span>
     <context-menu slot="menu" :vu="this"/>
     <vue-draggable-resizable :draggable="false" @resizing="onResizing" :w="this.model.width" :h="this.model.height" :z="16"/>
     <img ref="image" :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover;"/>

@@ -1,5 +1,6 @@
 <template>
-  <editor-shell :vu="this">
+  <editor-shell :vu="this" style="margin-top:16px">
+    <span slot="title">Title</span>
     <q-input
       v-model="model.data"
       :autofocus="true"

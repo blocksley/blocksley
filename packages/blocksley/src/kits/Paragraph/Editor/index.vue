@@ -3,6 +3,7 @@
     <q-dialog v-model="showImgChooser">
       <ImageChooser :select="insertImage" />
     </q-dialog>
+    <span slot="title">Paragraph</span>
     <context-menu slot="menu" :vu="this" :editor="editor"/>
     <floating-menu :editor = "editor" />
     <!-- <bubble-menu :editor = "editor" /> -->
