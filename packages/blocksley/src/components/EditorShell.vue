@@ -153,13 +153,16 @@ export default {
 
 <style lang="stylus">
 
+shell-background()
+  background-color: white;
+  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
+  background-repeat: no-repeat;
+
 .editor-shell {
   position: relative;
   max-width: 1080px;
-  background-color: white;
-  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
+  shell-background()
   background-position: 0px -32px;
-  background-repeat: no-repeat;
   border-bottom 1px solid rgba(0,0,0,.27);
   box-shadow:
     0px 11px 8px -10px #CCC;
@@ -169,13 +172,10 @@ export default {
   width: 100%;
   margin-top: -32px;
   padding:0px
-  background-color: white;
-  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
+  shell-background()
   border-top 1px solid rgba(0,0,0,.27);
   box-shadow:
     0px -11px 8px -10px #CCC; 
-
-  border: 1px 1px  #CCC solid;
 }
 .shell-menu {
   position: absolute;
