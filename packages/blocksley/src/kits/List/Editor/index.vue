@@ -107,7 +107,4 @@ export default {
 </script>
 
 <style lang="stylus">
-.editor {
-  position: relative;
-}
 </style>
