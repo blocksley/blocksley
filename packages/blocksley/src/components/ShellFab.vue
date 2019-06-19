@@ -7,7 +7,7 @@
       enter-active-class="animated fadeInRight"
       leave-active-class="animated fadeOutRight"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions-left">
+      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-left">
         <slot />
       </div>
     </transition>
@@ -16,7 +16,7 @@
       enter-active-class="animated fadeInLeft"
       leave-active-class="animated fadeOutLeft"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions-right">
+      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-right">
         <slot />
       </div>
     </transition>

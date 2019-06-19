@@ -9,7 +9,7 @@
       <frame v-for="child in model.children"
         :key="child.id"
         :model="child"
-        class="sortable"
+        class="noselect"
         @action="onAction"
         @active="onActive"
         />
@@ -109,13 +109,13 @@ export default {
     cursor: -moz-grab;
     cursor: -webkit-grab;
 }
-.sortable{
--webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Chrome/Safari/Opera */
-     -khtml-user-select: none; /* Konqueror */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
-                                  not supported by any browser */
+                                  supported by Chrome and Opera */
 }
 </style>
