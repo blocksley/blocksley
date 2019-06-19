@@ -162,7 +162,7 @@ shell-background()
   position: relative;
   max-width: 1080px;
   shell-background()
-  background-position: 0px -32px;
+  background-position: 0px -32px
   border-bottom 1px solid rgba(0,0,0,.27);
   box-shadow:
     0px 11px 8px -10px #CCC;

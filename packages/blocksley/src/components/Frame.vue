@@ -84,11 +84,12 @@ export default {
       this.grippy = false
     },
     onClickAway (e) {
-      // console.log('click away')
-      // console.log(e)
-      if(!this.isEventInElement(e, this.$el) && !this.root) {
-        this.deactivate()
+      console.log('click away')
+      console.log(e)
+      if(this.root || this.isEventInElement(e, this.$el) || this.$el.contains(e.target)) {
+        return
       }
+        this.deactivate()
     },
     isEventInElement(event, element)   {
       var rect = element.getBoundingClientRect();
