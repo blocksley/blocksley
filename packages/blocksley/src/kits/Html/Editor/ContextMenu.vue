@@ -133,13 +133,13 @@
           <q-icon name="mdi-image" />
         </q-btn>
       </q-btn-dropdown>
-
+      <!--
       <q-btn flat
         @click="vu.editText"
       >
         <q-icon name="mdi-language-html5" />
       </q-btn>
-
+      -->
       <q-btn flat
         class="menubar__button"
         @click="commands.undo"

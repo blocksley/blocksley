@@ -1,10 +1,7 @@
 <template>
   <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)">
+    <div >
     <q-bar class="shell-toolbar text-primary">
-      <!-- <div class="grippy ">
-        <q-icon name="drag_indicator" class="grippy-icon"/>
-        <slot name="title"/>
-      </div> -->
       <shell-fab direction="right" icon="drag_indicator" color="primary">
         <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
         <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
@@ -12,6 +9,7 @@
       </shell-fab>
       <slot name="title"/>
       <q-space />
+      <!-- <q-btn fab-mini flat icon="build" color="primary"/> -->
       <shell-fab icon="more_vert" color="primary">
         <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
         <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
@@ -23,21 +21,21 @@
         </shell-fab>
       </shell-fab>
     </q-bar>
-    <!-- <div class="col" @contextmenu.prevent.stop="onContext" @click.prevent.stop="hideMenu"> -->
-    <!-- <div> -->
+      <q-toolbar>
+        <slot name="menu"/>
+      </q-toolbar>
+    </div>
     <div class="col" style="position: relative;">
       <slot/>
-      <!-- <q-menu ref="menu" context-menu touch-position auto-close content-class="bg-black text-white"> -->
-      <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white">
+      <shell-menu ref="menu">
         <slot name="menu"/>
-      </q-menu>
+      </shell-menu>
     </div>
-      <!-- <q-menu ref="menu" no-parent-event touch-position auto-close content-class="bg-black text-white"> -->
   </div>
 </template>
 
 <script>
-import ShellActions from './ShellActions'
+import ShellMenu from './ShellMenu'
 import ShellFab from './ShellFab'
 
 export default {
@@ -46,7 +44,7 @@ export default {
     vu: null
   },
   components: {
-    ShellActions,
+    ShellMenu,
     ShellFab
   },
   data () {
@@ -105,7 +103,6 @@ export default {
       if(e.defaultPrevented) {
         return;
       }
-      //Prevent @contextclick from propagating
       e.preventDefault()
       this.showMenu = !this.showMenu
       if (this.showMenu) {

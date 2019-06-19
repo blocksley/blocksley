@@ -15,6 +15,7 @@ const extendQuasarConf = function (conf) {
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/resizable.js')
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/draggable.js')
   conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/clickaway.js')
+  conf.boot.push('~@blocksley/quasar-app-extension-blocksley/src/boot/modal.js')
   
   conf.build.vueCompiler = true
   // make sure boot file & component transpiles

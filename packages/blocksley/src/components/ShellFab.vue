@@ -1,6 +1,6 @@
 <template>
   <div class="shell-fab" v-clickaway="hide">
-    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick()"/>
+    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick"/>
 
     <transition v-if="direction=='left'"
       appear
@@ -89,7 +89,8 @@ export default {
   beforeDestroy () {
   },
   methods: {
-    onClick () {
+    onClick (e) {
+      e.preventDefault
       this.toggle()
     },
     hide () {

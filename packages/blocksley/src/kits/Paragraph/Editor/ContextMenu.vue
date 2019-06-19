@@ -135,12 +135,6 @@
         <q-icon name="mdi-redo" />
       </q-btn>
 
-      <q-btn flat
-        @click="vu.editText"
-      >
-        <q-icon name="mdi-language-html5" />
-      </q-btn>
-
     </div>
 
   </editor-menu-bar>
