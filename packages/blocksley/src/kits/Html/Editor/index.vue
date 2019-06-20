@@ -57,6 +57,8 @@ export default {
       edit: false,
       editor: new Editor({
         autoFocus: true,
+        onFocus: this.onFocus,
+        onBlur: this.onBlur,
         content: this.model.data,
         extensions: [
           new Blockquote(),
@@ -85,12 +87,13 @@ export default {
     }
   },
   mounted () {
-    console.log('editor mounted')
+    console.log('html editor mounted')
     console.log(this.editor)
+    //this.editor.element.onfocus = () => { this.editor.element.blur() }
     // this.editor.setContent(this.model.data)
   },
   beforeDestroy () {
-    console.log('editor destroyed')
+    console.log('html editor destroyed')
     this.model.data = this.editor.getHTML()
     // this.model.data = this.editor.getJSON()
     console.log(this.editor.getJSON())
@@ -115,6 +118,15 @@ export default {
     onSwitch () {
       // this.setEditor(this.editor)
       // this.setToolbar(Toolbar)
+    },
+    onFocus (args) {
+      console.log('editor focus')
+      console.log(args)
+      args.view.dom.blur()
+    },
+    onBlur (args) {
+      console.log('editor blur')
+      console.log(args)
     }
   }
 }
