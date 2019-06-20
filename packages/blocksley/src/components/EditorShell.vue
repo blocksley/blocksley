@@ -1,6 +1,6 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="hideMenu($event)">
+  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="detectClick($event)">
     <div class="shell-inner">
     <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar">
@@ -138,6 +138,9 @@ export default {
     toggleGrippy () {
       this.grippy = !this.grippy
     },
+    toggleStickyHeader () {
+      this.stickyHeader = !this.stickyHeader
+    },
     detectClick (e) {
       console.log('detect click')
       e.preventDefault()
@@ -147,11 +150,11 @@ export default {
               switch(this.numClicks) {     // check the event type
                     case 1:
                       // console.log('single click')
-                      this.toggleMenu()
+                      // this.toggleMenu()
                       break;
                     default:
                       // console.log('double click')
-                      this.toggleGrippy()
+                      this.toggleStickyHeader()
               }
               this.numClicks = 0               // reset the first click
           }, this.delay);                              // wait 0.2s
