@@ -4,7 +4,7 @@
     <div class="shell-inner">
     <!-- <div class="shell-header" :class="{'sticky-header': stickyHeader}"> -->
       <div class="shell-header sticky-header">
-      <q-bar class="shell-bar">
+      <q-bar class="shell-bar" @click="detectClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
           <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
@@ -116,6 +116,7 @@ export default {
         return;
       }
       e.preventDefault()
+      return
       this.showMenu = !this.showMenu
       if (this.showMenu) {
         this.$refs.toolbar.$el.focus()
@@ -139,7 +140,7 @@ export default {
     toggleMenu () {
       this.showMenu = !this.showMenu
       if (this.showMenu) {
-        this.$refs.menu.show(e)
+        // this.$refs.menu.show(e)
       }
     },
     toggleGrippy () {
@@ -161,7 +162,7 @@ export default {
                       break;
                     default:
                       // console.log('double click')
-                      this.toggleStickyHeader()
+                      this.toggleMenu()
               }
               this.numClicks = 0               // reset the first click
           }, this.delay);                              // wait 0.2s
