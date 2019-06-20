@@ -1,10 +1,10 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)">
+  <div ref="shell" tabindex="-1" class="editor-shell">
     <div class="shell-inner">
     <!-- <div class="shell-header" :class="{'sticky-header': stickyHeader}"> -->
       <div class="shell-header sticky-header">
-      <q-bar class="shell-bar" @click="detectClick">
+      <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
           <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
@@ -29,7 +29,9 @@
       </q-toolbar>
     </div>
     <div>
-      <slot/>
+      <div @click="contentClick($event)" @contextmenu="contentClick($event)">
+        <slot/>
+      </div>
       <shell-menu ref="menu">
         <slot name="menu"/>
       </shell-menu>
@@ -65,7 +67,8 @@ export default {
       showBar: false,
       showMenu: this.$q.platform.is.desktop,
       delay: 250,
-      numClicks: 0,
+      barClicks: 0,
+      contentClicks: 0,
       stickyHeader: this.$q.platform.is.desktop
     }
   },
@@ -149,25 +152,45 @@ export default {
     toggleStickyHeader () {
       this.stickyHeader = !this.stickyHeader
     },
-    detectClick (e) {
-      console.log('detect click')
+    barClick (e) {
+      console.log('detect bar click')
       e.preventDefault()
-      this.numClicks++;
-      if (this.numClicks === 1) {          // the first click in .2s
-          setTimeout(() => {
-              switch(this.numClicks) {     // check the event type
-                    case 1:
-                      // console.log('single click')
-                      // this.toggleMenu()
-                      break;
-                    default:
-                      // console.log('double click')
-                      this.toggleMenu()
-              }
-              this.numClicks = 0               // reset the first click
-          }, this.delay);                              // wait 0.2s
+      this.barClicks++;
+      if (this.barClicks === 1) {
+        setTimeout(() => {
+          switch(this.barClicks) {
+            case 1:
+              // console.log('single click')
+              // this.toggleMenu()
+              break;
+            default:
+              // console.log('double click')
+              this.toggleMenu()
+          }
+          this.barClicks = 0 
+        }, this.delay);
       }
-    } 
+    },
+    contentClick (e) {
+      console.log('detect content click')
+      e.preventDefault()
+      e.target.blur()
+      this.contentClicks++;
+      if (this.contentClicks === 1) {
+        setTimeout(() => {
+          switch(this.contentClicks) {
+            case 1:
+              // console.log('single click')
+              // this.toggleMenu()
+              break;
+            default:
+              // console.log('double click')
+              // this.toggleMenu()
+          }
+          this.contentClicks = 0
+        }, this.delay);
+      }
+    }
   }
 }
 </script>
