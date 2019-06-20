@@ -174,6 +174,7 @@ shell-background()
 .sticky-header
   sticky()
   top: 0
+  padding-top: 80px !important
   z-index: 500
 
 .shell-header
