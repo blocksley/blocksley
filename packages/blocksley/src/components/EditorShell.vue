@@ -1,6 +1,6 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="detectClick($event)">
+  <div ref="shell" tabindex="-1" class="editor-shell" @click="detectClick($event)">
     <div class="shell-inner">
     <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar">
