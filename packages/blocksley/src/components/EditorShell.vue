@@ -1,31 +1,32 @@
 <template>
-  <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)">
-    <div >
-    <q-bar class="shell-toolbar text-primary">
-      <shell-fab direction="right" icon="drag_indicator" color="primary">
-        <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
-        <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
-        <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
-      </shell-fab>
-      <slot name="title"/>
-      <q-space />
-      <!-- <q-btn fab-mini flat icon="build" color="primary"/> -->
-      <shell-fab icon="more_vert" color="primary">
-        <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
-        <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-        <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
-        <shell-fab fab-mini icon="unfold_more" color="primary">
+  <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
+  <div ref="shell" tabindex="-1" class="editor-shell">
+    <div class="shell-header">
+      <q-bar class="shell-bar">
+        <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
-          <q-btn fab outlined class="grippy" icon="unfold_more" color="primary"/>
+          <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
           <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
         </shell-fab>
-      </shell-fab>
-    </q-bar>
-      <q-toolbar>
+        <slot name="title"/>
+        <q-space />
+        <!-- <q-btn fab-mini flat icon="build" color="primary"/> -->
+        <shell-fab icon="more_vert" color="primary">
+          <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
+          <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
+          <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
+          <shell-fab fab-mini icon="unfold_more" color="primary">
+            <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+            <q-btn fab outlined class="grippy" icon="unfold_more" color="primary"/>
+            <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+          </shell-fab>
+        </shell-fab>
+      </q-bar>
+      <q-toolbar class="shell-toolbar">
         <slot name="menu"/>
       </q-toolbar>
     </div>
-    <div class="col" style="position: relative;">
+    <div>
       <slot/>
       <shell-menu ref="menu">
         <slot name="menu"/>
@@ -149,11 +150,20 @@ export default {
 </script>
 
 <style lang="stylus">
+sticky()
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
 
 shell-background()
-  background-color: white;
-  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%);
-  background-repeat: no-repeat;
+  background-color: white
+  background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%)
+  background-repeat: no-repeat
+
+.shell-header
+  sticky()
+  top: 0
+  z-index: 500
+  shell-background()
 
 .editor-shell {
   position: relative;
@@ -165,15 +175,17 @@ shell-background()
     0px 11px 8px -10px #CCC;
 }
 
-.shell-toolbar {
+.shell-bar {
   width: 100%;
   margin-top: -32px;
   padding:0px
   shell-background()
   border-top 1px solid rgba(0,0,0,.27);
   box-shadow:
-    0px -11px 8px -10px #CCC; 
+    0px -11px 8px -10px #CCC;
+  color: $primary
 }
+
 .shell-menu {
   position: absolute;
   left: 0;

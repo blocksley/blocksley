@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated reveal :reveal-offset="64">
       <q-toolbar class="app-toolbar">
         <q-btn
           flat

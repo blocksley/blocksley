@@ -101,7 +101,7 @@ export default {
 .document-editor {
   // padding: 16px;
   padding: 34px 16px 16px 16px;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .grippy {
     cursor: move; /* fallback if grab cursor is unsupported */

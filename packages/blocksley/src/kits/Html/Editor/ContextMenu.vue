@@ -124,7 +124,6 @@
       <q-btn-dropdown flat
         icon="add_box"
         class="menubar__button"
-        content-class="bg-black text-white"
       >
         <q-btn flat
           class="menubar__button"

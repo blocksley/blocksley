@@ -90,17 +90,4 @@ export default {
 </script>
 
 <style lang="stylus">
-
-.editor
-  &__floating-menu
-    position: absolute
-    z-index: 500;
-    margin-top: -0.25rem
-    visibility: hidden
-    opacity: 0
-    transition: opacity 0.2s, visibility 0.2s
-    &.is-active
-      opacity: 1
-      visibility: visible
-
 </style>

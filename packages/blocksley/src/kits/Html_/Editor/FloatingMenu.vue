@@ -95,38 +95,4 @@ export default {
 </script>
 
 <style lang="stylus">
-
-.block
-  position: relative
-  max-width: 1080px
-  background-image: linear-gradient(17deg, rgba(243, 248, 255, 0.03) 63.45%, rgba(207, 214, 229, 0.27) 98%)
-  border-radius: 3px
-.block-actions
-  font-size: 1.5rem
-  position: absolute
-  right: 0
-  top: 10px
-  padding-right: 16px
-  opacity: .5
-.page
-  max-width: 1080px
-  margin-left: -10px
-  padding-left: 10px
-  margin-top: -10px
-  padding-top: 10px
-  margin-bottom: -10px
-  padding-bottom: 10px
-  box-shadow: 5px -5px 5px -5px #333
-  border-radius: 15px 0px
-.editor
-  &__floating-menu
-    position: absolute
-    margin-top: -0.25rem
-    visibility: hidden
-    opacity: 0
-    transition: opacity 0.2s, visibility 0.2s
-    &.is-active
-      opacity: 1
-      visibility: visible
-
 </style>
