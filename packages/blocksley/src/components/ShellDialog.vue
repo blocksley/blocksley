@@ -2,7 +2,6 @@
   <q-dialog ref="menu"
     seamless
     position="bottom"
-    class="shell-dialog"
   >
     <q-icon name="drag_indicator"
       class="shell-menu-grip"
@@ -22,7 +21,7 @@
       <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
     </shell-fab>
     -->
-    <div >
+    <div class="shell-dialog">
       <slot v-bind:content-class="contentClass"/>
     </div>
   </q-dialog>
@@ -134,17 +133,7 @@ export default {
 
 <style lang="stylus">
 .shell-dialog
-
-.shell-dialog-slot
-  background-color: black
-  color: white
-  // font-size: 1.5rem;
-  // position: relative;
-  // position: absolute;
-  // right: 0;
-  // top: -5px;
-  // margin: 5px;
-  // opacity: .75;
+  background-color: white
 
 .shell-dialog-grip
     cursor: move /* fallback if grab cursor is unsupported */

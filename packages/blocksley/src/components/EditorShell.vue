@@ -2,7 +2,7 @@
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
   <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="hideMenu($event)">
     <div class="shell-inner">
-    <div class="shell-header">
+    <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
@@ -64,7 +64,8 @@ export default {
       showBar: false,
       showMenu: false,
       delay: 250,
-      numClicks: 0
+      numClicks: 0,
+      stickyHeader: this.$q.platform.is.desktop
     }
   },
   computed: {
@@ -170,10 +171,12 @@ shell-background()
   background-image: linear-gradient(17deg,rgba(243,248,255,.03) 63.45%,rgba(207,214,229,.27) 98%)
   background-repeat: no-repeat
 
-.shell-header
+.sticky-header
   sticky()
   top: 0
   z-index: 500
+
+.shell-header
   shell-background()
 
 .editor-shell {
