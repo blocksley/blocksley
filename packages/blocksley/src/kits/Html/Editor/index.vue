@@ -122,7 +122,6 @@ export default {
     onFocus (args) {
       console.log('editor focus')
       console.log(args)
-      args.view.dom.blur()
     },
     onBlur (args) {
       console.log('editor blur')

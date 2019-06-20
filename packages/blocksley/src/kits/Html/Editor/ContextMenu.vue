@@ -153,6 +153,13 @@
         <q-icon name="mdi-redo" />
       </q-btn>
 
+      <q-btn flat
+        class="menubar__button"
+        @click="hideKeyboard"
+      >
+        <q-icon name="keyboard" />
+      </q-btn>
+
     </div>
 
   </editor-menu-bar>
@@ -184,6 +191,15 @@ export default {
     },
     insertImageBlock () {
       this.vu.insertImageBlock()
+    },
+    hideKeyboard () {
+      if (
+        document.activeElement &&
+        document.activeElement.blur &&
+        typeof document.activeElement.blur === 'function'
+      ) {
+        document.activeElement.blur()
+      }
     }
   }
 }
