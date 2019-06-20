@@ -1,9 +1,8 @@
 <template>
-  <q-menu ref="menu"
-    no-parent-event
-    touch-position
-    class="shell-menu"
-    content-class="shell-menu-content"
+  <q-dialog ref="menu"
+    seamless
+    position="bottom"
+    class="shell-dialog"
   >
     <q-icon name="drag_indicator"
       class="shell-menu-grip"
@@ -23,8 +22,10 @@
       <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
     </shell-fab>
     -->
-    <slot/>
-  </q-menu>
+    <div >
+      <slot v-bind:content-class="contentClass"/>
+    </div>
+  </q-dialog>
 </template>
 
 <script>
@@ -32,6 +33,10 @@ import ShellFab from './ShellFab'
 
 export default {
   props: {
+    contentClass: {
+      type: String,
+      default: 'menubar-dark'
+    }
   },
   components: {
     ShellFab
@@ -52,7 +57,8 @@ export default {
   computed: {
   },
   mounted () {
-    console.log('shell menu mounted')
+    console.log('shell dialog mounted')
+    console.log(this)
   },
   beforeDestroy () {
   },
@@ -127,7 +133,11 @@ export default {
 </script>
 
 <style lang="stylus">
-.shell-menu {
+.shell-dialog
+
+.shell-dialog-slot
+  background-color: black
+  color: white
   // font-size: 1.5rem;
   // position: relative;
   // position: absolute;
@@ -135,11 +145,11 @@ export default {
   // top: -5px;
   // margin: 5px;
   // opacity: .75;
-}
-.shell-menu-grip {
-    cursor: move; /* fallback if grab cursor is unsupported */
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-}
+
+.shell-dialog-grip
+    cursor: move /* fallback if grab cursor is unsupported */
+    cursor: grab
+    cursor: -moz-grab
+    cursor: -webkit-grab
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <editor-menu-bar :editor="this.editor">
 
-    <div class="menubar" slot-scope="{ commands, isActive }">
+    <div :class="contentClass" slot-scope="{ commands, isActive }">
 
       <q-btn flat
         class="menubar__button"
@@ -163,9 +163,20 @@ import { EditorMenuBar } from 'tiptap'
 export default {
   name: 'BasicToolbar',
   mixins: [ ],
-  props: ['vu', 'editor'],
+  props: {
+    vu: null,
+    editor: null,
+    contentClass: {
+      type: String,
+      default: 'menubar'
+    }
+  },
   components: {
     EditorMenuBar
+  },
+  mounted () {
+    console.log('context menu')
+    console.log(this)
   },
   methods: {
     showImagePrompt () {

@@ -1,6 +1,7 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell">
+  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="hideMenu($event)">
+    <div class="shell-inner">
     <div class="shell-header">
       <q-bar class="shell-bar">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
@@ -31,12 +32,19 @@
       <shell-menu ref="menu">
         <slot name="menu"/>
       </shell-menu>
+      <shell-dialog ref="dialog" content-class="menubar-dark">
+        <template v-slot:default="slotScope">
+          <slot name="menu" v-bind:content-class="slotScope.contentClass"/>
+        </template>
+      </shell-dialog>
     </div>
+    </div> <!--shell-inner-->
   </div>
 </template>
 
 <script>
 import ShellMenu from './ShellMenu'
+import ShellDialog from './ShellDialog'
 import ShellFab from './ShellFab'
 
 export default {
@@ -46,6 +54,7 @@ export default {
   },
   components: {
     ShellMenu,
+    ShellDialog,
     ShellFab
   },
   data () {
@@ -107,9 +116,11 @@ export default {
       e.preventDefault()
       this.showMenu = !this.showMenu
       if (this.showMenu) {
-        this.$refs.menu.show(e)
+        // this.$refs.menu.show(e)
+        this.$refs.dialog.show(e)
       } else {
-        this.$refs.menu.hide(e)
+        // this.$refs.menu.hide(e)
+        this.$refs.dialog.hide(e)
       }
     },
     hideMenu (e) {
@@ -175,6 +186,9 @@ shell-background()
     0px 11px 8px -10px #CCC;
 }
 
+.shell-inner
+  shell-background()
+  
 .shell-bar {
   width: 100%;
   margin-top: -32px;
@@ -185,6 +199,10 @@ shell-background()
     0px -11px 8px -10px #CCC;
   color: $primary
 }
+
+.shell-toolbar
+  // padding:0px
+  shell-background()
 
 .shell-menu {
   position: absolute;
