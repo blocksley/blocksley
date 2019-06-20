@@ -1,8 +1,9 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="hideMenu($event)">
+  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)">
     <div class="shell-inner">
-    <div class="shell-header" :class="{'sticky-header': stickyHeader}">
+    <!-- <div class="shell-header" :class="{'sticky-header': stickyHeader}"> -->
+      <div class="shell-header sticky-header">
       <q-bar class="shell-bar">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
@@ -23,7 +24,7 @@
           </shell-fab>
         </shell-fab>
       </q-bar>
-      <q-toolbar v-show="showMenu" class="shell-toolbar">
+      <q-toolbar ref="toolbar" v-show="showMenu" tabindex="-1" class="shell-toolbar">
         <slot name="menu"/>
       </q-toolbar>
     </div>
@@ -62,7 +63,7 @@ export default {
       frame: { grippy: false },
       model: {},
       showBar: false,
-      showMenu: false,
+      showMenu: this.$q.platform.is.desktop,
       delay: 250,
       numClicks: 0,
       stickyHeader: this.$q.platform.is.desktop
@@ -116,6 +117,9 @@ export default {
       }
       e.preventDefault()
       this.showMenu = !this.showMenu
+      if (this.showMenu) {
+        this.$refs.toolbar.$el.focus()
+      }
       /*
       if (this.showMenu) {
         // this.$refs.menu.show(e)
