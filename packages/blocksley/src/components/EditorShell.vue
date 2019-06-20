@@ -1,6 +1,6 @@
 <template>
   <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
-  <div ref="shell" tabindex="-1" class="editor-shell" @click="detectClick($event)">
+  <div ref="shell" tabindex="-1" class="editor-shell" @contextmenu="onContext($event)" @click="hideMenu($event)">
     <div class="shell-inner">
     <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar">
@@ -23,7 +23,7 @@
           </shell-fab>
         </shell-fab>
       </q-bar>
-      <q-toolbar class="shell-toolbar">
+      <q-toolbar v-show="showMenu" class="shell-toolbar">
         <slot name="menu"/>
       </q-toolbar>
     </div>
@@ -116,6 +116,7 @@ export default {
       }
       e.preventDefault()
       this.showMenu = !this.showMenu
+      /*
       if (this.showMenu) {
         // this.$refs.menu.show(e)
         this.$refs.dialog.show(e)
@@ -123,11 +124,13 @@ export default {
         // this.$refs.menu.hide(e)
         this.$refs.dialog.hide(e)
       }
+      */
     },
     hideMenu (e) {
       console.log('click away')
+      e.preventDefault()
       this.showMenu = false
-      this.$refs.menu.hide(e)
+      // this.$refs.menu.hide(e)
     },
     toggleMenu () {
       this.showMenu = !this.showMenu
