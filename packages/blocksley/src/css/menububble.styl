@@ -1,8 +1,9 @@
 .menububble
   position: absolute
   display: flex
-  z-index: 20
-  background: $color-black
+  z-index: 750
+  background: white
+  box-shadow: 5px 5px 5px gray;
   border-radius: 5px
   padding: 0.3rem
   margin-bottom: 0.5rem
@@ -17,7 +18,7 @@
     display: inline-flex
     background: transparent
     border: 0
-    color: $color-white
+    color: $primary
     padding: 0.2rem 0.5rem
     margin-right: 0.2rem
     border-radius: 3px
@@ -25,9 +26,9 @@
     &:last-child
       margin-right: 0
     &:hover
-      background-color: rgba($color-white, 0.1)
+      background-color: rgba($primary, 0.1)
     &.is-active
-      background-color: rgba($color-white, 0.2)
+      background-color: rgba($primary, 0.2)
   &__form
     display: flex
     align-items: center
@@ -35,4 +36,4 @@
     font: inherit
     border: none
     background: transparent
-    color: $color-white
+    color: $primary

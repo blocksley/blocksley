@@ -26,7 +26,7 @@
       </q-toolbar>
     </div>
     <div>
-      <div @click="contentClick($event)" @contextmenu="contentContext">
+      <div @contextmenu="contentContext">
         <slot/>
       </div>
       <shell-menu ref="menu">
