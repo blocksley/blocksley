@@ -31,6 +31,7 @@ const extendQuasarConf = function (conf) {
   conf.framework.components = [
     'QLayout',
     'QHeader',
+    'QFooter',
     'QDrawer',
     'QPageContainer',
     'QPage',

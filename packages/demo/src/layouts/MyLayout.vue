@@ -1,6 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <!-- <q-header elevated reveal :reveal-offset="64"> -->
+    <!--
     <q-header elevated>
       <q-toolbar class="app-toolbar">
         <q-btn
@@ -20,12 +21,43 @@
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
+    -->
+    <q-footer>
+      <q-bar style="background-color:black;color:white">
+        <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+        >
+          <q-icon name="menu" />
+        </q-btn>
+      </q-bar>
+    </q-footer>
 
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
       content-class="bg-grey-2"
     >
+      <q-toolbar class="app-toolbar" style="color:white">
+
+        <q-toolbar-title>
+          Blocksley Demo
+        </q-toolbar-title>
+        <q-space/>
+        <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+        >
+          <q-icon name="cancel" />
+        </q-btn>
+      </q-toolbar>
+
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
@@ -74,11 +106,14 @@
           </q-item-section>
         </q-item>
       </q-list>
+      <q-separator/>
+      <q-item>Quasar v{{ $q.version }}</q-item>
     </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 

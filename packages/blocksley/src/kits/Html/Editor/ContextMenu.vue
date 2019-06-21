@@ -152,14 +152,14 @@
       >
         <q-icon name="mdi-redo" />
       </q-btn>
-
+      <!--
       <q-btn flat
         class="menubar__button"
         @click="hideKeyboard"
       >
         <q-icon name="keyboard" />
       </q-btn>
-
+      -->
     </div>
 
   </editor-menu-bar>

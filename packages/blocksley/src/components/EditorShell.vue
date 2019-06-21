@@ -1,9 +1,6 @@
 <template>
-  <!-- <div ref="shell" tabindex="-1" class="editor-shell"  @contextmenu="onContext($event)" @click="hideMenu($event)"> -->
   <div ref="shell" tabindex="-1" class="editor-shell">
-    <div class="shell-inner">
-    <!-- <div class="shell-header" :class="{'sticky-header': stickyHeader}"> -->
-      <div class="shell-header sticky-header">
+    <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
@@ -24,12 +21,12 @@
           </shell-fab>
         </shell-fab>
       </q-bar>
-      <q-toolbar ref="toolbar" v-show="showMenu" tabindex="-1" class="shell-toolbar">
+      <q-toolbar v-if="this.$slots.menu" ref="toolbar" v-show="showToolbar" class="shell-toolbar">
         <slot name="menu"/>
       </q-toolbar>
     </div>
     <div>
-      <div @click="contentClick($event)" @contextmenu="contentClick($event)">
+      <div @click="contentClick($event)" @contextmenu="contentContext($event)">
         <slot/>
       </div>
       <shell-menu ref="menu">
@@ -41,7 +38,6 @@
         </template>
       </shell-dialog>
     </div>
-    </div> <!--shell-inner-->
   </div>
 </template>
 
@@ -64,8 +60,8 @@ export default {
     return {
       frame: { grippy: false },
       model: {},
-      showBar: false,
-      showMenu: this.$q.platform.is.desktop,
+      showToolbar: this.$q.platform.is.desktop,
+      showMenu: false,
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
@@ -112,39 +108,29 @@ export default {
     deactivate () {
       this.isActive = false
     },
-    onContext(e) {
-      console.log('context click')
-      console.log(e)
-      if(e.defaultPrevented) {
-        return;
-      }
-      e.preventDefault()
-      return
-      this.showMenu = !this.showMenu
-      if (this.showMenu) {
-        this.$refs.toolbar.$el.focus()
-      }
-      /*
-      if (this.showMenu) {
-        // this.$refs.menu.show(e)
-        this.$refs.dialog.show(e)
-      } else {
-        // this.$refs.menu.hide(e)
-        this.$refs.dialog.hide(e)
-      }
-      */
-    },
     hideMenu (e) {
       console.log('click away')
       e.preventDefault()
       this.showMenu = false
       // this.$refs.menu.hide(e)
     },
-    toggleMenu () {
+    toggleMenu (e) {
       this.showMenu = !this.showMenu
       if (this.showMenu) {
-        // this.$refs.menu.show(e)
+        this.$refs.menu.show(e)
+      } else {
+        this.$refs.menu.hide(e)
       }
+    },
+    toggleToolbar (e) {
+      this.showToolbar = !this.showToolbar
+      /*
+      if (this.showToolbar) {
+        this.$refs.toolbar.show(e)
+      } else {
+        this.$refs.toolbar.hide(e)
+      }
+      */
     },
     toggleGrippy () {
       this.grippy = !this.grippy
@@ -161,11 +147,10 @@ export default {
           switch(this.barClicks) {
             case 1:
               // console.log('single click')
-              // this.toggleMenu()
               break;
             default:
               // console.log('double click')
-              this.toggleMenu()
+              this.toggleToolbar()
           }
           this.barClicks = 0 
         }, this.delay);
@@ -174,6 +159,7 @@ export default {
     contentClick (e) {
       console.log('detect content click')
       e.preventDefault()
+      return
       e.target.blur()
       this.contentClicks++;
       if (this.contentClicks === 1) {
@@ -190,6 +176,15 @@ export default {
           this.contentClicks = 0
         }, this.delay);
       }
+    },
+    contentContext(e) {
+      console.log('context click')
+      console.log(e)
+      if(e.defaultPrevented) {
+        return;
+      }
+      e.preventDefault()
+      this.toggleMenu(e)
     }
   }
 }
