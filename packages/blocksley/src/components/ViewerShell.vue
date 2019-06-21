@@ -1,5 +1,6 @@
 <template>
   <div class="viewer-shell" @click="vu.edit()">
+    <!--
     <q-menu context-menu touch-position auto-close content-class="bg-black text-white">
       <q-btn-group>
         <q-btn icon="edit" @click="vu.edit()"/>
@@ -9,7 +10,7 @@
         <q-btn icon="delete" @click="vu.remove()"/>
       </q-btn-group>
     </q-menu>
-
+    -->
     <slot/>
 
   </div>

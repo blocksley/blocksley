@@ -13,18 +13,16 @@
     background: transparent
     border: 0
     // color: #ffffff
-    // color: $primary
-    color: black
-    opacity: .5
+    color: $primary
+    // opacity: .75
     padding: 0.2rem 0.5rem
     margin-right: 0.2rem
     border-radius: 3px
     cursor: pointer
     &:hover
-      opacity: 1
-      background-color: rgba(black, 0.01)
+      background-color: rgba($primary, 0.05)
     &.is-active
-      background-color: rgba(black, 0.1)
+      background-color: rgba($primary, 0.1)
 
 .menubar-dark
   transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s
