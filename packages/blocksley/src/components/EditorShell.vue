@@ -32,6 +32,7 @@
       <shell-menu ref="menu">
         <slot name="menu"/>
       </shell-menu>
+      <slot v-if="useBubble" name="bubble"/>
       <shell-dialog ref="dialog" content-class="menubar-dark">
         <template v-slot:default="slotScope">
           <slot name="menu" v-bind:content-class="slotScope.contentClass"/>
@@ -64,10 +65,12 @@ export default {
       view: null,
       showToolbar: this.$q.platform.is.desktop,
       showMenu: false,
+      useBubble: this.$q.platform.is.desktop,
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
-      stickyHeader: this.$q.platform.is.desktop
+      // stickyHeader: this.$q.platform.is.desktop
+      stickyHeader: true
     }
   },
   computed: {
@@ -185,7 +188,9 @@ export default {
         return;
       }
       e.preventDefault()
-      this.hideKeyboard()
+      if(!this.$q.platform.is.desktop) {
+        this.hideKeyboard()
+      }
       return
       this.toggleMenu(e)
     },
