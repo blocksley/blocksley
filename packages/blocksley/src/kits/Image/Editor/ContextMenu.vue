@@ -1,11 +1,11 @@
 <template>
   <div>
-    <q-btn flat
+    <q-btn flat class="menubar__button"
       @click="vu.floatLeft"
     >
       <q-icon name="mdi-format-align-left" />
     </q-btn>
-    <q-btn flat
+    <q-btn flat class="menubar__button"
       @click="vu.floatRight"
     >
       <q-icon name="mdi-format-align-right" />
