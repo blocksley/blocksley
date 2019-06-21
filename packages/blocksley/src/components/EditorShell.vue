@@ -26,7 +26,7 @@
       </q-toolbar>
     </div>
     <div>
-      <div @click="contentClick($event)" @contextmenu="contentContext($event)">
+      <div @click="contentClick($event)" @contextmenu="contentContext">
         <slot/>
       </div>
       <shell-menu ref="menu">
@@ -49,7 +49,8 @@ import ShellFab from './ShellFab'
 export default {
   name: 'EditorShell',
   props: {
-    vu: null
+    vu: null,
+    editor: null
   },
   components: {
     ShellMenu,
@@ -60,6 +61,7 @@ export default {
     return {
       frame: { grippy: false },
       model: {},
+      view: null,
       showToolbar: this.$q.platform.is.desktop,
       showMenu: false,
       delay: 250,
@@ -84,6 +86,7 @@ export default {
   mounted () {
     this.frame = this.vu.frame
     this.model = this.vu.model
+    this.view = this.editor ? this.editor.view : null
     console.log(this.model)
     this.$refs.shell.focus()
     /*
@@ -110,9 +113,8 @@ export default {
     },
     hideMenu (e) {
       console.log('click away')
-      e.preventDefault()
-      this.showMenu = false
-      // this.$refs.menu.hide(e)
+      //e.preventDefault()
+      this.toggleMenu()
     },
     toggleMenu (e) {
       this.showMenu = !this.showMenu
@@ -157,20 +159,20 @@ export default {
       }
     },
     contentClick (e) {
-      console.log('detect content click')
+      console.log('content click')
+      console.log(e)
       e.preventDefault()
-      return
-      e.target.blur()
+      // e.target.blur()
       this.contentClicks++;
       if (this.contentClicks === 1) {
         setTimeout(() => {
           switch(this.contentClicks) {
             case 1:
-              // console.log('single click')
+              console.log('single click')
               // this.toggleMenu()
               break;
             default:
-              // console.log('double click')
+              console.log('double click')
               // this.toggleMenu()
           }
           this.contentClicks = 0
