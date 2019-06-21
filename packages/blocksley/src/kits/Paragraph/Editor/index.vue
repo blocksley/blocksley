@@ -6,7 +6,7 @@
     <span slot="title">Paragraph</span>
     <context-menu slot="menu" :vu="this" :editor="editor"/>
     <floating-menu :editor = "editor" />
-    <!-- <bubble-menu :editor = "editor" /> -->
+    <bubble-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
   </editor-shell>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import ContextMenu from './ContextMenu'
 import FloatingMenu from './FloatingMenu'
-// import BubbleMenu from './BubbleMenu'
+import BubbleMenu from './BubbleMenu'
 import ImageChooser from 'blocksley/components/ImageChooser'
 import { Editor, EditorContent } from 'tiptap'
 import {
@@ -50,7 +50,7 @@ export default {
     EditorContent,
     FloatingMenu,
     ContextMenu,
-    // BubbleMenu,
+    BubbleMenu,
     ImageChooser
   },
   data () {

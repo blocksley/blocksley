@@ -26,7 +26,8 @@
       </q-toolbar>
     </div>
     <div>
-      <div @contextmenu="contentContext">
+      <!-- <div @contextmenu="contentContext"> -->
+      <div>
         <slot/>
       </div>
       <shell-menu ref="menu">
