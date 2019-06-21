@@ -7,7 +7,7 @@
       @resizing="onResizing"
       :w="this.model.width"
       :h="this.model.height"
-      :z="16"
+      :z="750"
       class="resizer"
     />
     <img ref="image" :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover;"/>

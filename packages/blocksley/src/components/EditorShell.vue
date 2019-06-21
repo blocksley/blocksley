@@ -1,5 +1,5 @@
 <template>
-  <div ref="shell" tabindex="-1" class="editor-shell">
+  <div ref="shell" tabindex="-1" class="editor-shell" @focus="onFocus" @blur="onBlur">
     <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
@@ -21,12 +21,12 @@
           </shell-fab>
         </shell-fab>
       </q-bar>
-      <q-toolbar v-if="this.$slots.menu" ref="toolbar" v-show="showToolbar" class="shell-toolbar">
+      <q-toolbar v-if="this.$slots.menu" ref="toolbar" v-show="toolbarVisible" class="shell-toolbar">
         <slot name="menu"/>
       </q-toolbar>
     </div>
     <div>
-      <div @contextmenu="contentContext">
+      <div class="shell-inner" @contextmenu="contentContext">
         <slot/>
       </div>
       <shell-menu ref="menu">
@@ -63,9 +63,11 @@ export default {
       frame: { grippy: false },
       model: {},
       view: null,
-      showToolbar: this.$q.platform.is.desktop,
-      showMenu: false,
-      useBubble: this.$q.platform.is.desktop,
+      parentShell: null,
+      toolbarVisible: this.$q.platform.is.desktop,
+      menuVisible: false,
+      // useBubble: this.$q.platform.is.desktop,
+      useBubble: false,
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
@@ -87,10 +89,17 @@ export default {
     }
   },
   mounted () {
+    console.log('editor shell mounted')
     this.frame = this.vu.frame
     this.model = this.vu.model
-    this.view = this.editor ? this.editor.view : null
     console.log(this.model)
+    this.view = this.editor ? this.editor.view : null
+    const closest = this.$el.parentElement.closest('.editor-shell')
+    this.parentShell = closest ? closest.__vue__ : null
+    if(this.parentShell) {
+      console.log(this.parentShell)
+      this.parentShell.hideToolbar()
+    }
     this.$refs.shell.focus()
     /*
     if (this.$q.platform.is.mobile) {
@@ -100,6 +109,10 @@ export default {
   },
   beforeDestroy () {
     this.$refs.shell.blur()
+    if(this.parentShell) {
+      console.log(this.parentShell)
+      this.parentShell.showToolbar()
+    }
   },
   methods: {
     onAction (action) {
@@ -114,23 +127,38 @@ export default {
     deactivate () {
       this.isActive = false
     },
+    onFocus (e) {
+      console.log('shell focus')
+      console.log(e)
+      this.showToolbar()
+    },
+    onBlur (e) {
+      console.log('shell blur')
+      console.log(e)
+    },
     hideMenu (e) {
       console.log('click away')
       //e.preventDefault()
       this.toggleMenu()
     },
     toggleMenu (e) {
-      this.showMenu = !this.showMenu
-      if (this.showMenu) {
+      this.menuVisible = !this.menuVisible
+      if (this.menuVisible) {
         this.$refs.menu.show(e)
       } else {
         this.$refs.menu.hide(e)
       }
     },
+    showToolbar () {
+      this.toolbarVisible = true
+    },
+    hideToolbar () {
+      this.toolbarVisible = false
+    },
     toggleToolbar (e) {
-      this.showToolbar = !this.showToolbar
+      this.toolbarVisible = !this.toolbarVisible
       /*
-      if (this.showToolbar) {
+      if (this.toolbarVisible) {
         this.$refs.toolbar.show(e)
       } else {
         this.$refs.toolbar.hide(e)
@@ -220,6 +248,7 @@ shell-background()
 .sticky-header
   sticky()
   top: 0
+  opacity: 1
   z-index: 500
 
 .shell-header
@@ -229,14 +258,14 @@ shell-background()
   position: relative;
   max-width: 1080px;
   shell-background()
-  background-position: 0px -32px
+  background-position: 0px -40px
   border-bottom 1px solid rgba(0,0,0,.27);
   box-shadow:
     0px 11px 8px -10px #CCC;
 }
 
 .shell-inner
-  shell-background()
+  position: relative
   
 .shell-bar {
   width: 100%;
