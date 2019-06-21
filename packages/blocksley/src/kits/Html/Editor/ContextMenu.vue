@@ -191,15 +191,6 @@ export default {
     },
     insertImageBlock () {
       this.vu.insertImageBlock()
-    },
-    hideKeyboard () {
-      if (
-        document.activeElement &&
-        document.activeElement.blur &&
-        typeof document.activeElement.blur === 'function'
-      ) {
-        document.activeElement.blur()
-      }
     }
   }
 }

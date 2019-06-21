@@ -162,7 +162,6 @@ export default {
       console.log('content click')
       console.log(e)
       e.preventDefault()
-      // e.target.blur()
       this.contentClicks++;
       if (this.contentClicks === 1) {
         setTimeout(() => {
@@ -186,8 +185,18 @@ export default {
         return;
       }
       e.preventDefault()
+      this.hideKeyboard()
       return
       this.toggleMenu(e)
+    },
+    hideKeyboard () {
+      if (
+        document.activeElement &&
+        document.activeElement.blur &&
+        typeof document.activeElement.blur === 'function'
+      ) {
+        document.activeElement.blur()
+      }
     }
   }
 }
