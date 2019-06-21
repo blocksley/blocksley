@@ -26,8 +26,7 @@
       </q-toolbar>
     </div>
     <div>
-      <!-- <div @contextmenu="contentContext"> -->
-      <div>
+      <div @contextmenu="contentContext">
         <slot/>
       </div>
       <shell-menu ref="menu">
@@ -187,6 +186,7 @@ export default {
         return;
       }
       e.preventDefault()
+      return
       this.toggleMenu(e)
     }
   }
