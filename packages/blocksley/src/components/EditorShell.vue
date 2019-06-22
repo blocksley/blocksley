@@ -67,7 +67,7 @@ export default {
       toolbarVisible: this.$q.platform.is.desktop,
       menuVisible: false,
       // useBubble: this.$q.platform.is.desktop,
-      useBubble: false,
+      useBubble: true,
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
