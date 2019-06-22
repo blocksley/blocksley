@@ -1,11 +1,11 @@
 <template>
   <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
 
-    <super-fab ref="menu" direction="right" icon="more_vert" color="primary">
+    <super-fab ref="menu" icon="more_vert" color="primary">
       <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
       <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
       <q-btn fab-mini icon="edit" color="primary" @click="vu.edit()"/>
-      <super-fab direction="right" fab-mini icon="unfold_more" color="primary">
+      <super-fab fab-mini icon="unfold_more" color="primary">
         <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
         <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
         <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
