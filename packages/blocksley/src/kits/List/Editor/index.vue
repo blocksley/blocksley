@@ -4,7 +4,7 @@
       <ImageChooser :select="insertImage" />
     </q-dialog>
     <span slot="title">List</span>
-    <context-menu :vu="this" :editor="editor"/>
+    <context-menu slot="menu" :vu="this" :editor="editor"/>
     <floating-menu :editor = "editor" />
     <bubble-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
