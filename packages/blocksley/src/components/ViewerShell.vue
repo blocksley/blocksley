@@ -76,9 +76,6 @@ export default {
         return;
       }
       evt.preventDefault()
-      if(!this.$q.platform.is.desktop) {
-        this.hideKeyboard()
-      }
       this.toggleMenu(evt)
     },
     contentHold(details) {
@@ -89,9 +86,6 @@ export default {
         return;
       }
       evt.preventDefault()
-      if(!this.$q.platform.is.desktop) {
-        this.hideKeyboard()
-      }
       this.toggleMenu(evt)
     },
   }
