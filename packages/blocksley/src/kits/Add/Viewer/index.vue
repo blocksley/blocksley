@@ -1,16 +1,16 @@
 <template>
-  <q-btn-group flat>
-    <q-btn flat
+  <q-btn-group flat color="primary">
+    <q-btn flat color="primary"
       @click="newParagraph"
     >
       <q-icon name="mdi-format-paragraph" />
     </q-btn>
-    <q-btn flat
+    <q-btn flat color="primary"
       @click="newList"
     >
       <q-icon name="mdi-format-list-bulleted" />
     </q-btn>
-    <q-btn flat
+    <q-btn flat color="primary"
       @click="newImage"
     >
       <q-icon name="mdi-image" />

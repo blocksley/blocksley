@@ -1,5 +1,5 @@
 <template>
-  <div ref="shell" tabindex="-1" class="editor-shell" @focus="onFocus" @blur="onBlur">
+  <div ref="shell" tabindex="-1" class="editor-shell" @keyup="onKeyUp" @focus="onFocus" @blur="onBlur">
     <div class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
@@ -26,8 +26,7 @@
       </q-toolbar>
     </div>
     <div>
-      <!-- <div class="shell-inner" @contextmenu="contentContext"> -->
-      <div class="shell-inner">
+      <div class="shell-inner" @contextmenu="contentContext">
         <slot/>
       </div>
       <shell-menu ref="menu">
@@ -127,6 +126,13 @@ export default {
     },
     deactivate () {
       this.isActive = false
+    },
+    onKeyUp (e) {
+      console.log('keyup')
+      console.log(e)
+      if(e.key == 'Escape') {
+        this.vu.view()
+      }
     },
     onFocus (e) {
       console.log('shell focus')

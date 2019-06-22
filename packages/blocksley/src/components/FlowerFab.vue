@@ -1,13 +1,11 @@
 <template>
-  <div class="shell-fab" v-clickaway="hide">
-    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick"/>
-
+  <div class="flower-fab" v-clickaway="hide">
     <transition v-if="direction=='left'"
       appear
       enter-active-class="animated fadeInRight"
       leave-active-class="animated fadeOutRight"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-left">
+      <div ref="container" v-show="visible" class="flower-fab-actions flower-fab-actions-left">
         <slot />
       </div>
     </transition>
@@ -16,7 +14,7 @@
       enter-active-class="animated fadeInLeft"
       leave-active-class="animated fadeOutLeft"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-right">
+      <div ref="container" v-show="visible" class="flower-fab-actions flower-fab-actions-right">
         <slot />
       </div>
     </transition>
@@ -29,7 +27,7 @@ import { QBtn } from 'quasar'
 import Vue from 'vue'
 
 export default {
-  name: 'ShellFab',
+  name: 'FlowerFab',
   props: {
     icon: '',
     color: {
@@ -56,14 +54,6 @@ export default {
   },
   watch: {
     visible () {
-      /*
-      if(!this.visible && this.fabParent) {
-        this.$el.parentElement.replaceChild(this.fabParent.$el, this.$el)
-        setTimeout(() => {
-          this.fabParent.toggle()
-        }, 100)
-      }
-      */
       if(!this.visible && this.fabRoot) {
         this.$el.parentElement.replaceChild(this.fabRoot.$el, this.$el)
       }
@@ -78,7 +68,7 @@ export default {
       child.fabParent = this
       child.fabRoot = this.fabRoot ? this.fabRoot : this
       // console.log(child)
-      if(child.$options._componentTag === 'shell-fab') {
+      if(child.$options._componentTag === 'flower-fab') {
         this.createProxy(child)
       } else {
         child.$on('click', (evt) => {
@@ -99,7 +89,14 @@ export default {
       this.visible = false
     },
     show (e) {
+      console.log('show flower fab')
+      console.log(e)
       this.visible = true
+      const el = this.$el
+      this.offsetX = e.offsetX
+      this.offsetY = e.offsetY
+      el.style.top = e.offsetY + 'px'
+      el.style.left = e.offsetX + 'px'
     },
     toggle () {
       this.visible = !this.visible
@@ -112,10 +109,13 @@ export default {
       child.$mount() // pass nothing
       fab.$el.parentElement.replaceChild(child.$el, fab.$el)
       child.$on('click', (e) => {
+        e.preventDefault()
         console.log('shell fab proxy click')
         console.log(fab)
-        e.preventDefault()
         this.$el.parentElement.replaceChild(fab.$el, this.$el)
+        fab.$el.style.top = this.offsetY + 'px'
+        fab.$el.style.left = this.offsetX + 'px'
+
         setTimeout(() => {
           fab.toggle()
         }, 100)
@@ -126,27 +126,32 @@ export default {
 </script>
 
 <style lang="stylus">
-.shell-fab {
-}
-.shell-fab-btn {
-  z-index: 990;
-  position relative
-}
-.shell-fab-actions
+.flower-fab {
   position: absolute;
   z-index: 990;
+  display: flex
+  max-width: fit-content
+  min-height: 100%;
+}
+.flower-fab-btn {
+  position: relative
+  top: -50%
+  left: -50%
+}
+.flower-fab-actions
+  position: absolute;
   top:-4px;
 
-.shell-fab-actions-left {
+.flower-fab-actions-left {
   right:48px;
 }
-.shell-fab-actions-right {
+.flower-fab-actions-right {
   left:48px;
 }
 
-.shell-fab-actions > * {
-    margin: 4px;
+.flower-fab-actions > * {
     display: inline-block
+    margin: 4px;
 }
 
 </style>

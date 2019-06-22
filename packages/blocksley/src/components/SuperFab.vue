@@ -1,13 +1,11 @@
 <template>
-  <div class="shell-fab" v-clickaway="hide">
-    <q-btn fab-mini flat :color="color" class="shell-fab-btn" :icon="icon" @click="onClick"/>
-
+  <div class="super-fab" v-clickaway="hide">
     <transition v-if="direction=='left'"
       appear
       enter-active-class="animated fadeInRight"
       leave-active-class="animated fadeOutRight"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-left">
+      <div ref="container" v-show="visible" class="super-fab-actions super-fab-actions-left">
         <slot />
       </div>
     </transition>
@@ -16,7 +14,7 @@
       enter-active-class="animated fadeInLeft"
       leave-active-class="animated fadeOutLeft"
     >
-      <div ref="container" v-show="visible" class="shell-fab-actions shell-fab-actions-right">
+      <div ref="container" v-show="visible" class="super-fab-actions super-fab-actions-right">
         <slot />
       </div>
     </transition>
@@ -29,7 +27,7 @@ import { QBtn } from 'quasar'
 import Vue from 'vue'
 
 export default {
-  name: 'ShellFab',
+  name: 'SuperFab',
   props: {
     icon: '',
     color: {
@@ -48,6 +46,8 @@ export default {
       visible: false,
       fabRoot: null,
       fabParent: null,
+      absoluteX: 0,
+      absoluteY: 0,
       offsetX: 0,
       offsetY: 0
     }
@@ -56,14 +56,6 @@ export default {
   },
   watch: {
     visible () {
-      /*
-      if(!this.visible && this.fabParent) {
-        this.$el.parentElement.replaceChild(this.fabParent.$el, this.$el)
-        setTimeout(() => {
-          this.fabParent.toggle()
-        }, 100)
-      }
-      */
       if(!this.visible && this.fabRoot) {
         this.$el.parentElement.replaceChild(this.fabRoot.$el, this.$el)
       }
@@ -71,6 +63,15 @@ export default {
   },
   mounted () {
     console.log('shell fab mounted')
+    /*
+    switch(this.direction) {
+      case 'left':
+        this.offsetX = 48
+        break
+      case 'right':
+        this.offsetX = -48
+        break
+    } */
     const slots = this.$slots.default 
     // console.log(slots)
     for (var i = 0; i < slots.length; i++) {
@@ -78,7 +79,7 @@ export default {
       child.fabParent = this
       child.fabRoot = this.fabRoot ? this.fabRoot : this
       // console.log(child)
-      if(child.$options._componentTag === 'shell-fab') {
+      if(child.$options._componentTag === 'super-fab') {
         this.createProxy(child)
       } else {
         child.$on('click', (evt) => {
@@ -99,7 +100,14 @@ export default {
       this.visible = false
     },
     show (e) {
+      console.log('show flower fab')
+      console.log(e)
       this.visible = true
+      const el = this.$el
+      this.absoluteX = e.offsetX
+      this.absoluteY = e.offsetY
+      el.style.top = e.offsetY + 'px'
+      el.style.left = e.offsetX + 'px'
     },
     toggle () {
       this.visible = !this.visible
@@ -112,10 +120,13 @@ export default {
       child.$mount() // pass nothing
       fab.$el.parentElement.replaceChild(child.$el, fab.$el)
       child.$on('click', (e) => {
+        e.preventDefault()
         console.log('shell fab proxy click')
         console.log(fab)
-        e.preventDefault()
         this.$el.parentElement.replaceChild(fab.$el, this.$el)
+        fab.$el.style.top = (this.absoluteY + this.offsetX) + 'px'
+        fab.$el.style.left = (this.absoluteX + this.offsetY) + 'px'
+
         setTimeout(() => {
           fab.toggle()
         }, 100)
@@ -126,27 +137,31 @@ export default {
 </script>
 
 <style lang="stylus">
-.shell-fab {
-}
-.shell-fab-btn {
-  z-index: 990;
-  position relative
-}
-.shell-fab-actions
+.super-fab {
   position: absolute;
   z-index: 990;
+  display: flex
+  max-width: fit-content
+  white-space:nowrap
+  min-height: 100%;
+}
+.super-fab-btn {
+  position: relative
+}
+.super-fab-actions
+  position: absolute;
   top:-4px;
 
-.shell-fab-actions-left {
-  right:48px;
+.super-fab-actions-left {
+  // right:48px;
 }
-.shell-fab-actions-right {
-  left:48px;
+.super-fab-actions-right {
+  // left:48px;
 }
 
-.shell-fab-actions > * {
-    margin: 4px;
+.super-fab-actions > * {
     display: inline-block
+    margin: 4px;
 }
 
 </style>
