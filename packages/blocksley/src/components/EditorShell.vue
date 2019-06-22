@@ -16,7 +16,7 @@
           <q-btn fab-mini icon="visibility" color="primary" @click="vu.view()"/>
           <shell-fab fab-mini icon="unfold_more" color="primary">
             <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
-            <q-btn fab outlined class="grippy" icon="unfold_more" color="primary"/>
+            <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
             <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
           </shell-fab>
         </shell-fab>
@@ -101,11 +101,6 @@ export default {
       this.parentShell.hideToolbar()
     }
     this.$refs.shell.focus()
-    /*
-    if (this.$q.platform.is.mobile) {
-      this.$refs.shellMenu.$on('click', this.detectClick)
-    }
-    */
   },
   beforeDestroy () {
     this.$refs.shell.blur()

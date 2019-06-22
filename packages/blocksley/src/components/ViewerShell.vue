@@ -1,26 +1,16 @@
 <template>
-  <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
-    <!--
-    <q-menu context-menu touch-position auto-close content-class="bg-black text-white">
-      <q-btn-group>
-        <q-btn icon="edit" @click="vu.edit()"/>
-        <q-btn icon="playlist_add" @click="vu.add()"/>
-        <q-btn icon="keyboard_arrow_up" />
-        <q-btn icon="keyboard_arrow_down" />
-        <q-btn icon="delete" @click="vu.remove()"/>
-      </q-btn-group>
-    </q-menu>
-    -->
-      <super-fab ref="menu" direction="right" icon="more_vert" color="primary">
-        <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
-        <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-        <q-btn fab-mini icon="edit" color="primary" @click="vu.edit()"/>
-        <super-fab direction="right" fab-mini icon="unfold_more" color="primary">
-          <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
-          <q-btn fab outlined class="grippy" icon="unfold_more" color="primary"/>
-          <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
-        </super-fab>
+  <div class="viewer-shell" @click="onClick" @contextmenu="contentContext" v-touch-hold.mouse="contentHold">
+
+    <super-fab ref="menu" direction="right" icon="more_vert" color="primary">
+      <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
+      <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
+      <q-btn fab-mini icon="edit" color="primary" @click="vu.edit()"/>
+      <super-fab direction="right" fab-mini icon="unfold_more" color="primary">
+        <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+        <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
+        <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
       </super-fab>
+    </super-fab>
 
     <slot/>
 
@@ -79,17 +69,30 @@ export default {
         this.$refs.menu.hide(e)
       }
     },
-    contentContext(e) {
+    contentContext(evt) {
       console.log('viewer context click')
-      console.log(e)
-      if(e.defaultPrevented) {
+      console.log(evt)
+      if(evt.defaultPrevented) {
         return;
       }
-      e.preventDefault()
+      evt.preventDefault()
       if(!this.$q.platform.is.desktop) {
         this.hideKeyboard()
       }
-      this.toggleMenu(e)
+      this.toggleMenu(evt)
+    },
+    contentHold(details) {
+      const { evt } = details
+      console.log('viewer context click')
+      console.log(evt)
+      if(evt.defaultPrevented) {
+        return;
+      }
+      evt.preventDefault()
+      if(!this.$q.platform.is.desktop) {
+        this.hideKeyboard()
+      }
+      this.toggleMenu(evt)
     },
   }
 }

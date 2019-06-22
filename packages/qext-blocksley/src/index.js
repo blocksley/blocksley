@@ -27,7 +27,11 @@ const extendQuasarConf = function (conf) {
   //Material Design Icons
   conf.extras.push('mdi-v3')
 
-  conf.framework.directives.push('ClosePopup')
+  conf.framework.directives = [
+    ...conf.framework.directives,
+    'ClosePopup',
+    'TouchHold'
+  ]
   conf.framework.components = [
     'QLayout',
     'QHeader',
