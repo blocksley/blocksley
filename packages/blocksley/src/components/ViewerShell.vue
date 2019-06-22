@@ -1,5 +1,5 @@
 <template>
-  <div class="viewer-shell" @click="onClick" @contextmenu="contentContext" v-touch-hold.mouse="contentHold">
+  <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
 
     <super-fab ref="menu" direction="right" icon="more_vert" color="primary">
       <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
@@ -80,13 +80,15 @@ export default {
     },
     contentHold(details) {
       const { evt } = details
-      console.log('viewer context click')
+      console.log('viewer context hold')
       console.log(evt)
       if(evt.defaultPrevented) {
         return;
       }
       evt.preventDefault()
-      this.toggleMenu(evt)
+        setTimeout(() => {
+          this.toggleMenu(evt)
+        }, 1000)
     },
   }
 }
