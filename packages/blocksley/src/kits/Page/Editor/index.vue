@@ -1,5 +1,5 @@
 <template>
-  <div class="document-editor">
+  <div class="page-editor">
     <draggable v-model="model.children"
       group="blocks"
       handle=".grippy"
@@ -18,18 +18,18 @@
 </template>
 
 <script>
-import { Add, Title, List, Image, Paragraph, Html, Document } from 'blocksley/models'
+import { Add, Title, List, Image, Paragraph, Html, Page } from 'blocksley/models'
 
 import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
 
-import { BlockEditorMixin } from 'blocksley/mixins'
+import { BlockEditorMixin, UiMixin } from 'blocksley/mixins'
 import Frame from 'blocksley/components/Frame'
 import EditorShell from 'blocksley/components/EditorShell'
 
 export default {
-  name: 'DocumentEditor',
-  mixins: [ BlockEditorMixin ],
+  name: 'PageEditor',
+  mixins: [ BlockEditorMixin, UiMixin ],
   props: ['frame', 'model'],
   components: {
     Frame,
@@ -44,6 +44,10 @@ export default {
   },
   mounted () {
     console.log('editor mounted')
+    console.log(this.page)
+    if(!this.page) {
+      this.setPage(this.model)
+    }
   },
   beforeDestroy () {
     console.log('editor destroyed')
@@ -98,7 +102,7 @@ export default {
 </script>
 
 <style lang="stylus">
-.document-editor {
+.page-editor {
   // padding: 16px;
   padding: 34px 16px 16px 16px;
   // overflow: hidden;

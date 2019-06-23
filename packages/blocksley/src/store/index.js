@@ -5,34 +5,28 @@ import models from '../models'
 const state = {
   models: null,
   kits: null,
-  leftDrawerOpen: false,
   view: null,
   page: null,
   toolbar: null,
   editor: null,
   edited: null,
-  image: null
+  image: null,
+  leftDrawerOpen: false,
 }
 
 const getters = {
-  models: (state) => models,
-  kits: (state) => kits,
-  leftDrawerOpen: (state) => state.leftDrawerOpen,
+  models: (state) => state.models,
+  kits: (state) => state.kits,
   view: (state) => state.view,
   page: (state) => state.page,
   toolbar: (state) => state.toolbar,
   $editor: (state) => state.editor,
   edited: (state) => state.edited,
-  $image: (state) => state.image
+  $image: (state) => state.image,
+  leftDrawerOpen: (state) => state.leftDrawerOpen,
 }
 
 const actions = {
-  setLeftDrawerOpen: ({ commit }, value) => {
-    commit('leftDrawerOpen', value)
-  },
-  toggleLeftDrawer: ({ commit, state }) => {
-    commit('leftDrawerOpen', !state.leftDrawerOpen)
-  },
   setView: ({ commit }, data) => {
     commit('view', data)
   },
@@ -50,13 +44,16 @@ const actions = {
   },
   setImage: (context, image) => {
     context.commit('image', image)
+  },
+  setLeftDrawerOpen: ({ commit }, value) => {
+    commit('leftDrawerOpen', value)
+  },
+  toggleLeftDrawer: ({ commit, state }) => {
+    commit('leftDrawerOpen', !state.leftDrawerOpen)
   }
 }
 
 const mutations = {
-  leftDrawerOpen: (state, data) => {
-    state.leftDrawerOpen = data
-  },
   view: (state, data) => {
     state.view = data
   },
@@ -74,6 +71,9 @@ const mutations = {
   },
   image: (state, image) => {
     state.image = image
+  },
+  leftDrawerOpen: (state, data) => {
+    state.leftDrawerOpen = data
   }
 }
 export default {

@@ -4,9 +4,9 @@ import Title from './Title'
 import Paragraph from './Paragraph'
 import List from './List'
 import Html from './Html'
-import Document from './Document'
+import Page from './Page'
 
-export { Add, Image, Title, Paragraph, List, Html, Document }
+export { Add, Image, Title, Paragraph, List, Html, Page }
 
 export default {
   Add,
@@ -15,5 +15,5 @@ export default {
   Paragraph,
   List,
   Html,
-  Document
+  Page
 }

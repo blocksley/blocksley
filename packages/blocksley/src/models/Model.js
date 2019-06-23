@@ -1,4 +1,5 @@
 import nanoid from 'nanoid'
+import stringifyObject from 'stringify-object'
 
 class Model {
   constructor (type, options) {
@@ -29,6 +30,9 @@ class Model {
   replaceChild(model, child) {
     const ndx = this.children.indexOf(model)
     this.children.splice(ndx, 1, child)
+  }
+  stringify(options) {
+    return stringifyObject(this, options)
   }
 }
 export default Model

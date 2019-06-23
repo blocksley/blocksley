@@ -1,5 +1,5 @@
 import Add from './Add'
-import Document from './Document'
+import Page from './Page'
 import Html from './Html'
 import Title from './Title'
 import Paragraph from './Paragraph'
@@ -8,7 +8,7 @@ import Image from './Image'
 
 export default {
   'add': Add,
-  'document': Document,
+  'page': Page,
   'html': Html,
   'title': Title,
   'paragraph': Paragraph,

@@ -1,8 +1,8 @@
 import Block from './Block'
 
-export default class Document extends Block {
+export default class Page extends Block {
   constructor (children) {
-    super('document')
+    super('page')
     this.children = children
   }
 }
