@@ -54,7 +54,8 @@
 </template>
 
 <script>
-import { EditorMenuBubble } from 'tiptap'
+// import { EditorMenuBubble } from 'tiptap'
+import EditorMenuBubble from 'blocksley/components/EditorMenuBubble'
 export default {
   name: 'BubbleMenu',
   mixins: [ ],

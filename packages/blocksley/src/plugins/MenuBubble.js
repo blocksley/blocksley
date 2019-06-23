@@ -67,7 +67,20 @@ class Menu {
     this.left = 0
     this.bottom = 0
 
-    this.editorView.dom.addEventListener('blur', this.hide.bind(this))
+    // the mousedown event is fired before blur so we can prevent it
+    this.options.element.addEventListener('mousedown', this.handleClick)
+
+    this.options.editor.on('focus', ({ view }) => {
+      this.update(view)
+    })
+
+    this.options.editor.on('blur', ({ event }) => {
+      this.hide(event)
+    })
+  }
+
+  handleClick(event) {
+    event.preventDefault()
   }
 
   update(view, lastState) {
@@ -104,7 +117,14 @@ class Menu {
     // Keep the menuBubble in the bounding box of the offsetParent i
     this.left = Math.round(this.options.keepInBounds
         ? Math.min(box.width - (el.width / 2), Math.max(left, el.width / 2)) : left)
-    this.bottom = Math.round(box.bottom - start.top)
+    // this.bottom = Math.round(box.bottom - start.top)
+    /*const bottom = Math.round(box.bottom - start.top)
+    if(bottom < 16) {
+      this.bottom = bottom
+    } else {
+      this.bottom = Math.round(box.bottom - end.bottom) - 64
+    }*/
+    this.bottom = Math.round(box.bottom - end.bottom) - 64
     this.isActive = true
 
     this.sendUpdate()
@@ -128,7 +148,7 @@ class Menu {
   }
 
   destroy() {
-    this.editorView.dom.removeEventListener('blur', this.hide)
+    this.options.element.removeEventListener('mousedown', this.handleClick)
   }
 
 }
