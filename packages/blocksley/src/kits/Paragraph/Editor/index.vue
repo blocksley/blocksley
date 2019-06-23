@@ -42,7 +42,7 @@ import EditorShell from 'blocksley/components/EditorShell'
 import { BlockEditorMixin } from 'blocksley/mixins'
 
 export default {
-  name: 'HtmlBlockEditor',
+  name: 'ParagraphEditor',
   mixins: [ BlockEditorMixin ],
   props: ['frame', 'model'],
   components: {

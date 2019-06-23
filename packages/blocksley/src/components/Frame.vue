@@ -63,6 +63,9 @@ export default {
   beforeDestroy () {
   },
   methods: {
+    use (toolName) {
+      this.vu = kits[this.model.type][toolName]
+    },
     onAction (action) {
       this.$emit('action', action)
     },
@@ -71,11 +74,11 @@ export default {
       this.$emit('active', this)
     },
     activate () {
-      this.vu = kits[this.model.type].editor
+      this.use('editor')
     },
     deactivate () {
       this.isActive = false
-      this.vu = kits[this.model.type].viewer
+      this.use('viewer')
     },
     onDragStart () {
       console.log('frame drag started')

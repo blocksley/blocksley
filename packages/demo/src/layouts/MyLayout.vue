@@ -22,8 +22,8 @@
       </q-toolbar>
     </q-header>
     -->
-    <q-footer class="">
-      <q-bar>
+    <q-footer>
+      <q-bar style="background-color:black; color:white">
         <q-btn
           flat
           dense
