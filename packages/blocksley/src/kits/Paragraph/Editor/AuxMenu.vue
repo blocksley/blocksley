@@ -1,5 +1,5 @@
 <template>
-    <editor-menu-bubble :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
+    <editor-menu-tab :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
 
       <q-btn-group flat
         class="menububble"
@@ -49,19 +49,19 @@
 
       </q-btn-group>
 
-    </editor-menu-bubble>
+    </editor-menu-tab>
 
 </template>
 
 <script>
-// import { EditorMenuBubble } from 'tiptap'
-import EditorMenuBubble from 'blocksley/components/EditorMenuBubble'
+// import { EditorMenuTab } from 'tiptap'
+import EditorMenuTab from 'blocksley/components/EditorMenuTab'
 export default {
-  name: 'BubbleMenu',
+  name: 'AuxMenu',
   mixins: [ ],
   props: ['view', 'editor'],
   components: {
-    EditorMenuBubble
+    EditorMenuTab
   },
   data () {
     return {

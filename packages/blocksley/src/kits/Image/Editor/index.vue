@@ -1,7 +1,7 @@
 <template>
   <editor-shell ref="shell" :vu="this">
     <span slot="title">Image</span>
-    <context-menu slot="menu" :vu="this"/>
+    <main-menu slot="menu" :vu="this"/>
     <vue-draggable-resizable 
       :draggable="false"
       @resizing="onResizing"
@@ -17,7 +17,7 @@
 <script>
 import { BlockEditorMixin } from 'blocksley/mixins'
 import EditorShell from 'blocksley/components/EditorShell'
-import ContextMenu from './ContextMenu'
+import MainMenu from './MainMenu'
 
 export default {
   name: 'ImageBlockEditor',
@@ -25,7 +25,7 @@ export default {
   props: ['frame', 'model'],
   components: {
     EditorShell,
-    ContextMenu
+    MainMenu
   },
   data () {
     return {

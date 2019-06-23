@@ -4,17 +4,17 @@
       <ImageChooser :select="insertImage" />
     </q-dialog>
     <span slot="title">Paragraph</span>
-    <context-menu slot="menu" :vu="this" :editor="editor"/>
-    <bubble-menu slot="bubble" :editor = "editor" />
+    <main-menu slot="menu" :vu="this" :editor="editor"/>
+    <aux-menu slot="bubble" :editor = "editor" />
     <floating-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
   </editor-shell>
 </template>
 
 <script>
-import ContextMenu from './ContextMenu'
+import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
-import BubbleMenu from './BubbleMenu'
+import AuxMenu from './AuxMenu'
 import ImageChooser from 'blocksley/components/ImageChooser'
 import { Editor, EditorContent } from 'tiptap'
 import {
@@ -49,8 +49,8 @@ export default {
     EditorShell,
     EditorContent,
     FloatingMenu,
-    ContextMenu,
-    BubbleMenu,
+    MainMenu,
+    AuxMenu,
     ImageChooser
   },
   data () {

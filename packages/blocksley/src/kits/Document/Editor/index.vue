@@ -20,7 +20,7 @@
 <script>
 import { Add, Title, List, Image, Paragraph, Html, Document } from 'blocksley/models'
 
-import ContextMenu from './ContextMenu'
+import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
 
 import { BlockEditorMixin } from 'blocksley/mixins'
@@ -34,7 +34,7 @@ export default {
   components: {
     Frame,
     EditorShell,
-    ContextMenu,
+    MainMenu,
     FloatingMenu
   },
   data () {

@@ -13,7 +13,7 @@ class Menu {
     this.editorView = editorView
     this.isActive = false
     // new stuff
-    console.log('MenuBubble')
+    console.log('MenuTab')
     const el = this.options.element
     const style = el.style
     style.position = 'relative'

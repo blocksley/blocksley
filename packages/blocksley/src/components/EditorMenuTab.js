@@ -1,4 +1,4 @@
-import MenuBubble from '../plugins/MenuBubble'
+import MenuTab from '../plugins/MenuTab'
 
 export default {
 
@@ -29,7 +29,7 @@ export default {
       handler(editor) {
         if (editor) {
           this.$nextTick(() => {
-            editor.registerPlugin(MenuBubble({
+            editor.registerPlugin(MenuTab({
               editor,
               element: this.$el,
               keepInBounds: this.keepInBounds,
