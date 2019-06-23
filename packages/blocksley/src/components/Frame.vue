@@ -86,6 +86,7 @@ export default {
     onClickAway (e) {
       console.log('frame clickAway')
       console.log(e)
+      return
       if(this.root || this.isEventInElement(e, this.$el) || this.$el.contains(e.target)) {
         return
       }

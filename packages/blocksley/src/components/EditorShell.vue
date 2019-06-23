@@ -218,10 +218,10 @@ export default {
         return;
       }
       e.preventDefault()
-      /*
-      if(!this.$q.platform.is.desktop) {
+      
+      //if(!this.$q.platform.is.desktop) {
         this.hideKeyboard()
-      }*/
+      //}
       return
       this.toggleMenu(e)
     },

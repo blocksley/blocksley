@@ -108,34 +108,6 @@ class Menu {
       return
     }
 
-    // Otherwise, reposition it and update its content
-    const { from, to } = state.selection
-
-    // These are in screen coordinates
-    // We can't use EditorView.cordsAtPos here because it can't handle linebreaks correctly
-    // See: https://github.com/ProseMirror/prosemirror-view/pull/47
-    const start = coordsAtPos(view, from)
-    const end = coordsAtPos(view, to, true)
-
-    // The box in which the tooltip is positioned, to use as base
-    const box = this.options.element.offsetParent.getBoundingClientRect()
-    const el = this.options.element.getBoundingClientRect()
-
-    // Find a center-ish x position from the selection endpoints (when
-    // crossing lines, end may be more to the left)
-    const left = ((start.left + end.left) / 2) - box.left
-
-    // Keep the menuBubble in the bounding box of the offsetParent i
-    this.left = Math.round(this.options.keepInBounds
-        ? Math.min(box.width - (el.width / 2), Math.max(left, el.width / 2)) : left)
-    // this.bottom = Math.round(box.bottom - start.top)
-    /*const bottom = Math.round(box.bottom - start.top)
-    if(bottom < 16) {
-      this.bottom = bottom
-    } else {
-      this.bottom = Math.round(box.bottom - end.bottom) - 64
-    }*/
-    this.bottom = Math.round(box.bottom - end.bottom) - 64
     this.isActive = true
 
     this.sendUpdate()
