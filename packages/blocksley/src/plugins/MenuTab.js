@@ -83,7 +83,7 @@ class Menu {
 
 export default function (options) {
   return new Plugin({
-    key: new PluginKey('menu_bubble'),
+    key: new PluginKey('menu_tab'),
     view(editorView) {
       return new Menu({ editorView, options })
     },

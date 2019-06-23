@@ -2,7 +2,7 @@
     <editor-menu-tab :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
 
       <q-btn-group flat
-        class="menububble"
+        class="menutab"
         :class="{ 'is-active': menu.isActive }"
         :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
       >

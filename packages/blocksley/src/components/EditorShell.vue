@@ -32,7 +32,7 @@
       <shell-menu ref="menu">
         <slot name="menu"/>
       </shell-menu>
-      <slot v-if="useBubble" name="bubble" style="z-index:65535"/>
+      <slot name="aux"/>
       <shell-dialog ref="dialog" content-class="menubar-dark">
         <template v-slot:default="slotScope">
           <slot name="menu" v-bind:content-class="slotScope.contentClass"/>
@@ -66,8 +66,6 @@ export default {
       parentShell: null,
       toolbarVisible: this.$q.platform.is.desktop,
       menuVisible: false,
-      // useBubble: this.$q.platform.is.desktop,
-      useBubble: true,
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
@@ -97,6 +95,7 @@ export default {
     const closest = this.$el.parentElement.closest('.editor-shell')
     this.parentShell = closest ? closest.__vue__ : null
     if(this.parentShell) {
+      console.log('parent shell')
       console.log(this.parentShell)
       this.parentShell.hideToolbar()
     }
@@ -123,8 +122,8 @@ export default {
       this.isActive = false
     },
     onKeyUp (e) {
-      console.log('keyup')
-      console.log(e)
+      // console.log('keyup')
+      // console.log(e)
       if(e.key == 'Escape') {
         this.frame.use('viewer')
       }

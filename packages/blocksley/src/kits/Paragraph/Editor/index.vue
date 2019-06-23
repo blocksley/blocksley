@@ -5,7 +5,7 @@
     </q-dialog>
     <span slot="title">Paragraph</span>
     <main-menu slot="menu" :vu="this" :editor="editor"/>
-    <aux-menu slot="bubble" :editor = "editor" />
+    <aux-menu slot="aux" :editor = "editor" />
     <floating-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
   </editor-shell>

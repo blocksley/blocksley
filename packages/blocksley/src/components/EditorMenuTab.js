@@ -65,7 +65,7 @@ export default {
   },
 
   beforeDestroy() {
-    this.editor.unregisterPlugin('menu_bubble')
+    this.editor.unregisterPlugin('menu_tab')
   },
 
 }
