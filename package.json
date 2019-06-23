@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "deploy" : "node ./scripts/deploy.js"
+    "deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {},
   "devDependencies": {
