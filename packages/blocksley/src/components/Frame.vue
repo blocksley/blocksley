@@ -84,8 +84,8 @@ export default {
       this.grippy = false
     },
     onClickAway (e) {
-      // console.log('click away')
-      // console.log(e)
+      console.log('frame clickAway')
+      console.log(e)
       if(this.root || this.isEventInElement(e, this.$el) || this.$el.contains(e.target)) {
         return
       }

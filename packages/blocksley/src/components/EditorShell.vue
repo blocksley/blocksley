@@ -32,7 +32,7 @@
       <shell-menu ref="menu">
         <slot name="menu"/>
       </shell-menu>
-      <slot v-if="useBubble" name="bubble"/>
+      <slot v-if="useBubble" name="bubble" style="z-index:65535"/>
       <shell-dialog ref="dialog" content-class="menubar-dark">
         <template v-slot:default="slotScope">
           <slot name="menu" v-bind:content-class="slotScope.contentClass"/>

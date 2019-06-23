@@ -43,12 +43,12 @@ import {
 
 import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
 
-import { BlockEditorMixin } from 'blocksley/mixins'
+import { BlockEditorMixin, UiMixin } from 'blocksley/mixins'
 import EditorShell from 'blocksley/components/EditorShell'
 
 export default {
   name: 'HtmlBlockEditor',
-  mixins: [ BlockEditorMixin ],
+  mixins: [ BlockEditorMixin, UiMixin ],
   props: ['frame', 'model'],
   components: {
     EditorContent,
@@ -97,6 +97,7 @@ export default {
     console.log(this.editor)
     //this.editor.element.onfocus = () => { this.editor.element.blur() }
     // this.editor.setContent(this.model.data)
+    this.setToolbar(BubbleMenu)
   },
   beforeDestroy () {
     console.log('html editor destroyed')

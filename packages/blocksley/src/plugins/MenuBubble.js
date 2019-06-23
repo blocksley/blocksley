@@ -66,7 +66,18 @@ class Menu {
     this.isActive = false
     this.left = 0
     this.bottom = 0
-
+    // new stuff
+    console.log('MenuBubble')
+    const el = this.options.element
+    const style = el.style
+    style.position = 'relative'
+    // style.transform = 'none'
+    // style.opacity = 1
+    // style.visibility = 'visible'
+    console.log(el)
+    const parentEl = this.parentEl = document.querySelector('.q-footer .q-bar');
+    console.log(parentEl)
+    parentEl.appendChild(el)
     // the mousedown event is fired before blur so we can prevent it
     this.options.element.addEventListener('mousedown', this.handleClick)
 
@@ -133,8 +144,8 @@ class Menu {
   sendUpdate() {
     this.options.onUpdate({
       isActive: this.isActive,
-      left: this.left,
-      bottom: this.bottom,
+      //left: this.left,
+      //bottom: this.bottom,
     })
   }
 
@@ -148,6 +159,7 @@ class Menu {
   }
 
   destroy() {
+    this.parentEl.removeChild(this.options.element)
     this.options.element.removeEventListener('mousedown', this.handleClick)
   }
 
