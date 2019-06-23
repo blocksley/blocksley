@@ -45,9 +45,7 @@ export default {
   mounted () {
     console.log('editor mounted')
     console.log(this.page)
-    if(!this.page) {
-      this.setPage(this.model)
-    }
+    this.setPage(this.model)
   },
   beforeDestroy () {
     console.log('editor destroyed')

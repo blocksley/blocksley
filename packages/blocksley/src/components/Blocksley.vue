@@ -40,7 +40,9 @@ export default {
     }
   },
   created () {
-    this.$store.registerModule('blocksley', BlocksleyStore)
+    if(!this.$store.state.blocksley) {
+      this.$store.registerModule('blocksley', BlocksleyStore)
+    }
   },
   mounted () {
     this.$refs.frame.activate()

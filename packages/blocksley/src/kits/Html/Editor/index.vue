@@ -99,10 +99,12 @@ export default {
     // this.editor.setContent(this.model.data)
     this.setToolbar(AuxMenu)
   },
+  updated () {
+    this.model.data = this.editor.getHTML()
+    this.model.content = this.editor.getJSON()
+  },
   beforeDestroy () {
     console.log('html editor destroyed')
-    this.model.data = this.editor.getHTML()
-    // this.model.data = this.editor.getJSON()
     console.log(this.editor.getJSON())
     console.log(this.editor)
     this.editor.destroy()

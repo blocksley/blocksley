@@ -6,6 +6,7 @@ class Model {
     this.type = type
     this.id = nanoid()
     this.state = 'normal'
+    this.content = null
     this.children = []
     this.width = 16
     this.height = 16
