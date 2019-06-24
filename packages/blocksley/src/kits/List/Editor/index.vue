@@ -39,11 +39,11 @@ import {
 } from 'tiptap-extensions'
 
 import EditorShell from 'blocksley/components/EditorShell'
-import { BlockEditorMixin } from 'blocksley/mixins'
+import { BlockEditorMixin, RichEditorMixin  } from 'blocksley/mixins'
 
 export default {
   name: 'HtmlBlockEditor',
-  mixins: [ BlockEditorMixin ],
+  mixins: [ BlockEditorMixin, RichEditorMixin ],
   props: ['frame', 'model'],
   components: {
     EditorShell,

@@ -43,12 +43,12 @@ import {
 
 import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
 
-import { BlockEditorMixin, UiMixin } from 'blocksley/mixins'
+import { BlockEditorMixin, RichEditorMixin, UiMixin } from 'blocksley/mixins'
 import EditorShell from 'blocksley/components/EditorShell'
 
 export default {
   name: 'HtmlBlockEditor',
-  mixins: [ BlockEditorMixin, UiMixin ],
+  mixins: [ BlockEditorMixin, RichEditorMixin, UiMixin ],
   props: ['frame', 'model'],
   components: {
     EditorContent,
@@ -97,20 +97,7 @@ export default {
     console.log(this.editor)
     // this.editor.setContent(this.model.data)
   },
-  deactivated () {
-    console.log('html editor deactivated')
-    this.model.data = this.editor.getHTML()
-    this.model.content = this.editor.getJSON()
-    console.log(this.model)
-  },
-  beforeDestroy () {
-    console.log('html editor destroyed')
-    this.editor.destroy()
-  },
   methods: {
-    editText () {
-      this.$router.push(`/pages/${this.id}/text`)
-    },
     showImagePrompt () {
       this.showImgChooser = true
     },
@@ -121,10 +108,6 @@ export default {
     },
     insertImageBlock () {
       this.editor.commands.imageBlock()
-    },
-    onSwitch () {
-      // this.setEditor(this.editor)
-      // this.setToolbar(Toolbar)
     },
     onFocus (args) {
       console.log('editor focus')

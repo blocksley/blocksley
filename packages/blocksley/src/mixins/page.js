@@ -1,22 +1,18 @@
-import { mapGetters, mapActions } from 'vuex'
-
-var page = null
-
 export default {
   computed: {
-    page: {
+    $page: {
       get: function () {
-        return page
+        console.log('getter')
+        console.log(this.$blocksley.page)
+        return this.$blocksley.page
       },
       set: function (val) {
-        page = val
+        console.log('page set')
+        console.log(val)
+        this.$blocksley.page = val
       }
     },
-    ...mapGetters([
-    ])
   },
   methods: {
-    ...mapActions([
-    ])
   }
 }

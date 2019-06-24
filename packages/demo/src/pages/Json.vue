@@ -22,7 +22,7 @@ export default {
   components: {
   },
   mounted () {
-    const json = this.json = this.page.stringify({
+    const json = this.json = this.$page.stringify({
       indent: '  ',
       singleQuotes: false
     })

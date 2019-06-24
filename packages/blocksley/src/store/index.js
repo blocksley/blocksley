@@ -6,7 +6,6 @@ const state = {
   models: null,
   kits: null,
   view: null,
-  page: null,
   toolbar: null,
   editor: null,
   edited: null,
@@ -18,7 +17,6 @@ const getters = {
   models: (state) => state.models,
   kits: (state) => state.kits,
   view: (state) => state.view,
-  page: (state) => state.page,
   toolbar: (state) => state.toolbar,
   $editor: (state) => state.editor,
   edited: (state) => state.edited,
@@ -29,9 +27,6 @@ const getters = {
 const actions = {
   setView: ({ commit }, data) => {
     commit('view', data)
-  },
-  setPage: ({ commit }, data) => {
-    commit('page', data)
   },
   setToolbar: (context, toolbar) => {
     context.commit('toolbar', toolbar)
@@ -56,9 +51,6 @@ const actions = {
 const mutations = {
   view: (state, data) => {
     state.view = data
-  },
-  page: (state, data) => {
-    state.page = data
   },
   toolbar: (state, toolbar) => {
     state.toolbar = toolbar

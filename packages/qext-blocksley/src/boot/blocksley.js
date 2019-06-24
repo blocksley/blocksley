@@ -1,3 +1,4 @@
+import $blocksley from '@blocksley/blocksley'
 import { Blocksley } from '@blocksley/blocksley'
 
 export default (options) => {
@@ -5,5 +6,6 @@ export default (options) => {
   console.log('blocksley boot ...')
   console.log(Blocksley)
   console.log(options)
+  Vue.prototype.$blocksley = $blocksley
   Vue.component('blocksley', Blocksley)
 }

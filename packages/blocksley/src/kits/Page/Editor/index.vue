@@ -43,12 +43,10 @@ export default {
     }
   },
   created () {
-    console.log('editor created')
-    this.page = this.model
-    console.log(this.page)
+    console.log('page editor created')
   },
   beforeDestroy () {
-    console.log('editor destroyed')
+    console.log('page editor destroyed')
   },
   methods: {
     onDragStart () {
