@@ -23,15 +23,15 @@ export default {
     console.log(this.node)
     console.log(this.view)
     if (this.model.state === 'create') {
-      if (kits[this.model.type].creator) {
-        this.vu = kits[this.model.type].creator
+      if (kits[this.model.type].Creator) {
+        this.vu = kits[this.model.type].Creator
       } else {
         console.log(this.model.type)
         this.model.state = 'normal'
-        this.vu = kits[this.model.type].editor
+        this.vu = kits[this.model.type].Editor
       }
     } else {
-      this.vu = kits[this.model.type].viewer
+      this.vu = kits[this.model.type].Viewer
     }
   },
   beforeDestroy () {
@@ -48,12 +48,12 @@ export default {
       this.$emit('active', this)
     },
     activate () {
-      this.vu = kits[this.model.type].editor
+      this.vu = kits[this.model.type].Editor
     },
     deactivate () {
       console.log('deactivate')
       this.isActive = false
-      this.vu = kits[this.model.type].viewer
+      this.vu = kits[this.model.type].Viewer
     },
     onClickAway () {
       this.deactivate()

@@ -13,7 +13,7 @@
         <shell-fab icon="more_vert" color="primary">
           <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
           <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-          <q-btn fab-mini icon="visibility" color="primary" @click="frame.use('viewer')"/>
+          <q-btn fab-mini icon="visibility" color="primary" @click="frame.use('Viewer')"/>
           <shell-fab fab-mini icon="unfold_more" color="primary">
             <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
             <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
@@ -125,7 +125,7 @@ export default {
       // console.log('keyup')
       // console.log(e)
       if(e.key == 'Escape') {
-        this.frame.use('viewer')
+        this.frame.use('Viewer')
       }
     },
     onFocus (e) {

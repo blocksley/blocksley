@@ -4,7 +4,7 @@ export default {
   },
   methods: {
     edit () {
-      this.frame.vu = kits[this.model.type].editor
+      this.frame.vu = kits[this.model.type].Editor
     },
     add () {
       this.$emit('action', { type: 'add', model: this.model })

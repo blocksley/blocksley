@@ -51,15 +51,15 @@ export default {
   mounted () {
     console.log(this.model)
     if (this.model.state === 'create') {
-      if (kits[this.model.type].creator) {
-        this.vu = kits[this.model.type].creator
+      if (kits[this.model.type].Creator) {
+        this.vu = kits[this.model.type].Creator
       } else {
         // TODO:  Throw an error?
         this.model.state = 'normal'
-        this.vu = kits[this.model.type].editor
+        this.vu = kits[this.model.type].Editor
       }
     } else {
-      this.vu = kits[this.model.type].viewer
+      this.vu = kits[this.model.type].Viewer
     }
   },
   beforeDestroy () {
@@ -76,11 +76,11 @@ export default {
       this.$emit('active', this)
     },
     activate () {
-      this.use('editor')
+      this.use('Editor')
     },
     deactivate () {
       this.isActive = false
-      this.use('viewer')
+      this.use('Viewer')
     },
     onDragStart () {
       console.log('frame drag started')
