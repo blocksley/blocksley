@@ -1,6 +1,8 @@
 <template>
   <div v-clickaway="onClickAway">
+  <keep-alive>
     <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
+  </keep-alive>
   </div>
 </template>
 

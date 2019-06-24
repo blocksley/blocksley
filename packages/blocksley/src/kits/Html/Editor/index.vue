@@ -95,18 +95,16 @@ export default {
   mounted () {
     console.log('html editor mounted')
     console.log(this.editor)
-    //this.editor.element.onfocus = () => { this.editor.element.blur() }
     // this.editor.setContent(this.model.data)
-    this.setToolbar(AuxMenu)
   },
-  updated () {
+  deactivated () {
+    console.log('html editor deactivated')
     this.model.data = this.editor.getHTML()
     this.model.content = this.editor.getJSON()
+    console.log(this.model)
   },
   beforeDestroy () {
     console.log('html editor destroyed')
-    console.log(this.editor.getJSON())
-    console.log(this.editor)
     this.editor.destroy()
   },
   methods: {
