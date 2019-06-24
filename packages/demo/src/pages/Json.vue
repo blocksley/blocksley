@@ -8,11 +8,11 @@
 </style>
 
 <script>
-import { UiMixin } from 'blocksley/mixins'
+import { UiMixin, PageMixin } from 'blocksley/mixins'
 
 export default {
   name: 'PageJson',
-  mixins: [ UiMixin ],
+  mixins: [ UiMixin, PageMixin ],
   data () {
     return {
       json: '',

@@ -42,8 +42,8 @@
       content-class="bg-grey-2"
     >
       <q-toolbar class="app-toolbar" style="color:white">
-
         <q-toolbar-title>
+        <q-icon name="mdi-cube-outline"/>
           Blocksley Demo
         </q-toolbar-title>
         <q-btn

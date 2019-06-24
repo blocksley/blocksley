@@ -23,13 +23,13 @@ import { Add, Title, List, Image, Paragraph, Html, Page } from 'blocksley/models
 import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
 
-import { BlockEditorMixin, UiMixin } from 'blocksley/mixins'
+import { BlockEditorMixin, UiMixin, PageMixin } from 'blocksley/mixins'
 import Frame from 'blocksley/components/Frame'
 import EditorShell from 'blocksley/components/EditorShell'
 
 export default {
   name: 'PageEditor',
-  mixins: [ BlockEditorMixin, UiMixin ],
+  mixins: [ BlockEditorMixin, UiMixin, PageMixin ],
   props: ['frame', 'model'],
   components: {
     Frame,
@@ -42,10 +42,10 @@ export default {
       active: null
     }
   },
-  mounted () {
-    console.log('editor mounted')
+  created () {
+    console.log('editor created')
+    this.page = this.model
     console.log(this.page)
-    this.setPage(this.model)
   },
   beforeDestroy () {
     console.log('editor destroyed')

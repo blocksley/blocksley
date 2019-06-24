@@ -11,7 +11,6 @@ export default {
       }
     },
     ...mapGetters([
-      'page',
       'toolbar',
       '$editor',
       'edited',
@@ -20,7 +19,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setPage',
       'toggleLeftDrawer',
       'setLeftDrawerOpen',
       'setToolbar',
