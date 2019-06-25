@@ -20,7 +20,6 @@ class Menu {
     console.log(el)
     const parentEl = this.parentEl = document.querySelector('.q-footer .q-bar');
     console.log(parentEl)
-    // parentEl.appendChild(el)
     // the mousedown event is fired before blur so we can prevent it
     this.options.element.addEventListener('mousedown', this.handleClick)
 
@@ -33,7 +32,8 @@ class Menu {
 
     this.options.editor.on('blur', ({ event }) => {
       console.log('menutab on editor blur')
-      this.parentEl.removeChild(this.options.element)
+      if (this.isActive)
+        this.parentEl.removeChild(this.options.element)
       this.hide(event)
     })
   }
@@ -80,7 +80,8 @@ class Menu {
 
   destroy() {
     console.log('menutab destroy')
-    this.parentEl.removeChild(this.options.element)
+    if (this.isActive)
+      this.parentEl.removeChild(this.options.element)
     this.options.element.removeEventListener('mousedown', this.handleClick)
   }
 

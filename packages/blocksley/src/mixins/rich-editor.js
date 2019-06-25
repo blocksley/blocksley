@@ -3,6 +3,7 @@ export default {
   },
   deactivated () {
     console.log('rich editor deactivated')
+    console.log(this)
     this.model.data = this.editor.getHTML()
     this.model.content = this.editor.getJSON()
     console.log(this.model)
