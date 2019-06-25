@@ -73,18 +73,11 @@ import { EditorFloatingMenu } from 'tiptap'
 export default {
   name: 'HtmlEditorFloatingMenu',
   mixins: [ ],
-  props: ['view', 'editor'],
+  props: ['vu', 'editor'],
   components: {
     EditorFloatingMenu
   },
   methods: {
-    goBack () {
-      this.$router.go(-1)
-    },
-    showImagePrompt (command) {
-      console.log(this.view)
-      this.view.showImagePrompt(command)
-    }
   }
 }
 </script>

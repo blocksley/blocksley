@@ -1,5 +1,5 @@
 <template>
-    <editor-menu-tab :editor="editor" :keep-in-bounds="keepInBounds" v-slot="{ commands, isActive, menu }">
+    <editor-menu-tab :editor="editor" v-slot="{ commands, isActive, menu }">
 
       <q-btn-group flat
         class="menutab"
@@ -54,28 +54,19 @@
 </template>
 
 <script>
-// import { EditorMenuTab } from 'tiptap'
 import EditorMenuTab from 'blocksley/components/EditorMenuTab'
 export default {
   name: 'AuxMenu',
   mixins: [ ],
-  props: ['view', 'editor'],
+  props: ['vu', 'editor'],
   components: {
     EditorMenuTab
   },
   data () {
     return {
-      keepInBounds: true
     }
   },
   methods: {
-    goBack () {
-      this.$router.go(-1)
-    },
-    showImagePrompt (command) {
-      console.log(this.view)
-      this.view.showImagePrompt(command)
-    }
   }
 }
 </script>

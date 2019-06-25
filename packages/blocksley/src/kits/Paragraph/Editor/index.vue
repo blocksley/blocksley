@@ -91,17 +91,6 @@ export default {
     this.editor.destroy()
   },
   methods: {
-    editText () {
-      this.$router.push(`/pages/${this.id}/text`)
-    },
-    showImagePrompt (command) {
-      this.showImgChooser = true
-    },
-    insertImage (image) {
-      const src = image.src
-      this.editor.commands.image({ src })
-      this.showImgChooser = false
-    }
   }
 }
 </script>

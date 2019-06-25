@@ -21,15 +21,6 @@ export default {
   components: {
   },
   methods: {
-    showImagePrompt (command) {
-      console.log(this.vu)
-      this.vu.showImagePrompt(command)
-      /*
-      const src = prompt('Enter the url of your image here')
-      if (src !== null) {
-        command({ src })
-      } */
-    }
   }
 }
 </script>

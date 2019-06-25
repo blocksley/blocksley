@@ -25,19 +25,9 @@
         <slot name="menu"/>
       </q-toolbar>
     </div>
-    <div>
-      <div class="shell-inner" @contextmenu="contentContext">
-        <slot/>
-      </div>
-      <shell-menu ref="menu">
-        <slot name="menu"/>
-      </shell-menu>
+    <div class="shell-inner" @contextmenu="contentContext">
+      <slot/>
       <slot name="aux"/>
-      <shell-dialog ref="dialog" content-class="menubar-dark">
-        <template v-slot:default="slotScope">
-          <slot name="menu" v-bind:content-class="slotScope.contentClass"/>
-        </template>
-      </shell-dialog>
     </div>
   </div>
 </template>

@@ -6,11 +6,7 @@ export default {
     editor: {
       default: null,
       type: Object,
-    },
-    keepInBounds: {
-      default: true,
-      type: Boolean,
-    },
+    }
   },
 
   data() {
@@ -32,7 +28,6 @@ export default {
             editor.registerPlugin(MenuTab({
               editor,
               element: this.$el,
-              keepInBounds: this.keepInBounds,
               onUpdate: menu => {
                 // the second check ensures event is fired only once
                 if (menu.isActive && this.menu.isActive === false) {

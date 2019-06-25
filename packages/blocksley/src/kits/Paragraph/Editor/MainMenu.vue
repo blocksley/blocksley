@@ -32,13 +32,6 @@ export default {
     EditorMenuBar
   },
   methods: {
-    goBack () {
-      this.$router.go(-1)
-    },
-    showImagePrompt (command) {
-      console.log(this.vu)
-      this.vu.showImagePrompt(command)
-    }
   }
 }
 </script>
