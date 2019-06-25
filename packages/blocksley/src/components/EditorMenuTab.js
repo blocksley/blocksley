@@ -58,7 +58,6 @@ export default {
       menu: this.menu,
     })
   },
-
   beforeDestroy() {
     this.editor.unregisterPlugin('menu_tab')
   },

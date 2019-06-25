@@ -17,22 +17,24 @@ class Menu {
     const el = this.options.element
     const style = el.style
     style.position = 'relative'
-    // style.transform = 'none'
-    // style.opacity = 1
-    // style.visibility = 'visible'
     console.log(el)
     const parentEl = this.parentEl = document.querySelector('.q-footer .q-bar');
     console.log(parentEl)
-    parentEl.appendChild(el)
+    // parentEl.appendChild(el)
     // the mousedown event is fired before blur so we can prevent it
     this.options.element.addEventListener('mousedown', this.handleClick)
 
     this.options.editor.on('focus', ({ view }) => {
+      console.log('menutab on editor focus')
+      const el = this.options.element
+      this.parentEl.appendChild(el)
       this.update(view)
     })
 
     this.options.editor.on('blur', ({ event }) => {
-      // this.hide(event)
+      console.log('menutab on editor blur')
+      this.parentEl.removeChild(this.options.element)
+      this.hide(event)
     })
   }
 
@@ -66,15 +68,18 @@ class Menu {
   }
 
   hide(event) {
+    console.log('menutab hide')
+    /*
     if (event && event.relatedTarget) {
       return
     }
-
+    */
     this.isActive = false
     this.sendUpdate()
   }
 
   destroy() {
+    console.log('menutab destroy')
     this.parentEl.removeChild(this.options.element)
     this.options.element.removeEventListener('mousedown', this.handleClick)
   }

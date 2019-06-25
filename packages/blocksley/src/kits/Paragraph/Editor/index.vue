@@ -1,8 +1,5 @@
 <template>
   <editor-shell :vu="this">
-    <q-dialog v-model="showImgChooser">
-      <ImageChooser :select="insertImage" />
-    </q-dialog>
     <span slot="title">Paragraph</span>
     <main-menu slot="menu" :vu="this" :editor="editor"/>
     <aux-menu slot="aux" :editor = "editor" />
