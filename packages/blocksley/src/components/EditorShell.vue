@@ -96,9 +96,6 @@ export default {
       set (val) {
         this.frame.grippy = val
       }
-    },
-    grippyIcon () {
-      return this.grippy ? 'unfold_more' : 'more_vert'
     }
   },
   mounted () {

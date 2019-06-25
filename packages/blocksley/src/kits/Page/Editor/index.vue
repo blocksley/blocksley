@@ -40,7 +40,6 @@ export default {
   },
   data () {
     return {
-      active: null
     }
   },
   created () {
@@ -54,8 +53,7 @@ export default {
       console.log('drag start')
     },
     onDragEnd () {
-      console.log(this.active.vu)
-      this.active.grippy = false
+      console.log('drag end')
     },
     onAction (action) {
       var model, ndx
