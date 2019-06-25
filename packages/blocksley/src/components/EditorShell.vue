@@ -25,7 +25,8 @@
         <slot name="menu"/>
       </q-toolbar>
     </div>
-    <div class="shell-inner" @contextmenu="contentContext">
+    <!-- <div class="shell-inner" @contextmenu="contentContext"> -->
+    <div class="shell-inner">
       <slot/>
       <slot name="aux"/>
     </div>

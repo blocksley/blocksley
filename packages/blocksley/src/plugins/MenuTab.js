@@ -2,7 +2,7 @@ import { Plugin, PluginKey } from 'prosemirror-state'
 
 class Menu {
 
-  constructor({ options, editorView }) {
+  constructor ({ options, editorView }) {
     this.options = {
       ...{
         element: null,
@@ -38,11 +38,11 @@ class Menu {
     })
   }
 
-  handleClick(event) {
+  handleClick (event) {
     event.preventDefault()
   }
 
-  update(view, lastState) {
+  update (view, lastState) {
     const { state } = view
 
     // Don't do anything if the document/selection didn't change
@@ -61,24 +61,19 @@ class Menu {
     this.sendUpdate()
   }
 
-  sendUpdate() {
+  sendUpdate () {
     this.options.onUpdate({
       isActive: this.isActive
     })
   }
 
-  hide(event) {
+  hide (event) {
     console.log('menutab hide')
-    /*
-    if (event && event.relatedTarget) {
-      return
-    }
-    */
     this.isActive = false
     this.sendUpdate()
   }
 
-  destroy() {
+  destroy () {
     console.log('menutab destroy')
     if (this.isActive)
       this.parentEl.removeChild(this.options.element)
