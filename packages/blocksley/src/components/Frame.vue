@@ -1,7 +1,7 @@
 <template>
-  <div v-clickaway="onClickAway">
+<div class="block-frame">
   <keep-alive>
-    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
+    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction"/>
   </keep-alive>
   </div>
 </template>
@@ -32,34 +32,25 @@ export default {
   },
   data () {
     return {
+      parent: null,
       vu: null,
-      isActive: false,
       grippy: false
     }
   },
   computed: {
   },
-  /* watch: {
-    model: {
-      deep: true,
-      handler () {
-        console.log('model changed')
-        console.log(this.model)
-      }
-    }
-  }, */
   mounted () {
     console.log(this.model)
     if (this.model.state === 'create') {
       if (kits[this.model.type].Creator) {
-        this.vu = kits[this.model.type].Creator
+        this.use('Creator')
       } else {
         // TODO:  Throw an error?
         this.model.state = 'normal'
-        this.vu = kits[this.model.type].Editor
+        this.use('Editor')
       }
     } else {
-      this.vu = kits[this.model.type].Viewer
+      this.use('Viewer')
     }
   },
   beforeDestroy () {
@@ -71,15 +62,10 @@ export default {
     onAction (action) {
       this.$emit('action', action)
     },
-    onActive () {
-      this.isActive = true
-      this.$emit('active', this)
-    },
-    activate () {
+    edit () {
       this.use('Editor')
     },
-    deactivate () {
-      this.isActive = false
+    browse () {
       this.use('Viewer')
     },
     onDragStart () {
@@ -87,15 +73,6 @@ export default {
     },
     onDragEnd () {
       this.grippy = false
-    },
-    onClickAway (e) {
-      // console.log('frame clickAway')
-      // console.log(e)
-      return
-      if(this.root || this.isEventInElement(e, this.$el) || this.$el.contains(e.target)) {
-        return
-      }
-        this.deactivate()
     },
     isEventInElement(event, element)   {
       var rect = element.getBoundingClientRect();

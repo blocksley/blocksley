@@ -47,11 +47,6 @@ export default {
       this.isActive = true
       this.$emit('active', this)
     },
-    activate () {
-    },
-    deactivate () {
-      this.isActive = false
-    },
     onClick (e) {
       if(!e.defaultPrevented) {
         this.vu.edit()

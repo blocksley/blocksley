@@ -1,6 +1,6 @@
 <template>
   <div ref="shell" tabindex="-1" class="editor-shell" @keyup="onKeyUp" @focus="onFocus" @blur="onBlur">
-    <div class="shell-header" :class="{'sticky-header': stickyHeader}">
+    <div v-if="parent" class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
           <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
@@ -63,7 +63,8 @@ export default {
       frame: { grippy: false },
       model: {},
       view: null,
-      parentShell: null,
+      parent: null,
+      _activeChild: null,
       toolbarVisible: this.$q.platform.is.desktop,
       menuVisible: false,
       delay: 250,
@@ -74,6 +75,20 @@ export default {
     }
   },
   computed: {
+    activeChild: {
+      get () {
+        return this._activeChild
+      },
+      set (child) {
+        if (this._activeChild && this._activeChild !== child) {
+          this._activeChild.close()
+        }
+        this._activeChild = child
+        if(!this._activeChild) {
+          this.showToolbar()
+        }
+      }
+    },
     grippy: {
       get () {
         return this.frame.grippy
@@ -87,55 +102,78 @@ export default {
     }
   },
   mounted () {
-    console.log('editor shell mounted')
-    this.frame = this.vu.frame
-    this.model = this.vu.model
-    console.log(this.model)
-    this.view = this.editor ? this.editor.view : null
-    const closest = this.$el.parentElement.closest('.editor-shell')
-    this.parentShell = closest ? closest.__vue__ : null
-    if(this.parentShell) {
-      console.log('parent shell')
-      console.log(this.parentShell)
-      this.parentShell.hideToolbar()
-    }
-    this.$refs.shell.focus()
+    this.onOpen()
+  },
+  activated () {
+    this.onOpen()
+  },
+  deactivated () {
+    this.onClose()
   },
   beforeDestroy () {
-    this.$refs.shell.blur()
-    if(this.parentShell) {
-      console.log(this.parentShell)
-      this.parentShell.showToolbar()
-    }
+    this.onClose()
   },
   methods: {
     onAction (action) {
       this.$emit('action', action)
     },
-    onActive () {
-      this.isActive = true
-      this.$emit('active', this)
+    onOpen () {
+      console.log('shell opened')
+      this.frame = this.vu.frame
+      this.model = this.vu.model
+      console.log(this.model)
+      if(this.editor) {
+        this.view = this.editor.view
+        this.editor.on('focus', this.onEditorFocus)
+        this.editor.on('blur', this.onEditorBlur)
+      }
+      //
+      const closest = this.$el.parentElement.closest('.editor-shell')
+      this.parent = closest ? closest.__vue__ : null
+
+      if(this.parent) {
+        console.log('parent shell')
+        console.log(this.parent)
+        this.parent.hideToolbar()
+        this.parent.activeChild = this
+      }
+      this.$refs.shell.focus()
     },
-    activate () {
+    close () {
+      console.log('close shell')
+      console.log(this.frame)
+      this.frame.use('Viewer')
     },
-    deactivate () {
-      this.isActive = false
+    onClose () {
+      console.log('shell closed')
+      this.$refs.shell.blur()
     },
     onKeyUp (e) {
       // console.log('keyup')
       // console.log(e)
-      if(e.key == 'Escape') {
+      // TODO: This needs more work
+      if(e.key == 'Escape' && this.parent) {
         this.frame.use('Viewer')
       }
     },
     onFocus (e) {
       console.log('shell focus')
       console.log(e)
+      this.activeChild = null
       this.showToolbar()
     },
     onBlur (e) {
       console.log('shell blur')
       console.log(e)
+    },
+    onEditorFocus (args) {
+      console.log('editor focus')
+      console.log(args)
+      this.onFocus(args.event)
+    },
+    onEditorBlur (args) {
+      console.log('editor blur')
+      console.log(args)
     },
     hideMenu (e) {
       console.log('click away')
@@ -174,7 +212,7 @@ export default {
     },
     barClick (e) {
       console.log('detect bar click')
-      e.preventDefault()
+      // e.preventDefault()
       this.barClicks++;
       if (this.barClicks === 1) {
         setTimeout(() => {

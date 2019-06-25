@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted () {
-    this.$refs.frame.activate()
+    this.$refs.frame.edit()
   },
   beforeDestroy () {
   },

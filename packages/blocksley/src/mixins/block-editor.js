@@ -7,9 +7,6 @@ export default {
     this.$emit('active', this)
   },
   methods: {
-    view () {
-      this.frame.deactivate()
-    },
     add () {
       this.$emit('action', { type: 'add', model: this.model })
     },

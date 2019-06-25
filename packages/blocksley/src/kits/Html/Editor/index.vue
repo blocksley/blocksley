@@ -63,8 +63,6 @@ export default {
       edit: false,
       editor: new Editor({
         autoFocus: true,
-        onFocus: this.onFocus,
-        onBlur: this.onBlur,
         content: this.model.data,
         extensions: [
           new Blockquote(),

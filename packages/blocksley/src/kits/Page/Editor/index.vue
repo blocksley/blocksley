@@ -1,19 +1,20 @@
 <template>
   <div class="page-editor">
-    <draggable v-model="model.children"
-      group="blocks"
-      handle=".grippy"
-      @start="onDragStart()"
-      @end="onDragEnd()"
-    >
-      <frame v-for="child in model.children"
-        :key="child.id"
-        :model="child"
-        class="noselect"
-        @action="onAction"
-        @active="onActive"
-        />
-    </draggable>
+    <editor-shell :vu="this">
+      <draggable v-model="model.children"
+        group="blocks"
+        handle=".grippy"
+        @start="onDragStart()"
+        @end="onDragEnd()"
+      >
+        <frame v-for="child in model.children"
+          :key="child.id"
+          :model="child"
+          class="noselect"
+          @action="onAction"
+          />
+      </draggable>
+    </editor-shell>
   </div>
 </template>
 
@@ -87,12 +88,6 @@ export default {
           break
       }
     },
-    onActive (frame) {
-      if (this.active && this.active !== frame) {
-        this.active.deactivate()
-      }
-      this.active = frame
-    }
   }
 }
 </script>

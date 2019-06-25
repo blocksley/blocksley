@@ -2,8 +2,8 @@ import kits from 'blocksley/kits'
 
 export default {
   template: `
-  <div v-clickaway="onClickAway">
-    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction" @active="this.onActive"/>
+  <div>
+    <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction"/>
   </div>`,
   props: ['node', 'updateAttrs', 'view', 'getPos'],
   data () {
@@ -40,23 +40,17 @@ export default {
     console.log(this.node)
   },
   methods: {
+    use (toolName) {
+      this.vu = kits[this.model.type][toolName]
+    },
     onAction (action) {
       this.$emit('action', action)
     },
-    onActive () {
-      this.isActive = true
-      this.$emit('active', this)
+    edit () {
+      this.use('Editor')
     },
-    activate () {
-      this.vu = kits[this.model.type].Editor
+    browse () {
+      this.use('Viewer')
     },
-    deactivate () {
-      console.log('deactivate')
-      this.isActive = false
-      this.vu = kits[this.model.type].Viewer
-    },
-    onClickAway () {
-      this.deactivate()
-    }
   }
 }
