@@ -58,6 +58,9 @@ export default {
       menu: this.menu,
     })
   },
+  beforeRouteLeave (to, from, next) {
+    this.editor.unregisterPlugin('menu_tab')
+  },
   beforeDestroy() {
     this.editor.unregisterPlugin('menu_tab')
   },

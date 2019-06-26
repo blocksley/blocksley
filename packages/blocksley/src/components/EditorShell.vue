@@ -236,7 +236,7 @@ export default {
         return;
       }
       if(!this.$q.platform.is.desktop) {
-        this.hideKeyboard()
+        // this.hideKeyboard()
         e.preventDefault()
       }
       // this.toggleMenu(e)
