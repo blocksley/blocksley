@@ -25,8 +25,7 @@
         <slot name="menu"/>
       </q-toolbar>
     </div>
-    <!-- <div class="shell-inner" @contextmenu="contentContext"> -->
-    <div class="shell-inner">
+    <div class="shell-inner" @contextmenu="contentContext">
       <slot/>
       <slot name="aux"/>
     </div>
@@ -56,7 +55,8 @@ export default {
       view: null,
       parent: null,
       _activeChild: null,
-      toolbarVisible: this.$q.platform.is.desktop,
+      // toolbarVisible: this.$q.platform.is.desktop,
+      toolbarVisible: true,
       menuVisible: false,
       delay: 250,
       barClicks: 0,
@@ -184,13 +184,6 @@ export default {
     },
     toggleToolbar (e) {
       this.toolbarVisible = !this.toolbarVisible
-      /*
-      if (this.toolbarVisible) {
-        this.$refs.toolbar.show(e)
-      } else {
-        this.$refs.toolbar.hide(e)
-      }
-      */
     },
     toggleGrippy () {
       this.grippy = !this.grippy
@@ -242,13 +235,11 @@ export default {
       if(e.defaultPrevented) {
         return;
       }
-      e.preventDefault()
-      
-      //if(!this.$q.platform.is.desktop) {
+      if(!this.$q.platform.is.desktop) {
         this.hideKeyboard()
-      //}
-      return
-      this.toggleMenu(e)
+        e.preventDefault()
+      }
+      // this.toggleMenu(e)
     },
     hideKeyboard () {
       if (
