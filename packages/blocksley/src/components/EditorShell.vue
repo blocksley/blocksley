@@ -1,5 +1,11 @@
 <template>
-  <div ref="shell" tabindex="-1" class="editor-shell" @keyup="onKeyUp" @focus="onFocus" @blur="onBlur">
+  <div ref="shell"
+    tabindex="-1"
+    class="editor-shell"
+    @keyup="onKeyUp"
+    @focus="onFocus"
+    @blur="onBlur"
+  >
     <div v-if="parent" class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
@@ -9,7 +15,6 @@
         </shell-fab>
         <slot name="title"/>
         <q-space />
-        <!-- <q-btn fab-mini flat icon="build" color="primary"/> -->
         <shell-fab icon="more_vert" color="primary">
           <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
           <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
@@ -25,7 +30,11 @@
         <slot name="menu"/>
       </q-toolbar>
     </div>
-    <div class="shell-inner" @contextmenu="contentContext">
+    <div
+      class="shell-inner"
+      :class="{ 'child-shell': !isRoot }"
+      @contextmenu="contentContext"
+    >
       <slot/>
       <slot name="aux"/>
     </div>
@@ -66,6 +75,9 @@ export default {
     }
   },
   computed: {
+    isRoot () {
+      return this.parent === null
+    },
     activeChild: {
       get () {
         return this._activeChild
@@ -129,7 +141,6 @@ export default {
     },
     close () {
       console.log('close shell')
-      console.log(this.frame)
       this.frame.use('Viewer')
     },
     onClose () {
@@ -141,7 +152,7 @@ export default {
       // console.log(e)
       // TODO: This needs more work
       if(e.key == 'Escape' && this.parent) {
-        this.frame.use('Viewer')
+        this.close()
       }
     },
     onFocus (e) {
@@ -193,7 +204,6 @@ export default {
     },
     barClick (e) {
       console.log('detect bar click')
-      // e.preventDefault()
       this.barClicks++;
       if (this.barClicks === 1) {
         setTimeout(() => {
@@ -273,15 +283,16 @@ shell-background()
 .shell-header
   shell-background()
 
-.editor-shell {
+.editor-shell
   position: relative;
   max-width: 1080px;
+
+.child-shell
   shell-background()
   background-position: 0px -40px
   border-bottom 1px solid rgba(0,0,0,.27);
   box-shadow:
     0px 11px 8px -10px #CCC;
-}
 
 .shell-inner
   position: relative
@@ -298,36 +309,11 @@ shell-background()
 }
 
 .shell-toolbar
-  // padding:0px
   shell-background()
 
 .shell-menu {
   position: absolute;
   left: 0;
   top: -32px;
-}
-.grippy-icon {
-  // font-size: 1.5rem;
-  // position: relative;
-  // position: absolute;
-  margin-right: 8px;
-  // z-index: 990;
-  // opacity: .75;
-}
-
-.grippy-menu {
-  // font-size: 1.5rem;
-  // position: relative;
-  position: absolute;
-  left: 50%;
-  top: -8px;
-  width: 200px;
-  margin-left: -100px;
-  z-index: 990;
-  // margin: 5px;
-  // opacity: .75;
-}
-.grippy-menu > * {
-    margin: 5px;
 }
 </style>
