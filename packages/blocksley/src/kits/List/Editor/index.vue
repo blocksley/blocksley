@@ -1,5 +1,4 @@
 <template>
-  <div>
   <editor-shell :vu="this">
     <span slot="title">List</span>
     <main-menu slot="menu" :vu="this" :editor="editor"/>
@@ -7,7 +6,6 @@
     <aux-menu :editor = "editor" />
     <editor-content class="editor__content" :editor="editor"/>
   </editor-shell>
-  </div>
 </template>
 
 <script>

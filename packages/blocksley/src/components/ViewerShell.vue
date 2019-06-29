@@ -47,10 +47,11 @@ export default {
       this.isActive = true
       this.$emit('active', this)
     },
-    onClick (e) {
-      if(!e.defaultPrevented) {
-        this.vu.edit()
-      }
+    onClick (evt) {
+      if(evt.defaultPrevented)
+        return
+      evt.preventDefault()
+      this.vu.edit()
     },
     onAdd (e) {
       e.preventDefault()

@@ -1,5 +1,4 @@
 <template>
-  <div>
   <editor-shell ref="shell" :vu="this">
     <span slot="title">Image</span>
     <main-menu slot="menu" :vu="this"/>
@@ -13,7 +12,6 @@
     />
     <img ref="image" :src="model.src" :width="this.model.width" :height="this.model.height" style="object-fit:cover;"/>
   </editor-shell>
-  </div>
 </template>
 
 <script>

@@ -83,9 +83,9 @@ export default {
         return this._activeChild
       },
       set (child) {
-        console.log('set active child')
-        console.log(child)
-        console.trace()
+        // console.log('set active child')
+        // console.log(child)
+        // console.trace()
         if (this._activeChild && this._activeChild !== child) {
           this._activeChild.close()
         }
@@ -106,12 +106,6 @@ export default {
   },
   mounted () {
     this.onOpen()
-  },
-  activated () {
-    this.onOpen()
-  },
-  deactivated () {
-    this.onClose()
   },
   beforeDestroy () {
     this.onClose()
@@ -150,11 +144,11 @@ export default {
       console.log('shell closed')
       this.$refs.shell.blur()
     },
-    onKeyUp (e) {
+    onKeyUp (evt) {
       // console.log('keyup')
       // console.log(e)
       // TODO: This needs more work
-      if(e.key == 'Escape' && this.parent) {
+      if(evt.key == 'Escape' && this.parent) {
         this.close()
       }
     },
@@ -167,9 +161,12 @@ export default {
       this.activeChild = null
       this.showToolbar()
     },
-    onBlur (e) {
+    onBlur (evt) {
+      if(evt.defaultPrevented)
+        return
+      evt.preventDefault()
       console.log('shell blur')
-      console.log(e)
+      console.log(evt)
     },
     onEditorFocus (args) {
       console.log('editor focus')

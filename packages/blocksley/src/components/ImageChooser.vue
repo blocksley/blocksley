@@ -32,7 +32,7 @@ export default {
     return {
       title: 'Images',
       images: [
-        new Image('https://i.imgur.com/b78645d.jpg', { title: 'Pugsley\'s Birthday' })
+        new Image('statics/journal-on-desk.jpg', { title: 'Journal on Desk' })
       ],
       maximizedToggle: true
     }
