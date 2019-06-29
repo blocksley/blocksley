@@ -41,8 +41,6 @@ export default {
       if (kits[this.model.type].Creator) {
         this.use('Creator')
       } else {
-        // TODO:  Throw an error?
-        this.model.state = 'normal'
         this.use('Editor')
       }
     } else {

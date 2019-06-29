@@ -1,5 +1,6 @@
 <template>
-    <editor-shell :vu="this" class="page-editor">
+  <div class="page-editor">
+    <editor-shell :vu="this">
       <draggable v-model="model.children"
         group="blocks"
         handle=".grippy"
@@ -14,6 +15,7 @@
           />
       </draggable>
     </editor-shell>
+  </div>
 </template>
 
 <script>

@@ -105,6 +105,14 @@ export default {
     }
   },
   mounted () {
+    this.frame = this.vu.frame
+    this.model = this.vu.model
+    console.log(this.model)
+    if(this.editor) {
+      this.view = this.editor.view
+      this.editor.on('focus', this.onEditorFocus)
+      this.editor.on('blur', this.onEditorBlur)
+    }
     this.onOpen()
   },
   beforeDestroy () {
@@ -116,14 +124,6 @@ export default {
     },
     onOpen () {
       console.log('shell opened')
-      this.frame = this.vu.frame
-      this.model = this.vu.model
-      console.log(this.model)
-      if(this.editor) {
-        this.view = this.editor.view
-        this.editor.on('focus', this.onEditorFocus)
-        this.editor.on('blur', this.onEditorBlur)
-      }
       //
       const closest = this.$el.parentElement.closest('.editor-shell')
       this.parent = closest ? closest.__vue__ : null

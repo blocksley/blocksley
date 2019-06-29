@@ -1,4 +1,6 @@
 <template>
+  <!-- Need this wrapping div or component will bind to shell element.  Bad -->
+  <div>
   <editor-shell :vu="this" :editor="editor">
     <q-dialog v-model="showImgChooser">
       <image-chooser :select="insertImage" />
@@ -9,6 +11,7 @@
     <floating-menu :editor="editor" />
     <editor-content class="editor__content" :editor="editor" />
   </editor-shell>
+  </div>
 </template>
 
 <script>
