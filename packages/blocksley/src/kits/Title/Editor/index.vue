@@ -1,4 +1,5 @@
 <template>
+  <div>
   <editor-shell :vu="this">
     <span slot="title">Title</span>
     <q-input
@@ -8,6 +9,7 @@
       placeholder="Your title here ..."
       input-class="title"/>
   </editor-shell>
+  </div>
 </template>
 
 <script>

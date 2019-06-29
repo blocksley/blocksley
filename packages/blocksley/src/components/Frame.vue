@@ -1,9 +1,9 @@
 <template>
-<!--<div class="block-frame">-->
+<div class="block-frame">
   <keep-alive>
     <component v-bind:is="vu" :frame="this" :model="model" :class="model.class" @action="this.onAction"/>
   </keep-alive>
-  <!--</div>-->
+</div>
 </template>
 
 <script>

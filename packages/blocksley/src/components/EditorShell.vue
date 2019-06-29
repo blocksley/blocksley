@@ -32,7 +32,7 @@
     </div>
     <div
       class="shell-inner"
-      :class="{ 'child-shell': !isRoot }"
+      v-bind:class="{ 'child-shell': !isRoot }"
       @contextmenu="contentContext"
     >
       <slot/>
@@ -83,6 +83,9 @@ export default {
         return this._activeChild
       },
       set (child) {
+        console.log('set active child')
+        console.log(child)
+        console.trace()
         if (this._activeChild && this._activeChild !== child) {
           this._activeChild.close()
         }
@@ -155,9 +158,12 @@ export default {
         this.close()
       }
     },
-    onFocus (e) {
+    onFocus (evt) {
+      if(evt.defaultPrevented)
+        return
+      evt.preventDefault()
       console.log('shell focus')
-      console.log(e)
+      console.log(evt)
       this.activeChild = null
       this.showToolbar()
     },
@@ -175,7 +181,7 @@ export default {
       console.log(args)
     },
     hideMenu (e) {
-      console.log('click away')
+      console.log('hide menu')
       //e.preventDefault()
       this.toggleMenu()
     },
