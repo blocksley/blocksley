@@ -25,11 +25,15 @@ class Menu {
 
     this.options.editor.on('focus', ({ view }) => {
       console.log('menutab on editor focus')
+      const el = this.options.element
+      this.parentEl.appendChild(el)
       this.update(view)
     })
 
     this.options.editor.on('blur', ({ event }) => {
       console.log('menutab on editor blur')
+      if (this.isActive)
+        this.parentEl.removeChild(this.options.element)
       this.hide(event)
     })
   }
@@ -71,6 +75,8 @@ class Menu {
 
   destroy () {
     console.log('menutab destroy')
+    if (this.isActive)
+      this.parentEl.removeChild(this.options.element)
     this.options.element.removeEventListener('mousedown', this.handleClick)
   }
 
