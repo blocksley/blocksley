@@ -70,7 +70,7 @@ export default {
     }
   },
   mounted () {
-    console.log('shell fab mounted')
+    // console.log('shell fab mounted')
     const slots = this.$slots.default 
     // console.log(slots)
     for (var i = 0; i < slots.length; i++) {

@@ -19,29 +19,7 @@ import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
 import AuxMenu from './AuxMenu'
 import ImageChooser from 'blocksley/components/ImageChooser'
-import { Editor, EditorContent } from 'tiptap'
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  // Heading,
-  HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Bold,
-  Code,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  // Image,
-  History
-} from 'tiptap-extensions'
-
-import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
+import { EditorContent } from 'tiptap'
 
 import { BlockEditorMixin, RichEditorMixin, UiMixin } from 'blocksley/mixins'
 import EditorShell from 'blocksley/components/EditorShell'
@@ -61,39 +39,12 @@ export default {
   data () {
     return {
       edit: false,
-      editor: new Editor({
-        autoFocus: true,
-        content: this.model.data,
-        extensions: [
-          new Blockquote(),
-          new BulletList(),
-          new CodeBlock(),
-          new HardBreak(),
-          new Heading({ levels: [1, 2, 3] }),
-          new HorizontalRule(),
-          new ListItem(),
-          new OrderedList(),
-          new TodoItem(),
-          new TodoList(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Link(),
-          new Strike(),
-          new Underline(),
-          new Image(),
-          new History(),
-          new ImageBlock(),
-          new Title()
-        ]
-      }),
       showImgChooser: false
     }
   },
   mounted () {
     console.log('html editor mounted')
     console.log(this.editor)
-    // this.editor.setContent(this.model.data)
   },
   methods: {
     showImagePrompt () {

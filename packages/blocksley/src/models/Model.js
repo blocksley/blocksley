@@ -1,17 +1,25 @@
 import nanoid from 'nanoid'
-import stringifyObject from 'stringify-object'
 
 class Model {
   constructor (type, options) {
     this.type = type
     this.id = nanoid()
     this.state = 'normal'
+    this.editor = null
     this.content = null
     this.children = []
     this.width = 16
     this.height = 16
     this.class = []
     Object.assign(this, options)
+  }
+  toJSON () {
+    return {
+      type: this.type,
+      id: this.id, 
+      content: this.content,
+      children: this.children
+    }
   }
   addChild (child) {
     this.children.push(child)
@@ -33,7 +41,7 @@ class Model {
     this.children.splice(ndx, 1, child)
   }
   stringify(options) {
-    return stringifyObject(this, options)
+    return JSON.stringify(this, null, 2)
   }
 }
 export default Model

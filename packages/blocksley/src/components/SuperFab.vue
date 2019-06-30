@@ -62,7 +62,7 @@ export default {
     }
   },
   mounted () {
-    console.log('shell fab mounted')
+    // console.log('shell fab mounted')
     /*
     switch(this.direction) {
       case 'left':

@@ -164,7 +164,7 @@ export default {
     },
     onClose () {
       console.log('shell closed')
-      this.$refs.shell.blur()
+      // this.$refs.shell.blur()
     },
     onKeyUp (evt) {
       // console.log('keyup')
