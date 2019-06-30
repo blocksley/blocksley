@@ -66,6 +66,7 @@ export default {
       }
     },
     contentContext(evt) {
+      return
       console.log('viewer context click')
       console.log(evt)
       if(evt.defaultPrevented) {

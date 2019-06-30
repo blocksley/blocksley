@@ -3,7 +3,7 @@
   <editor-shell :vu="this">
     <span slot="title">Title</span>
     <q-input
-      v-model="model.html"
+      v-model="model.value"
       :autofocus="true"
       borderless
       placeholder="Your title here ..."
@@ -30,6 +30,7 @@ export default {
   mounted () {
   },
   beforeDestroy () {
+    this.model.html = `<h1>${this.model.value}</h1>`
   },
   methods: {
   }

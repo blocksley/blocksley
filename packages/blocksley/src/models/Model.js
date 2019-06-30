@@ -6,6 +6,7 @@ class Model {
     this.id = nanoid()
     this.state = 'normal'
     this.editor = null
+    this.value = null
     this.html = ''
     this.content = null
     this.children = []
@@ -18,6 +19,7 @@ class Model {
     return {
       type: this.type,
       id: this.id,
+      value: this.value,
       html: this.html, 
       content: this.content,
       children: this.children
