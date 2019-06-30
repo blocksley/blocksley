@@ -68,6 +68,9 @@ export default {
     remove () {
       this.$emit('action', { type: 'remove', model: this.model })
     },
+    move (to) {
+      this.$emit('action', { type: 'move', model: this.model, to })
+    },
     onDragStart () {
       console.log('frame drag started')
     },

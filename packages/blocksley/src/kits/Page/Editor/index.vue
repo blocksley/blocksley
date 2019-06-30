@@ -22,7 +22,6 @@
 import { Add, Title, List, Image, Paragraph, Html, Page } from 'blocksley/models'
 
 import MainMenu from './MainMenu'
-import FloatingMenu from './FloatingMenu'
 
 import { BlockEditorMixin, UiMixin, PageMixin } from 'blocksley/mixins'
 import Frame from 'blocksley/components/Frame'
@@ -35,8 +34,7 @@ export default {
   components: {
     Frame,
     EditorShell,
-    MainMenu,
-    FloatingMenu
+    MainMenu
   },
   data () {
     return {
@@ -65,6 +63,9 @@ export default {
           break
         case 'remove':
           this.model.removeChild(action.model)
+          break
+        case 'move':
+          this.model.moveChild(action.model, action.to)
           break
         case 'new':
           switch (action.kind) {

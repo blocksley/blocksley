@@ -9,9 +9,9 @@
     <div v-if="parent" class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" color="primary">
-          <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+          <q-btn fab-mini icon="keyboard_arrow_up" color="primary" @click="frame.move('up')"/>
           <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
-          <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+          <q-btn fab-mini icon="keyboard_arrow_down" color="primary" @click="frame.move('down')"/>
         </shell-fab>
         <slot name="title"/>
         <q-space />
@@ -20,9 +20,9 @@
           <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
           <q-btn fab-mini icon="visibility" color="primary" @click="frame.use('Viewer')"/>
           <shell-fab fab-mini icon="unfold_more" color="primary">
-            <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+            <q-btn fab-mini icon="keyboard_arrow_up" color="primary" @click="frame.move('up')"/>
             <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
-            <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+            <q-btn fab-mini icon="keyboard_arrow_down" color="primary" @click="frame.move('down')"/>
           </shell-fab>
         </shell-fab>
       </q-bar>

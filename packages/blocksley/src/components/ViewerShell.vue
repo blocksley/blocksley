@@ -6,9 +6,9 @@
       <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
       <q-btn fab-mini icon="edit" color="primary" @click="frame.edit()"/>
       <super-fab fab-mini icon="unfold_more" color="primary">
-        <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
+        <q-btn fab-mini icon="keyboard_arrow_up" color="primary" @click="frame.move('up')"/>
         <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
-        <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+        <q-btn fab-mini icon="keyboard_arrow_down" color="primary" @click="frame.move('down')"/>
       </super-fab>
     </super-fab>
 
