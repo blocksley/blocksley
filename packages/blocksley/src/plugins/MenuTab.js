@@ -18,8 +18,6 @@ class Menu {
     const style = el.style
     style.position = 'relative'
     console.log(el)
-    const parentEl = this.parentEl = document.querySelector('.q-footer .q-bar');
-    console.log(parentEl)
     // the mousedown event is fired before blur so we can prevent it
     this.options.element.addEventListener('mousedown', this.handleClick)
 

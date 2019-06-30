@@ -1,10 +1,7 @@
 <template>
-    <editor-menu-tab :editor="editor" v-slot="{ commands, isActive, menu }">
+    <editor-menu-bar :editor="editor" v-slot="{ commands, isActive, menu }">
 
       <q-btn-group flat
-        class="menutab"
-        :class="{ 'is-active': menu.isActive }"
-        :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
       >
 
         <q-btn flat
@@ -49,19 +46,19 @@
 
       </q-btn-group>
 
-    </editor-menu-tab>
+    </editor-menu-bar>
 
 </template>
 
 <script>
-// import { EditorMenuTab } from 'tiptap'
-import EditorMenuTab from 'blocksley/components/EditorMenuTab'
+import { EditorMenuBar } from 'tiptap'
+
 export default {
   name: 'AuxMenu',
   mixins: [ ],
   props: ['vu', 'editor'],
   components: {
-    EditorMenuTab
+    EditorMenuBar
   },
   data () {
     return {

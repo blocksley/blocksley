@@ -27,7 +27,8 @@
         </shell-fab>
       </q-bar>
       <q-toolbar v-if="this.$slots.menu" ref="toolbar" v-show="toolbarVisible" class="shell-toolbar">
-        <slot name="menu"/>
+        <slot v-if="!this.menu.isActive" name="menu"/>
+        <slot v-else name="aux"/>
       </q-toolbar>
     </div>
     <div
@@ -36,7 +37,6 @@
       @contextmenu="contentContext"
     >
       <slot/>
-      <slot name="aux"/>
     </div>
   </div>
 </template>
@@ -45,6 +45,7 @@
 import ShellMenu from './ShellMenu'
 import ShellDialog from './ShellDialog'
 import ShellFab from './ShellFab'
+import SelectionPlugin from '../plugins/Selection'
 
 export default {
   name: 'EditorShell',
@@ -67,6 +68,11 @@ export default {
       // toolbarVisible: this.$q.platform.is.desktop,
       toolbarVisible: true,
       menuVisible: false,
+      menu: {
+        isActive: false,
+        left: 0,
+        bottom: 0,
+      },
       delay: 250,
       barClicks: 0,
       contentClicks: 0,
@@ -108,10 +114,26 @@ export default {
     this.frame = this.vu.frame
     this.model = this.vu.model
     console.log(this.model)
-    if(this.editor) {
-      this.view = this.editor.view
-      this.editor.on('focus', this.onEditorFocus)
-      this.editor.on('blur', this.onEditorBlur)
+    const editor = this.editor
+    if (editor) {
+      this.view = editor.view
+      editor.on('focus', this.onEditorFocus)
+      editor.on('blur', this.onEditorBlur)
+      this.$nextTick(() => {
+        editor.registerPlugin(SelectionPlugin(
+          this,
+          editor,
+          (menu) => {
+            // the second check ensures event is fired only once
+            if (menu.isActive && this.menu.isActive === false) {
+              this.$emit('show', menu)
+            } else if (!menu.isActive && this.menu.isActive === true) {
+              this.$emit('hide', menu)
+            }
+            this.menu = menu
+          },
+        ))
+      })
     }
     this.onOpen()
   },
