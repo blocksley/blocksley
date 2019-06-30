@@ -40,10 +40,6 @@ export default {
   },
   mounted () {
   },
-  beforeDestroy () {
-    this.model.data = this.editor.getHTML()
-    this.editor.destroy()
-  },
   methods: {
   }
 }

@@ -24,9 +24,9 @@ import {
 export default class Paragraph extends Block {
   constructor (data) {
     super('paragraph')
-    this.data = '<p>' + (data ? data : 'Your paragraph here') + '</p>'
+    this.html = '<p>' + (data ? data : 'Your paragraph here') + '</p>'
     this.editor = new Editor({
-      content: this.data,
+      content: this.html,
       extensions: [
         new Blockquote(),
         new BulletList(),

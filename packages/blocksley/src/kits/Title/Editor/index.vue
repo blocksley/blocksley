@@ -3,7 +3,7 @@
   <editor-shell :vu="this">
     <span slot="title">Title</span>
     <q-input
-      v-model="model.data"
+      v-model="model.html"
       :autofocus="true"
       borderless
       placeholder="Your title here ..."

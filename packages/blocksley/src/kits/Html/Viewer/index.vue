@@ -1,6 +1,6 @@
 <template>
   <viewer-shell :vu="this">
-    <div v-html="model.data" class="viewer__content"/>
+    <div v-html="model.html" class="viewer__content"/>
   </viewer-shell>
 </template>
 

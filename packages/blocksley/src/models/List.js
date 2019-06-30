@@ -25,16 +25,16 @@ export default class List extends Block {
   constructor (list) {
     super('list')
     if(list) {
-      this.data = '<ul>'
+      this.html = '<ul>'
       list.forEach( (item) => {
-        this.data += '<li>' + item + '</li>'
+        this.html += '<li>' + item + '</li>'
       })
-      this.data += '</ul>'
+      this.html += '</ul>'
     } else {
-      this.data = '<ul><li>Your list here</li></ul>'
+      this.html = '<ul><li>Your list here</li></ul>'
     }
     this.editor = new Editor({
-      content: this.data,
+      content: this.html,
       extensions: [
         new Blockquote(),
         new BulletList(),

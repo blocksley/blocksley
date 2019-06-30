@@ -6,6 +6,7 @@ class Model {
     this.id = nanoid()
     this.state = 'normal'
     this.editor = null
+    this.html = ''
     this.content = null
     this.children = []
     this.width = 16
@@ -16,7 +17,8 @@ class Model {
   toJSON () {
     return {
       type: this.type,
-      id: this.id, 
+      id: this.id,
+      html: this.html, 
       content: this.content,
       children: this.children
     }

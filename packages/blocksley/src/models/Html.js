@@ -26,9 +26,9 @@ import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
 export default class Html extends Block {
   constructor (content) {
     super('html')
-    this.data = content
+    this.html = content
     this.editor = new Editor({
-      content: this.data,
+      content: this.html,
       extensions: [
         new Blockquote(),
         new BulletList(),
