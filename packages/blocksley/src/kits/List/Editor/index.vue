@@ -3,7 +3,6 @@
   <editor-shell :vu="this" :editor="editor">
     <span slot="title">List</span>
     <main-menu slot="menu" :vu="this" :editor="editor"/>
-    <floating-menu :editor="editor" />
     <aux-menu slot="aux" :editor="editor" />
     <editor-content class="editor__content" :editor="editor"/>
   </editor-shell>
@@ -12,7 +11,6 @@
 
 <script>
 import MainMenu from './MainMenu'
-import FloatingMenu from './FloatingMenu'
 import AuxMenu from './AuxMenu'
 import { ImageChooser } from 'blocksley/components'
 import { EditorContent } from 'tiptap'
@@ -27,7 +25,6 @@ export default {
   components: {
     EditorShell,
     EditorContent,
-    FloatingMenu,
     MainMenu,
     AuxMenu,
     ImageChooser
