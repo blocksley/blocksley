@@ -1,8 +1,7 @@
 <template>
-    <editor-menu-bar :editor="editor" v-slot="{ commands, isActive, menu }">
+    <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
 
-      <q-btn-group flat
-      >
+      <div class="menubar">
 
         <q-btn flat
           class="menubar__button"
@@ -44,7 +43,7 @@
           <q-icon name="mdi-code-tags" />
         </q-btn>
 
-      </q-btn-group>
+      </div>
 
     </editor-menu-bar>
 

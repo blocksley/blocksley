@@ -1,8 +1,7 @@
 <template>
-  <editor-menu-bar :editor="editor" v-slot="{ commands, isActive, menu }">
+  <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
 
-    <q-btn-group flat
-    >
+    <q-btn-group flat class="menubar" >
 
       <q-btn flat
         class="menubar__button"
