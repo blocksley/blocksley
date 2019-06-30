@@ -16,8 +16,8 @@
         <slot name="title"/>
         <q-space />
         <shell-fab icon="more_vert" color="primary">
-          <q-btn fab-mini icon="playlist_add" color="primary" @click="vu.add()"/>
-          <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
+          <q-btn fab-mini icon="playlist_add" color="primary" @click="frame.add()"/>
+          <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
           <q-btn fab-mini icon="visibility" color="primary" @click="frame.use('Viewer')"/>
           <shell-fab fab-mini icon="unfold_more" color="primary">
             <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>

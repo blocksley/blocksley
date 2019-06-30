@@ -41,7 +41,7 @@ export default {
       this.model.state = 'normal'
       this.model.src = src
       this.showImgChooser = false
-      this.edit()
+      this.frame.edit()
     }
   }
 }

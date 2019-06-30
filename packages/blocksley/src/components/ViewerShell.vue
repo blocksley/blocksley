@@ -3,8 +3,8 @@
 
     <super-fab ref="menu" icon="more_vert" color="primary">
       <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
-      <q-btn fab-mini icon="delete" color="primary" @click="vu.remove()"/>
-      <q-btn fab-mini icon="edit" color="primary" @click="vu.edit()"/>
+      <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
+      <q-btn fab-mini icon="edit" color="primary" @click="frame.edit()"/>
       <super-fab fab-mini icon="unfold_more" color="primary">
         <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
         <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
@@ -30,12 +30,14 @@ export default {
   },
   data () {
     return {
+      frame: null,
       menuVisible: false
     }
   },
   computed: {
   },
   mounted () {
+    this.frame = this.vu.frame
   },
   beforeDestroy () {
   },
@@ -51,11 +53,11 @@ export default {
       if(evt.defaultPrevented)
         return
       evt.preventDefault()
-      this.vu.edit()
+      this.frame.edit()
     },
     onAdd (e) {
       e.preventDefault()
-      this.vu.add()
+      this.frame.add()
     },
     toggleMenu (e) {
       this.menuVisible = !this.menuVisible
@@ -66,7 +68,6 @@ export default {
       }
     },
     contentContext(evt) {
-      return
       console.log('viewer context click')
       console.log(evt)
       if(evt.defaultPrevented) {

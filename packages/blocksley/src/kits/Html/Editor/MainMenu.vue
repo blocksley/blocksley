@@ -5,6 +5,20 @@
 
       <q-btn flat
         class="menubar__button"
+        @click="commands.undo"
+      >
+        <q-icon name="mdi-undo" />
+      </q-btn>
+
+      <q-btn flat
+        class="menubar__button"
+        @click="commands.redo"
+      >
+        <q-icon name="mdi-redo" />
+      </q-btn>
+
+      <q-btn flat
+        class="menubar__button"
         :class="{ 'is-active': isActive.paragraph() }"
         @click="commands.paragraph"
       >
@@ -99,19 +113,6 @@
         <q-icon name="mdi-language-html5" />
       </q-btn>
       -->
-      <q-btn flat
-        class="menubar__button"
-        @click="commands.undo"
-      >
-        <q-icon name="mdi-undo" />
-      </q-btn>
-
-      <q-btn flat
-        class="menubar__button"
-        @click="commands.redo"
-      >
-        <q-icon name="mdi-redo" />
-      </q-btn>
       <!--
       <q-btn flat
         class="menubar__button"
