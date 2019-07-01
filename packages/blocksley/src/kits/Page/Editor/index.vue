@@ -1,13 +1,13 @@
 <template>
   <div class="page-editor">
     <editor-shell :vu="this">
-      <draggable v-model="model.children"
+      <draggable v-model="model.content"
         group="blocks"
         handle=".grippy"
         @start="onDragStart()"
         @end="onDragEnd()"
       >
-        <frame v-for="child in model.children"
+        <frame v-for="child in model.content"
           :key="child.id"
           :model="child"
           class="noselect"

@@ -1,10 +1,13 @@
 <template>
   <div>
   <editor-shell :vu="this">
+    <span slot="title">Image</span>
+    <q-banner class="bg-primary text-white">
+      <q-btn flat color="white" @click="showImagePrompt">Add from Media Library</q-btn>
+    </q-banner>
     <q-dialog v-model="showImgChooser">
       <ImageChooser :select="insertImage" />
     </q-dialog>
-    <q-btn @click="showImagePrompt">Add from Media Library</q-btn>
   </editor-shell>
   </div>
 </template>
@@ -48,4 +51,6 @@ export default {
 </script>
 
 <style lang="stylus">
+.image-creator
+  background-color: gray 
 </style>

@@ -23,8 +23,7 @@ class Model {
     this.editor = null
     this.value = null
     this.html = ''
-    this.content = null
-    this.children = []
+    this.content = []
     this.width = 16
     this.height = 16
     this.class = []
@@ -37,38 +36,38 @@ class Model {
       value: this.value,
       html: this.html, 
       content: this.content,
-      children: this.children
+      content: this.content
     }
   }
   addChild (child) {
-    this.children.push(child)
+    this.content.push(child)
   }
   insertBefore (model, child) {
-    const ndx = this.children.indexOf(model)
-    this.children.splice(ndx, 0, child)
+    const ndx = this.content.indexOf(model)
+    this.content.splice(ndx, 0, child)
   }
   insertAfter (model, child) {
-    const ndx = this.children.indexOf(model) + 1
-    this.children.splice(ndx, 0, child)
+    const ndx = this.content.indexOf(model) + 1
+    this.content.splice(ndx, 0, child)
   }
   removeChild (child) {
-    const ndx = this.children.indexOf(child)
-    this.children.splice(ndx, 1)
+    const ndx = this.content.indexOf(child)
+    this.content.splice(ndx, 1)
   }
   moveChild (child, to) {
-    const ndx = this.children.indexOf(child)
+    const ndx = this.content.indexOf(child)
     switch (to) {
       case 'up':
-        array_move(this.children, ndx, ndx - 1)
+        array_move(this.content, ndx, ndx - 1)
         break
       case 'down':
-        array_move(this.children, ndx, ndx + 1)
+        array_move(this.content, ndx, ndx + 1)
         break
     }
   }
   replaceChild(model, child) {
-    const ndx = this.children.indexOf(model)
-    this.children.splice(ndx, 1, child)
+    const ndx = this.content.indexOf(model)
+    this.content.splice(ndx, 1, child)
   }
   stringify(options) {
     return JSON.stringify(this, null, 2)

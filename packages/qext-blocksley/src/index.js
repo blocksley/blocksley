@@ -42,6 +42,7 @@ const extendQuasarConf = function (conf) {
     'QToolbar',
     'QToolbarTitle',
     'QSeparator',
+    'QBanner',
     'QBtn',
     'QBtnDropdown',
     'QBtnGroup',
