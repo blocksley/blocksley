@@ -1,5 +1,11 @@
 <template>
-  <q-btn-group flat color="primary">
+  <q-toolbar flat color="primary">
+
+    <q-btn flat color="primary"
+      icon="not_interested"
+      @click="frame.remove()"
+    />
+
     <q-btn flat color="primary"
       @click="newParagraph"
     >
@@ -15,7 +21,7 @@
     >
       <q-icon name="mdi-image" />
     </q-btn>
-  </q-btn-group>
+  </q-toolbar>
 </template>
 
 <script>

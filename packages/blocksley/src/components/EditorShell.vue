@@ -14,6 +14,7 @@
           <q-btn fab-mini icon="keyboard_arrow_down" color="primary" @click="frame.move('down')"/>
         </shell-fab>
         <slot name="title"/>
+        <q-btn fab-mini flat icon="add_circle_outline" color="primary" @click="frame.add()"/>
         <q-space />
         <shell-fab icon="more_vert" color="primary">
           <q-btn fab-mini icon="playlist_add" color="primary" @click="frame.add()"/>

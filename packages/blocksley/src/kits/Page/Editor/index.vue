@@ -79,10 +79,7 @@ export default {
               model = new Image()
               break
           }
-          /*
-          ndx = this.blocks.indexOf(action.model)
-          this.blocks.splice(ndx, 1, model)
-          */
+          model.state = 'create'
           this.model.replaceChild(action.model, model)
           break
       }
