@@ -30,6 +30,15 @@
       <q-toolbar v-if="this.$slots.menu" ref="toolbar" v-show="toolbarVisible" class="shell-toolbar">
         <slot v-if="!this.menu.isActive" name="menu"/>
         <slot v-else name="aux"/>
+        <!--
+        <transition v-else
+          appear
+          enter-active-class="animated fadeInRight"
+          leave-active-class="animated fadeOutRight"
+        >
+          <slot name="aux"/>
+        </transition>
+        -->
       </q-toolbar>
     </div>
     <div

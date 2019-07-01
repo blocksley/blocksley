@@ -2,14 +2,14 @@
   <!-- Need this wrapping div or component will bind to shell element.  Bad -->
   <div>
   <editor-shell :vu="this" :editor="editor">
-    <q-dialog v-model="showImgChooser">
-      <image-chooser :select="insertImage" />
-    </q-dialog>
     <span slot="title">Html</span>
     <main-menu slot="menu" :vu="this" :editor="editor"/>
     <aux-menu slot="aux" :editor="editor" />
     <floating-menu :editor="editor" />
     <editor-content class="editor__content" :editor="editor" />
+    <q-dialog v-model="showImgChooser">
+      <image-chooser :select="insertImage" />
+    </q-dialog>
   </editor-shell>
   </div>
 </template>
