@@ -1,4 +1,4 @@
-Blocksley (blocksley/blocksley)
+Blocksley (@blocksley/blocksley)
 ===
 
 > Please note that Blocksley is in alpha state.
