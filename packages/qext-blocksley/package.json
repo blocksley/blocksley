@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/kfields/blocksley"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": "https://github.com/kfields/blocksley/issues",
   "homepage": "https://github.com/kfields/blocksley",
   "engines": {
@@ -31,5 +34,5 @@
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.2.0"
   },
-  "gitHead": "27692ed2be2f77f478cb5cddce5a918fd159db51"
+  "gitHead": "e73df13bba54ca76535ec303c68a724e6ac86412"
 }
