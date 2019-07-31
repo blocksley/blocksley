@@ -30,5 +30,6 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.2.0"
-  }
+  },
+  "gitHead": "27692ed2be2f77f478cb5cddce5a918fd159db51"
 }
