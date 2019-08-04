@@ -12,11 +12,10 @@
 <script>
 import MainMenu from './MainMenu'
 import AuxMenu from './AuxMenu'
-import ImageChooser from 'blocksley/components/ImageChooser'
 import { EditorContent } from 'tiptap'
 
-import EditorShell from 'blocksley/components/EditorShell'
-import { BlockEditorMixin, RichEditorMixin } from 'blocksley/mixins'
+import EditorShell from '../../../components/EditorShell'
+import { BlockEditorMixin, RichEditorMixin } from '../../../mixins'
 
 export default {
   name: 'ParagraphEditor',
@@ -26,8 +25,7 @@ export default {
     EditorShell,
     EditorContent,
     MainMenu,
-    AuxMenu,
-    ImageChooser
+    AuxMenu
   },
   data () {
     return {

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import EditorShell from 'blocksley/components/EditorShell'
-import { BlockEditorMixin } from 'blocksley/mixins'
+import EditorShell from '../../../components/EditorShell'
+import { BlockEditorMixin } from '../../../mixins'
 
 export default {
   name: 'TitleBlockEditor',

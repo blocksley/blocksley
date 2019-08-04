@@ -52,8 +52,6 @@
 </template>
 
 <script>
-import ShellMenu from './ShellMenu'
-import ShellDialog from './ShellDialog'
 import ShellFab from './ShellFab'
 import SelectionPlugin from '../plugins/Selection'
 
@@ -64,8 +62,6 @@ export default {
     editor: null
   },
   components: {
-    ShellMenu,
-    ShellDialog,
     ShellFab
   },
   data () {
@@ -74,14 +70,14 @@ export default {
       model: {},
       view: null,
       parent: null,
-      _activeChild: null,
+      $_activeChild: null,
       // toolbarVisible: this.$q.platform.is.desktop,
       toolbarVisible: true,
       menuVisible: false,
       menu: {
         isActive: false,
         left: 0,
-        bottom: 0,
+        bottom: 0
       },
       delay: 250,
       barClicks: 0,
@@ -96,17 +92,17 @@ export default {
     },
     activeChild: {
       get () {
-        return this._activeChild
+        return this.$_activeChild
       },
       set (child) {
         // console.log('set active child')
         // console.log(child)
         // console.trace()
-        if (this._activeChild && this._activeChild !== child) {
-          this._activeChild.close()
+        if (this.$_activeChild && this.$_activeChild !== child) {
+          this.$_activeChild.close()
         }
-        this._activeChild = child
-        if(!this._activeChild) {
+        this.$_activeChild = child
+        if (!this.$_activeChild) {
           this.showToolbar()
         }
       }
@@ -141,7 +137,7 @@ export default {
               this.$emit('hide', menu)
             }
             this.menu = menu
-          },
+          }
         ))
       })
     }
@@ -160,7 +156,7 @@ export default {
       const closest = this.$el.parentElement.closest('.editor-shell')
       this.parent = closest ? closest.__vue__ : null
 
-      if(this.parent) {
+      if (this.parent) {
         console.log('parent shell')
         console.log(this.parent)
         this.parent.hideToolbar()
@@ -180,13 +176,14 @@ export default {
       // console.log('keyup')
       // console.log(e)
       // TODO: This needs more work
-      if(evt.key == 'Escape' && this.parent) {
+      if (evt.key === 'Escape' && this.parent) {
         this.close()
       }
     },
     onFocus (evt) {
-      if(evt.defaultPrevented)
+      if (evt.defaultPrevented) {
         return
+      }
       evt.preventDefault()
       console.log('shell focus')
       console.log(evt)
@@ -194,8 +191,9 @@ export default {
       this.showToolbar()
     },
     onBlur (evt) {
-      if(evt.defaultPrevented)
+      if (evt.defaultPrevented) {
         return
+      }
       evt.preventDefault()
       console.log('shell blur')
       console.log(evt)
@@ -211,7 +209,7 @@ export default {
     },
     hideMenu (e) {
       console.log('hide menu')
-      //e.preventDefault()
+      // e.preventDefault()
       this.toggleMenu()
     },
     toggleMenu (e) {
@@ -239,48 +237,48 @@ export default {
     },
     barClick (e) {
       console.log('detect bar click')
-      this.barClicks++;
+      this.barClicks++
       if (this.barClicks === 1) {
         setTimeout(() => {
-          switch(this.barClicks) {
+          switch (this.barClicks) {
             case 1:
               // console.log('single click')
-              break;
+              break
             default:
               // console.log('double click')
               this.toggleToolbar()
           }
-          this.barClicks = 0 
-        }, this.delay);
+          this.barClicks = 0
+        }, this.delay)
       }
     },
     contentClick (e) {
       console.log('content click')
       console.log(e)
       e.preventDefault()
-      this.contentClicks++;
+      this.contentClicks++
       if (this.contentClicks === 1) {
         setTimeout(() => {
-          switch(this.contentClicks) {
+          switch (this.contentClicks) {
             case 1:
               console.log('single click')
               // this.toggleMenu()
-              break;
+              break
             default:
               console.log('double click')
               // this.toggleMenu()
           }
           this.contentClicks = 0
-        }, this.delay);
+        }, this.delay)
       }
     },
-    contentContext(e) {
+    contentContext (e) {
       console.log('context click')
       console.log(e)
-      if(e.defaultPrevented) {
-        return;
+      if (e.defaultPrevented) {
+        return
       }
-      if(!this.$q.platform.is.desktop) {
+      if (!this.$q.platform.is.desktop) {
         // this.hideKeyboard()
         e.preventDefault()
       }
@@ -331,7 +329,7 @@ shell-background()
 
 .shell-inner
   position: relative
-  
+
 .shell-bar {
   width: 100%;
   margin-top: -32px;

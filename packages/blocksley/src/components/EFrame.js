@@ -1,4 +1,4 @@
-import kits from 'blocksley/kits'
+import kits from '../kits'
 
 export default {
   template: `
@@ -51,6 +51,6 @@ export default {
     },
     browse () {
       this.use('Viewer')
-    },
+    }
   }
 }

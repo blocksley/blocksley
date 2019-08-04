@@ -1,0 +1,28 @@
+{
+  "name": "@blocksley/demo-rollup",
+  "version": "0.0.0",
+  "description": "blocksley rollup demo",
+  "main": "index.js",
+  "repository": "https://github.com/blocksley/blocksley",
+  "author": "Kurtis Fields",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
+    "start": "serve public"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.18.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "serve": "^11.1.0"
+  }
+}

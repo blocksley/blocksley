@@ -24,9 +24,9 @@ import {
 export default class List extends Block {
   constructor (list) {
     super('list')
-    if(list) {
+    if (list) {
       this.html = '<ul>'
-      list.forEach( (item) => {
+      list.forEach((item) => {
         this.html += '<li>' + item + '</li>'
       })
       this.html += '</ul>'

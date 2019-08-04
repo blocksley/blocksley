@@ -24,7 +24,11 @@ import {
 export default class Paragraph extends Block {
   constructor (data) {
     super('paragraph')
-    this.html = '<p>' + (data ? data : 'Your paragraph here') + '</p>'
+    if (data) {
+      this.html = '<p>' + data + '</p>'
+    } else {
+      this.html = '<p>Your paragraph here</p>'
+    }
     this.editor = new Editor({
       content: this.html,
       extensions: [

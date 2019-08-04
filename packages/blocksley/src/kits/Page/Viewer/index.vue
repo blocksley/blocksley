@@ -6,8 +6,8 @@
 
 <script>
 
-import { BlockViewerMixin } from 'blocksley/mixins'
-import ViewerShell from 'blocksley/components/ViewerShell'
+import { BlockViewerMixin } from '../../../mixins'
+import ViewerShell from '../../../components/ViewerShell'
 
 export default {
   name: 'PageViewer',

@@ -8,8 +8,8 @@
 </style>
 
 <script>
-import { Title, List, Image, Paragraph, Html, Page } from 'blocksley/models'
-import { PageMixin } from 'blocksley/mixins'
+import { Title, List, Image, Paragraph, Html, Page } from '@blocksley/blocksley/src/models'
+import { PageMixin } from '@blocksley/blocksley/src/mixins'
 
 export default {
   name: 'PageIndex',

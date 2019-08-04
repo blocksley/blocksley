@@ -21,7 +21,7 @@ import {
   History
 } from 'tiptap-extensions'
 
-import { Heading, Title, Image, ImageBlock } from 'blocksley/nodes'
+import { Heading, Title, Image, ImageBlock } from '../nodes'
 
 export default class Html extends Block {
   constructor (content) {

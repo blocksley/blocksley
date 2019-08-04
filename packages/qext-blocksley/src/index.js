@@ -110,7 +110,7 @@ module.exports = function (api) {
     cfg.resolve.alias = {
       ...cfg.resolve.alias, // This adds the existing alias
       // 'blocksley': path.resolve(__dirname, './component/')
-      'blocksley': '@blocksley/blocksley/src'
+      // 'blocksley': '@blocksley/blocksley/src'
       // 'blocksley': path.resolve(api.appDir, './node_modules/@blocksley/quasar-app-extension-blocksley/src/component/'),
       // 'components': path.resolve(__dirname, 'components')
     }

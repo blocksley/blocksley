@@ -29,7 +29,10 @@ import Vue from 'vue'
 export default {
   name: 'SuperFab',
   props: {
-    icon: '',
+    icon: {
+      type: String,
+      default: ''
+    },
     color: {
       type: String,
       default: 'primary'
@@ -56,7 +59,7 @@ export default {
   },
   watch: {
     visible () {
-      if(!this.visible && this.fabRoot) {
+      if (!this.visible && this.fabRoot) {
         this.$el.parentElement.replaceChild(this.fabRoot.$el, this.$el)
       }
     }
@@ -72,14 +75,17 @@ export default {
         this.offsetX = -48
         break
     } */
-    const slots = this.$slots.default 
+    const slots = this.$slots.default
     // console.log(slots)
     for (var i = 0; i < slots.length; i++) {
       const child = slots[i].componentInstance
+      if (!child) {
+        continue
+      }
       child.fabParent = this
       child.fabRoot = this.fabRoot ? this.fabRoot : this
       // console.log(child)
-      if(child.$options._componentTag === 'super-fab') {
+      if (child.$options._componentTag === 'super-fab') {
         this.createProxy(child)
       } else {
         child.$on('click', (evt) => {
@@ -112,7 +118,7 @@ export default {
     toggle () {
       this.visible = !this.visible
     },
-    createProxy(fab) {
+    createProxy (fab) {
       const ComponentClass = Vue.extend(QBtn)
       const child = new ComponentClass({
         propsData: { fabMini: true, icon: fab.icon, color: 'primary' }

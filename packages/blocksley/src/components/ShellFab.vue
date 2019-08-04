@@ -31,7 +31,10 @@ import Vue from 'vue'
 export default {
   name: 'ShellFab',
   props: {
-    icon: '',
+    icon: {
+      type: String,
+      default: ''
+    },
     color: {
       type: String,
       default: 'primary'
@@ -64,21 +67,24 @@ export default {
         }, 100)
       }
       */
-      if(!this.visible && this.fabRoot) {
+      if (!this.visible && this.fabRoot) {
         this.$el.parentElement.replaceChild(this.fabRoot.$el, this.$el)
       }
     }
   },
   mounted () {
     // console.log('shell fab mounted')
-    const slots = this.$slots.default 
+    const slots = this.$slots.default
     // console.log(slots)
     for (var i = 0; i < slots.length; i++) {
       const child = slots[i].componentInstance
+      if (!child) {
+        continue
+      }
       child.fabParent = this
       child.fabRoot = this.fabRoot ? this.fabRoot : this
       // console.log(child)
-      if(child.$options._componentTag === 'shell-fab') {
+      if (child.$options._componentTag === 'shell-fab') {
         this.createProxy(child)
       } else {
         child.$on('click', (evt) => {
@@ -104,7 +110,7 @@ export default {
     toggle () {
       this.visible = !this.visible
     },
-    createProxy(fab) {
+    createProxy (fab) {
       const ComponentClass = Vue.extend(QBtn)
       const child = new ComponentClass({
         propsData: { fabMini: true, icon: fab.icon, color: 'primary' }

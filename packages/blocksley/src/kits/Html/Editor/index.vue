@@ -18,11 +18,11 @@
 import MainMenu from './MainMenu'
 import FloatingMenu from './FloatingMenu'
 import AuxMenu from './AuxMenu'
-import ImageChooser from 'blocksley/components/ImageChooser'
+import ImageChooser from '../../../components/ImageChooser'
 import { EditorContent } from 'tiptap'
 
-import { BlockEditorMixin, RichEditorMixin, UiMixin } from 'blocksley/mixins'
-import EditorShell from 'blocksley/components/EditorShell'
+import { BlockEditorMixin, RichEditorMixin, UiMixin } from '../../../mixins'
+import EditorShell from '../../../components/EditorShell'
 
 export default {
   name: 'HtmlBlockEditor',

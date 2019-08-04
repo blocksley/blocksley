@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import BlocksleyStore from 'blocksley/store'
+import BlocksleyStore from '../store'
 
-import { UiMixin } from 'blocksley/mixins'
+import { UiMixin } from '../mixins'
 import Frame from './Frame'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     }
   },
   created () {
-    if(!this.$store.state.blocksley) {
+    if (!this.$store.state.blocksley) {
       this.$store.registerModule('blocksley', BlocksleyStore)
     }
   },

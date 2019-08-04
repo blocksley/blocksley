@@ -1,7 +1,6 @@
 import { Plugin, PluginKey } from 'prosemirror-state'
 
 class SelectionPlugin {
-
   constructor (shell, editor, onUpdate) {
     console.log('selection plugin')
     this.shell = shell
@@ -44,14 +43,13 @@ class SelectionPlugin {
   destroy () {
     console.log('selection destroy')
   }
-
 }
 
 export default function (shell, editor, onUpdate) {
   return new Plugin({
     key: new PluginKey('shell_selection'),
-    view() {
+    view () {
       return new SelectionPlugin(shell, editor, onUpdate)
-    },
+    }
   })
 }

@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import { BlockCreatorMixin } from 'blocksley/mixins'
+import { BlockCreatorMixin } from '../../../mixins'
 // Have to import separately to avoid circular dependency
-import EditorShell from 'blocksley/components/EditorShell'
-import ImageChooser from 'blocksley/components/ImageChooser'
+import EditorShell from '../../../components/EditorShell'
+import ImageChooser from '../../../components/ImageChooser'
 
 export default {
   name: 'ImageBlockCreator',
@@ -52,5 +52,5 @@ export default {
 
 <style lang="stylus">
 .image-creator
-  background-color: gray 
+  background-color: gray
 </style>

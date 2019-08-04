@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { UiMixin } from 'blocksley/mixins'
+import { UiMixin } from '../mixins'
 
 export default {
   mixins: [ UiMixin ],

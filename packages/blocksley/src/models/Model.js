@@ -1,24 +1,28 @@
-import nanoid from 'nanoid'
-
-function array_move(arr, old_index, new_index) {
+// import uuidv1 from 'uuid/v1'
+var counter = 0
+function uuidv1 () {
+  counter += 1
+  return counter
+}
+function arrayMove (arr, oldIndex, newIndex) {
   /* TODO: Remove? overkill?
   if (new_index >= arr.length) {
       var k = new_index - arr.length + 1
       while (k--) {
-          arr.push({ type: 'add', id: nanoid() }) // push a dummy model
+          arr.push({ type: 'add', id: uuidv1() }) // push a dummy model
       }
   } */
-  if (new_index >= arr.length || new_index < 0 ) {
+  if (newIndex >= arr.length || newIndex < 0) {
     return
   }
-  arr.splice(new_index, 0, arr.splice(old_index, 1)[0])
+  arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0])
   return arr
 }
 
 class Model {
   constructor (type, options) {
     this.type = type
-    this.id = nanoid()
+    this.id = uuidv1()
     this.state = 'normal'
     this.editor = null
     this.value = null
@@ -34,8 +38,7 @@ class Model {
       type: this.type,
       id: this.id,
       value: this.value,
-      html: this.html, 
-      content: this.content,
+      html: this.html,
       content: this.content
     }
   }
@@ -58,18 +61,18 @@ class Model {
     const ndx = this.content.indexOf(child)
     switch (to) {
       case 'up':
-        array_move(this.content, ndx, ndx - 1)
+        arrayMove(this.content, ndx, ndx - 1)
         break
       case 'down':
-        array_move(this.content, ndx, ndx + 1)
+        arrayMove(this.content, ndx, ndx + 1)
         break
     }
   }
-  replaceChild(model, child) {
+  replaceChild (model, child) {
     const ndx = this.content.indexOf(model)
     this.content.splice(ndx, 1, child)
   }
-  stringify(options) {
+  stringify (options) {
     return JSON.stringify(this, null, 2)
   }
 }

@@ -4,7 +4,7 @@
 
 <script>
 
-import kits from 'blocksley/kits'
+import kits from '../kits'
 export default {
   props: {
     root: {
@@ -77,13 +77,13 @@ export default {
     onDragEnd () {
       this.grippy = false
     },
-    isEventInElement(event, element)   {
-      var rect = element.getBoundingClientRect();
-      var x = event.clientX;
-      if (x < rect.left || x >= rect.right) return false;
-      var y = event.clientY;
-      if (y < rect.top || y >= rect.bottom) return false;
-      return true;
+    isEventInElement (event, element) {
+      var rect = element.getBoundingClientRect()
+      var x = event.clientX
+      if (x < rect.left || x >= rect.right) return false
+      var y = event.clientY
+      if (y < rect.top || y >= rect.bottom) return false
+      return true
     }
   }
 }

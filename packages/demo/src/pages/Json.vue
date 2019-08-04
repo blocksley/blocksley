@@ -8,7 +8,7 @@
 </style>
 
 <script>
-import { UiMixin, PageMixin } from 'blocksley/mixins'
+import { UiMixin, PageMixin } from '@blocksley/blocksley/src/mixins'
 
 export default {
   name: 'PageJson',

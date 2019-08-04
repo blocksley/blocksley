@@ -1,4 +1,4 @@
-import kits from '../kits'
+// import kits from '../kits'
 export default {
   mounted () {
   },

@@ -17,9 +17,9 @@
 </style>
 
 <script>
-import { UiMixin } from 'blocksley/mixins'
+import { UiMixin } from '../mixins'
 import ImageCard from './ImageCard'
-import { Image } from 'blocksley/models'
+import { Image } from '../models'
 
 export default {
   name: 'ImageChooser',

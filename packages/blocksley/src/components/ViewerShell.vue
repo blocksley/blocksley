@@ -1,7 +1,7 @@
 <template>
   <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
 
-    <super-fab ref="menu" icon="more_vert" color="primary">
+    <super-fab v-show="menuVisible" ref="menu" icon="more_vert" color="primary">
       <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
       <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
       <q-btn fab-mini icon="edit" color="primary" @click="frame.edit()"/>
@@ -50,8 +50,9 @@ export default {
       this.$emit('active', this)
     },
     onClick (evt) {
-      if(evt.defaultPrevented)
+      if (evt.defaultPrevented) {
         return
+      }
       evt.preventDefault()
       this.frame.edit()
     },
@@ -61,34 +62,33 @@ export default {
     },
     toggleMenu (e) {
       this.menuVisible = !this.menuVisible
-      if(this.menuVisible) {
+      if (this.menuVisible) {
         this.$refs.menu.show(e)
       } else {
         this.$refs.menu.hide(e)
       }
     },
-    contentContext(evt) {
-      return
+    contentContext (evt) {
       console.log('viewer context click')
       console.log(evt)
-      if(evt.defaultPrevented) {
-        return;
+      if (evt.defaultPrevented) {
+        return
       }
       evt.preventDefault()
       this.toggleMenu(evt)
     },
-    contentHold(details) {
+    contentHold (details) {
       const { evt } = details
       console.log('viewer context hold')
       console.log(evt)
-      if(evt.defaultPrevented) {
-        return;
+      if (evt.defaultPrevented) {
+        return
       }
       evt.preventDefault()
-        setTimeout(() => {
-          this.toggleMenu(evt)
-        }, 1000)
-    },
+      setTimeout(() => {
+        this.toggleMenu(evt)
+      }, 1000)
+    }
   }
 }
 </script>

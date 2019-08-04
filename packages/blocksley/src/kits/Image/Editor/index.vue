@@ -2,7 +2,7 @@
   <editor-shell ref="shell" :vu="this">
     <span slot="title">Image</span>
     <main-menu slot="menu" :vu="this"/>
-    <vue-draggable-resizable 
+    <vue-draggable-resizable
       :draggable="false"
       @resizing="onResizing"
       :w="this.model.width"
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { BlockEditorMixin } from 'blocksley/mixins'
-import EditorShell from 'blocksley/components/EditorShell'
+import { BlockEditorMixin } from '../../../mixins'
+import EditorShell from '../../../components/EditorShell'
 import MainMenu from './MainMenu'
 
 export default {

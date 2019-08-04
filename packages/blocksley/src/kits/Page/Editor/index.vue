@@ -19,13 +19,11 @@
 </template>
 
 <script>
-import { Add, Title, List, Image, Paragraph, Html, Page } from 'blocksley/models'
+import { Add, List, Image, Paragraph } from '../../../models'
 
-import MainMenu from './MainMenu'
-
-import { BlockEditorMixin, UiMixin, PageMixin } from 'blocksley/mixins'
-import Frame from 'blocksley/components/Frame'
-import EditorShell from 'blocksley/components/EditorShell'
+import { BlockEditorMixin, UiMixin, PageMixin } from '../../../mixins'
+import Frame from '../../../components/Frame'
+import EditorShell from '../../../components/EditorShell'
 
 export default {
   name: 'PageEditor',
@@ -33,8 +31,7 @@ export default {
   props: ['frame', 'model'],
   components: {
     Frame,
-    EditorShell,
-    MainMenu
+    EditorShell
   },
   data () {
     return {
@@ -54,7 +51,7 @@ export default {
       console.log('drag end')
     },
     onAction (action) {
-      var model, ndx
+      var model
       console.log(action)
       switch (action.type) {
         case 'add':
@@ -83,7 +80,7 @@ export default {
           this.model.replaceChild(action.model, model)
           break
       }
-    },
+    }
   }
 }
 </script>

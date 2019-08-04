@@ -2,6 +2,11 @@
 import kits from '../kits'
 import models from '../models'
 
+export const fake = {
+  kits: kits,
+  models: models
+}
+
 const state = {
   models: null,
   kits: null,
@@ -10,7 +15,7 @@ const state = {
   editor: null,
   edited: null,
   image: null,
-  leftDrawerOpen: false,
+  leftDrawerOpen: false
 }
 
 const getters = {
@@ -21,7 +26,7 @@ const getters = {
   $editor: (state) => state.editor,
   edited: (state) => state.edited,
   $image: (state) => state.image,
-  leftDrawerOpen: (state) => state.leftDrawerOpen,
+  leftDrawerOpen: (state) => state.leftDrawerOpen
 }
 
 const actions = {

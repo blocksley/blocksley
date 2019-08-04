@@ -11,7 +11,7 @@ export default {
         console.log(val)
         this.$blocksley.page = val
       }
-    },
+    }
   },
   methods: {
   }
