@@ -5,8 +5,7 @@ import VueDraggableResizable from 'vue-draggable-resizable'
 // optionally import default styles
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 
-import {
-  Quasar,
+import Quasar, {
   Ripple,
   ClosePopup,
   TouchHold,
