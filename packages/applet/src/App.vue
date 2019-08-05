@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style>
+#q-app {
+  background-color: white;
+}
 </style>

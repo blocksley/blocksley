@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout container style="min-height: 500px" class="shadow-2 rounded-borders" view="lHh Lpr lFf">
     <!-- <q-header elevated reveal :reveal-offset="64"> -->
     <!--
     <q-header elevated>
