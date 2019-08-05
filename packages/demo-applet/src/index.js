@@ -1,9 +1,11 @@
 import './css/app.styl'
+import '@blocksley/applet/.quasar/client-entry'
+/*
 
 import Vue from 'vue'
-// import Vuex from 'vuex'
 import store from './store'
 
+import applet, { App } from '@blocksley/applet'
 import '@blocksley/blocksley/src/css/blocksley.styl'
 import blocksley, { Blocksley } from '@blocksley/blocksley'
 
@@ -22,9 +24,10 @@ const model = new Page([
 
 new Vue({
   store,
-  render: h => h(Blocksley, {
+  render: h => h(App, {
     props: {
       model
     }
   })
 }).$mount('#app')
+*/

@@ -107,13 +107,14 @@ module.exports = function (api) {
     */
     // cfg.resolve.symlinks = true
     // cfg.entry.blocksley = path.resolve(__dirname, './component')
+    /*
     cfg.resolve.alias = {
       ...cfg.resolve.alias, // This adds the existing alias
       // 'blocksley': path.resolve(__dirname, './component/')
       // 'blocksley': '@blocksley/blocksley/src'
       // 'blocksley': path.resolve(api.appDir, './node_modules/@blocksley/quasar-app-extension-blocksley/src/component/'),
       // 'components': path.resolve(__dirname, 'components')
-    }
+    } */
     // console.log('webpack aliases')
     // console.log(cfg.resolve.alias)
     // console.log(cfg)
