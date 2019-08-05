@@ -6,6 +6,9 @@
   "cordovaId": "org.cordova.quasar.app",
   "author": "Kurtis Fields <kurtisfields@gmail.com>",
   "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "quasar build",
     "deploy": "quasar build",
@@ -34,5 +37,6 @@
   },
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
-  ]
+  ],
+  "gitHead": "9971ead5c7f5162bd3f9a41f0e7525d6c5d8fb12"
 }
