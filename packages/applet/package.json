@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "quasar build",
+    "builddist": "webpack --config build/webpack.config.prod.js",
     "deploy": "quasar build",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
@@ -25,10 +26,22 @@
     "@quasar/app": "^1.0.0-beta.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
     "circular-dependency-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
     "eslint": "^5.10.0",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.0.0"
+    "eslint-plugin-vue": "^5.0.0",
+    "file-loader": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
   },
   "engines": {
     "node": ">= 8.9.0",
