@@ -1,6 +1,6 @@
 {
   "name": "@blocksley/blocksley",
-  "version": "0.1.8-alpha.0",
+  "version": "0.1.10-alpha.0",
   "description": "A Quasar Block Editor",
   "author": "Kurtis Fields <kurtisfields@gmail.com>",
   "license": "MIT",
