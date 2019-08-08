@@ -1,5 +1,6 @@
 'use strict'
 
+const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
@@ -37,6 +38,9 @@ module.exports = merge(baseConfig, {
     ]
   },
   plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
       chunkFilename: "css/[name][id].css"
