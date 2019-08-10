@@ -1,17 +1,10 @@
 <template>
-  <div id="q-app">
-    <router-view />
+  <div id="app">
+    <router-view/>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
-</script>
-
-<style>
-#q-app {
-  background-color: white;
-}
+<style lang="stylus">
+  @import './styles/app.styl'
+  @import '~@blocksley/blocksley/src/css/blocksley.styl'
 </style>

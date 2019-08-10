@@ -1,7 +1,6 @@
 import './css/app.styl'
 
 import Vue from 'vue'
-// import Vuex from 'vuex'
 import store from './store'
 
 import '@blocksley/blocksley/src/css/blocksley.styl'
