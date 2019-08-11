@@ -5,7 +5,11 @@
   "productName": "Blocksley Applet",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Kurtis Fields <kurtisfields@gmail.com>",
-  "main": "src/index.js",
+  "main": "src/main.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "publishConfig": {
     "access": "public"
   },
