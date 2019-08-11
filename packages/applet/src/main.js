@@ -5,8 +5,6 @@ import { directive as ClickAway } from 'vue-clickaway'
 import Draggable from 'vuedraggable'
 
 import VueDraggableResizable from 'vue-draggable-resizable'
-// optionally import default styles
-// import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 
 // fonts also have to be global as well as in the shadow
 import '@quasar/extras/roboto-font/roboto-font.css'
