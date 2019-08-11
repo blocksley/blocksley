@@ -1,14 +1,14 @@
 <template>
   <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
 
-    <super-fab v-show="menuVisible" ref="menu" icon="more_vert" color="primary">
-      <q-btn fab-mini icon="playlist_add" color="primary" @click="onAdd"/>
-      <q-btn fab-mini icon="delete" color="primary" @click="frame.remove()"/>
-      <q-btn fab-mini icon="edit" color="primary" @click="frame.edit()"/>
-      <super-fab fab-mini icon="unfold_more" color="primary">
-        <q-btn fab-mini icon="keyboard_arrow_up" color="primary" @click="frame.move('up')"/>
-        <q-btn fab outlined class="grippy" icon="drag_indicator" color="primary"/>
-        <q-btn fab-mini icon="keyboard_arrow_down" color="primary" @click="frame.move('down')"/>
+    <super-fab v-show="menuVisible" ref="menu" icon="more_vert" >
+      <q-btn fab-mini icon="playlist_add"  @click="onAdd"/>
+      <q-btn fab-mini icon="delete"  @click="frame.remove()"/>
+      <q-btn fab-mini icon="edit"  @click="frame.edit()"/>
+      <super-fab fab-mini icon="unfold_more" >
+        <q-btn fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
+        <q-btn fab outlined class="grippy" icon="drag_indicator" />
+        <q-btn fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
       </super-fab>
     </super-fab>
 

@@ -1,10 +1,21 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div id="q-app">
+    <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
 <style lang="stylus">
-  @import './styles/app.styl'
-  @import '~@blocksley/blocksley/src/css/blocksley.styl'
+@import './css/app.styl'
+div#q-app {
+  background-color: white;
+  // font-size: 1em !important
+  // color: #000 !important
+  font-family: Roboto !important
+}
 </style>

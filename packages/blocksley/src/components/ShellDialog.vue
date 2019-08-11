@@ -11,14 +11,14 @@
       @mousemove="drag"
     />
     <!--
-    <shell-fab direction="right" icon="drag_indicator" color="primary">
-      <q-btn fab-mini icon="keyboard_arrow_up" color="primary"/>
-      <q-btn fab outlined icon="drag_indicator" color="primary"
+    <shell-fab direction="right" icon="drag_indicator" >
+      <q-btn fab-mini icon="keyboard_arrow_up" />
+      <q-btn fab outlined icon="drag_indicator" 
         @mousedown="dragStart"
         @mouseup="dragEnd"
         @mousemove="drag"
       />
-      <q-btn fab-mini icon="keyboard_arrow_down" color="primary"/>
+      <q-btn fab-mini icon="keyboard_arrow_down" />
     </shell-fab>
     -->
     <div class="shell-dialog">

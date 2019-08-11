@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style lang="stylus">
+// @import '../css/blocksley'
 .blocksley-editor {
 }
 </style>
