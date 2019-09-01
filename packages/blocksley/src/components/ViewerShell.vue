@@ -2,13 +2,13 @@
   <div class="viewer-shell" @click="onClick" @contextmenu="contentContext">
 
     <super-fab v-show="menuVisible" ref="menu" icon="more_vert" >
-      <q-btn fab-mini icon="playlist_add"  @click="onAdd"/>
-      <q-btn fab-mini icon="delete"  @click="frame.remove()"/>
-      <q-btn fab-mini icon="edit"  @click="frame.edit()"/>
+      <q-btn color="primary" fab-mini icon="playlist_add"  @click="onAdd"/>
+      <q-btn color="primary" fab-mini icon="delete"  @click="frame.remove()"/>
+      <q-btn color="primary" fab-mini icon="edit"  @click="frame.edit()"/>
       <super-fab fab-mini icon="unfold_more" >
-        <q-btn fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
-        <q-btn fab outlined class="grippy" icon="drag_indicator" />
-        <q-btn fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
+        <q-btn color="primary" fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
+        <q-btn color="primary" fab outlined class="grippy" icon="drag_indicator" />
+        <q-btn color="primary" fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
       </super-fab>
     </super-fab>
 

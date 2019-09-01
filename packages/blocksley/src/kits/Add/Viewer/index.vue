@@ -1,22 +1,22 @@
 <template>
   <q-toolbar flat >
 
-    <q-btn flat
+    <q-btn color="primary" flat
       icon="not_interested"
       @click="frame.remove()"
     />
 
-    <q-btn flat
+    <q-btn color="primary" flat
       @click="newParagraph"
     >
       <q-icon name="mdi-format-paragraph" />
     </q-btn>
-    <q-btn flat
+    <q-btn color="primary" flat
       @click="newList"
     >
       <q-icon name="mdi-format-list-bulleted" />
     </q-btn>
-    <q-btn flat
+    <q-btn color="primary" flat
       @click="newImage"
     >
       <q-icon name="mdi-image" />

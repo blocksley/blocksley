@@ -9,21 +9,21 @@
     <div v-if="parent" class="shell-header" :class="{'sticky-header': stickyHeader}">
       <q-bar class="shell-bar" @click="barClick">
         <shell-fab direction="right" icon="drag_indicator" >
-          <q-btn fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
-          <q-btn fab outlined class="grippy" icon="drag_indicator" />
-          <q-btn fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
+          <q-btn color="primary" fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
+          <q-btn color="primary" fab outlined class="grippy" icon="drag_indicator" />
+          <q-btn color="primary" fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
         </shell-fab>
         <slot name="title"/>
         <q-btn fab-mini flat icon="add_circle_outline"  @click="frame.add()"/>
         <q-space />
         <shell-fab icon="more_vert" >
-          <q-btn fab-mini icon="playlist_add"  @click="frame.add()"/>
-          <q-btn fab-mini icon="delete"  @click="frame.remove()"/>
-          <q-btn fab-mini icon="visibility"  @click="frame.use('Viewer')"/>
+          <q-btn color="primary" fab-mini icon="playlist_add"  @click="frame.add()"/>
+          <q-btn color="primary" fab-mini icon="delete"  @click="frame.remove()"/>
+          <q-btn color="primary" fab-mini icon="visibility"  @click="frame.use('Viewer')"/>
           <shell-fab fab-mini icon="unfold_more" >
-            <q-btn fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
-            <q-btn fab outlined class="grippy" icon="drag_indicator" />
-            <q-btn fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
+            <q-btn color="primary" fab-mini icon="keyboard_arrow_up"  @click="frame.move('up')"/>
+            <q-btn color="primary" fab outlined class="grippy" icon="drag_indicator" />
+            <q-btn color="primary" fab-mini icon="keyboard_arrow_down"  @click="frame.move('down')"/>
           </shell-fab>
         </shell-fab>
       </q-bar>
