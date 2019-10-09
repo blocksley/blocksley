@@ -142,7 +142,11 @@ export default {
   position: absolute;
   z-index: 990;
   top:-4px;
-
+/*
+.shell-fab-actions button
+  background-color: #027be3
+  color: white
+*/
 .shell-fab-actions-left {
   right:48px;
 }

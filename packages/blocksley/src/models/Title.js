@@ -1,9 +1,8 @@
-import Block from './Block'
+import Model from './Model'
 
-export default class Title extends Block {
-  constructor (value) {
-    super('title')
-    this.value = value
-    this.html = value ? `<h1>${this.value}</h1>` : undefined
+export default class Title extends Model {
+  constructor (options) {
+    super('title', options)
+    this.html = this.value ? `<h1>${this.value}</h1>` : 'My Title'
   }
 }

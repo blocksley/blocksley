@@ -1,6 +1,6 @@
-import Block from './Block'
+import Model from './Model'
 
-export default class Add extends Block {
+export default class Add extends Model {
   constructor () {
     super('add')
   }

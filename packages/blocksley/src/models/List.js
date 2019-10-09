@@ -1,4 +1,4 @@
-import Block from './Block'
+import Model from './Model'
 import { Editor } from 'tiptap'
 import {
   Blockquote,
@@ -21,12 +21,12 @@ import {
   History
 } from 'tiptap-extensions'
 
-export default class List extends Block {
-  constructor (list) {
-    super('list')
-    if (list) {
+export default class List extends Model {
+  constructor (options) {
+    super('list', options)
+    if (this.value) {
       this.html = '<ul>'
-      list.forEach((item) => {
+      this.value.forEach((item) => {
         this.html += '<li>' + item + '</li>'
       })
       this.html += '</ul>'

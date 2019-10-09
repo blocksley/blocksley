@@ -1,4 +1,4 @@
-import Block from './Block'
+import Model from './Model'
 import { Editor } from 'tiptap'
 import {
   Blockquote,
@@ -21,11 +21,11 @@ import {
   History
 } from 'tiptap-extensions'
 
-export default class Paragraph extends Block {
-  constructor (data) {
-    super('paragraph')
-    if (data) {
-      this.html = '<p>' + data + '</p>'
+export default class Paragraph extends Model {
+  constructor (options) {
+    super('paragraph', options)
+    if (this.value) {
+      this.html = '<p>' + this.value + '</p>'
     } else {
       this.html = '<p>Your paragraph here</p>'
     }

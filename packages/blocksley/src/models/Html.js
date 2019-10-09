@@ -1,4 +1,4 @@
-import Block from './Block'
+import Model from './Model'
 import { Editor } from 'tiptap'
 import {
   Blockquote,
@@ -23,10 +23,9 @@ import {
 
 import { Heading, Title, Image, ImageBlock } from '../nodes'
 
-export default class Html extends Block {
-  constructor (content) {
-    super('html')
-    this.html = content
+export default class Html extends Model {
+  constructor (options) {
+    super('html', options)
     this.editor = new Editor({
       content: this.html,
       extensions: [
