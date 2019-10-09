@@ -6,12 +6,12 @@ import List from './List'
 import Image from './Image'
 
 const serializers = {
-  'page': Page,
-  'html': Html,
-  'title': Title,
-  'paragraph': Paragraph,
-  'list': List,
-  'image': Image
+  'page': new Page(),
+  'html': new Html(),
+  'title': new Title(),
+  'paragraph': new Paragraph(),
+  'list': new List(),
+  'image': new Image()
 }
 
 export function serialize (model) {
@@ -20,6 +20,7 @@ export function serialize (model) {
 }
 
 export function deserialize (data) {
-  const serializer = serializers[model.type]
+  const serializer = serializers[data.type]
+  console.log(serializer)
   return serializer.deserialize(data)
 }

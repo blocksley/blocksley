@@ -11,4 +11,11 @@ export default class Image extends Model {
       this.state = 'create'
     }
   }
+  toJSON () {
+    return Object.assign(super.toJSON(), {
+      src: this.src,
+      width: this.width,
+      height: this.height
+    })
+  }
 }

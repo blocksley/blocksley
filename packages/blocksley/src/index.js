@@ -1,5 +1,6 @@
 import { Blocksley } from './components'
-export { Blocksley }
+import { deserialize } from './serializers'
+export { Blocksley, deserialize }
 export default {
   page: null
 }
