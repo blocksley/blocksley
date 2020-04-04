@@ -1,0 +1,60 @@
+{
+  "name": "@blocksley/applet",
+  "version": "0.1.20-alpha.0",
+  "description": "Blocksley Applet",
+  "productName": "Blocksley Applet",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "Kurtis Fields <kurtisfields@gmail.com>",
+  "main": "src/main.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --progress --config build/webpack.config.dev.js",
+    "build": "webpack --config build/webpack.config.prod.js",
+    "deploy": "quasar build",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@blocksley/quasar-app-extension-blocksley": "^0.1.20-alpha.0",
+    "@quasar/extras": "^1.5.0",
+    "@vue/web-component-wrapper": "^1.2.0",
+    "axios": "^0.19.1",
+    "quasar": "^1.7.4"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.5.2",
+    "@vue/eslint-config-standard": "^5.1.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "circular-dependency-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-vue": "^6.1.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "gitHead": "9971ead5c7f5162bd3f9a41f0e7525d6c5d8fb12"
+}

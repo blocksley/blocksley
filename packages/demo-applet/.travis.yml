@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+node_js:
+  - "6"
+  - "8"
+  - "10"
+  - "11"
+install: npm install
+script: npm test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

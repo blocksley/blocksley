@@ -1,0 +1,42 @@
+{
+  "name": "@blocksley/blocksley",
+  "version": "0.1.20-alpha.0",
+  "description": "A Quasar Block Editor",
+  "author": "Kurtis Fields <kurtisfields@gmail.com>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blocksley/blocksley"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/blocksley/blocksley/issues",
+  "homepage": "https://github.com/blocksley/blocksley",
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "dependencies": {
+    "codemirror": "^5.52.2",
+    "nanoid": "^2.1.11",
+    "prettier": "^1.19.1",
+    "tiptap": "^1.26.8",
+    "tiptap-extensions": "^1.28.8",
+    "uuid": "^3.4.0",
+    "vue-class-component": "^7.2.2",
+    "vue-clickaway": "^2.2.2",
+    "vue-draggable-resizable": "^2.1.0",
+    "vue-tippy": "^4.4.0",
+    "vuedraggable": "^2.21.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0"
+  },
+  "gitHead": "9971ead5c7f5162bd3f9a41f0e7525d6c5d8fb12"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@blocksley/quasar-app-extension-blocksley",
+  "version": "0.1.20-alpha.0",
+  "description": "A Quasar App Extension",
+  "author": "Kurtis Fields <kurtisfields@gmail.com>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blocksley/blocksley"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/blocksley/blocksley/issues",
+  "homepage": "https://github.com/blocksley/blocksley",
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "dependencies": {
+    "@blocksley/blocksley": "^0.1.20-alpha.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0"
+  },
+  "gitHead": "9971ead5c7f5162bd3f9a41f0e7525d6c5d8fb12"
+}

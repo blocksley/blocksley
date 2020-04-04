@@ -1,0 +1,222 @@
+// app global css
+
+.button-column a {
+  color: gray;
+  display: block;
+  white-space: nowrap ;
+}
+
+.button-column a.router-link-active {
+    color: white;
+}
+
+.menu-list .q-item
+  border-radius: 0 32px 32px 0
+
+.content-page {
+  background-color: white !important;
+}
+
+.q-page {
+  background-color: #F2F0E6; //Alabaster
+  // background-color: #F5F5F5; //Smoke
+}
+/*
+.q-toolbar {
+    background-color: #222222;
+}
+*/
+.drawer {
+  background-color: #36454F;
+  color: white;
+}
+
+.q-item.q-router-link--active, .q-item--active {
+    color: white;
+    background-color: gray;
+}
+.q-header {
+  background-color: #007d7e;
+  color: white;
+}
+.q-footer {
+  opacity: 1; // Leave this as 1
+  background-color: rgba(0,0,0,0.6); // This is in the form rgba(R,G,B,a) where a is your opacity
+}
+
+.header-title h1 {
+  font: 24px "Roboto";
+  // text-align: center;
+}
+
+.header-icon {
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+.header-menu {
+  margin-right: 1em;
+}
+/*
+@media (max-width: $breakpoint-sm-max)
+  .header-icon {
+    display: none;
+  }
+@media (min-width: $breakpoint-sm-max)
+  .header-menu {
+    display: none;
+  }
+*/
+
+/*
+header {
+  position: relative;
+  overflow: hidden;
+  // background-image: linear-gradient(#ff9d2f, #ff6126);
+  margin-bottom: 8px;
+}
+
+header h1 {
+  // font: 44px "Arial";
+  // text-align: center;
+}
+
+.header-title h1 {
+  font: 24px "Roboto";
+  // text-align: center;
+}
+
+header h1,
+header p {
+  position: relative;
+  color: white;
+}
+*/
+h1, h2, h3 {
+  text-rendering: optimizeLegibility;
+  font-weight: bold;
+
+}
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+h4 { font-size: 1.12em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+.card-title {
+  color: black;
+  font-size: 110%;
+  font-weight: 400;
+  padding: 24px 16px 8px 16px;
+}
+
+.fields > * {
+  background-color: white;
+  margin-bottom: 16px;
+}
+.fields > *:last-child {
+  margin-bottom: -16px;
+}
+
+a {
+  text-decoration: none;
+}
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+a:hover {
+  // text-decoration: underline;
+}
+
+.excerpt {
+    height: 2em; // that's one line, 2em for 2 lines, etc...
+    line-height: 1em; // the height of one text line
+    overflow: hidden;
+}
+
+.frame {
+  margin: 0 auto;
+  max-width: 1080px;  
+}
+.item-column
+{
+  margin: 0 auto;
+  max-width: 600px;
+  background-color: white;
+}
+.card-column
+{
+  margin: 0 auto;
+  max-width: 600px;
+}
+.card-column > * {
+  margin-top: 8px;
+}
+
+.card-column-menu
+{
+  margin: 0 auto;
+  max-width: 600px;
+  margin-bottom: 8px;
+}
+
+.paper {
+  background-color: white;
+}
+
+.postcard {
+  background-color: white;
+}
+
+.post {
+  background-color: white;
+}
+
+@media(min-width: 768px) {
+  .post {
+    margin-bottom: 24px;
+    margin: 16px;
+  }
+}
+
+/* recommended css code for vue-svgicon */
+.svg-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    vertical-align: middle;
+    fill: none;
+    stroke: currentColor;
+}
+
+.svg-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+.svg-up {
+    /* default */
+    transform: rotate(0deg);
+}
+
+.svg-right {
+    transform: rotate(90deg);
+}
+
+.svg-down {
+    transform: rotate(180deg);
+}
+
+.svg-left {
+    transform: rotate(-90deg);
+}

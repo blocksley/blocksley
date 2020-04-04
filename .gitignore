@@ -1,0 +1,29 @@
+.quasar
+.DS_Store
+.thumbs.db
+node_modules
+.env*
+dist
+/src-cordova/node_modules
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__
+.pyc
+env
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Local Netlify folder
+.netlify

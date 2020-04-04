@@ -1,0 +1,8 @@
+{
+  "name": "@blocksley/demo-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/blocksley/blocksley",
+  "author": "Kurtis Fields",
+  "license": "MIT"
+}

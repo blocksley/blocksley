@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "deploy": "node ./scripts/deploy.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^3.20.0"
+  },
+  "resolutions": {
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
