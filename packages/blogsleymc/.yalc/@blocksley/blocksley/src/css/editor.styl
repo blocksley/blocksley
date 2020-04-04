@@ -1,0 +1,129 @@
+.editor
+  &__floating-menu
+    color: $primary
+    position: absolute
+    z-index: 250;
+    margin-top: -0.25rem
+    visibility: hidden
+    opacity: 0
+    transition: opacity 0.2s, visibility 0.2s
+    &.is-active
+      opacity: 1
+      visibility: visible
+
+.editor__content p.is-editor-empty:first-child::before
+  content: attr(data-empty-text)
+  float: left
+  color: #aaa
+  pointer-events: none
+  height: 0
+  font-style: italic
+
+.editor__content blockquote.is-editor-empty:first-child::after
+  content: attr(data-empty-text)
+  color: #aaa
+  pointer-events: none
+  height: 0
+  font-style: italic
+
+.editor__content
+  font-size: 16px
+  /* Typography
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  h1, h2, h3
+    text-rendering: optimizeLegibility
+    font-weight: bold
+  h1
+    font-size: 2rem
+  h2
+    font-size: 1.75rem
+  h3
+    font-size: 1.5rem
+  h4
+    font-size: 1.12em
+  h5
+    font-size: .83em
+  h6
+    font-size: .75em
+  word-wrap: break-word
+  *
+    caret-color: currentColor
+  pre
+    padding: 0.7rem 1rem
+    border-radius: 5px
+    background: $color-black
+    color: $color-white
+    font-size: 0.8rem
+    overflow-x: auto
+    code
+      display: block
+  p code
+    display: inline-block
+    padding: 0 0.4rem
+    border-radius: 5px
+    font-size: 0.8rem
+    font-weight: bold
+    background: rgba($color-black, 0.1)
+    color: rgba($color-black, 0.8)
+  ul,
+  ol
+    padding-left: 1rem
+  li > p,
+  li > ol,
+  li > ul
+    margin: 0
+  a
+    color: inherit
+  blockquote
+    border-left: 3px solid rgba($color-black, 0.1)
+    color: rgba($color-black, 0.8)
+    padding-left: 0.8rem
+    font-style: italic
+    p
+      margin: 0
+  img
+    max-width: 100%
+    border-radius: 3px
+  table
+    border-collapse: collapse
+    table-layout: fixed
+    width: 100%
+    margin: 0
+    overflow: hidden
+    td, th
+      min-width: 1em
+      border: 2px solid $color-grey
+      padding: 3px 5px
+      vertical-align: top
+      box-sizing: border-box
+      position: relative
+      > *
+        margin-bottom: 0
+    th
+      font-weight: bold
+      text-align: left
+    .selectedCell:after
+      z-index: 2
+      position: absolute
+      content: ""
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      background: rgba(200, 200, 255, 0.4)
+      pointer-events: none
+    .column-resize-handle
+      position: absolute
+      right: -2px
+      top: 0
+      bottom: 0
+      width: 4px
+      z-index: 20
+      background-color: #adf
+      pointer-events: none
+  .tableWrapper
+    margin: 1em 0
+    overflow-x: auto
+  .resize-cursor
+    cursor: ew-resize
+    cursor: col-resize

@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "@blocksley/quasar-app-extension-blocksley": {
+      "signature": "ad6f75c195f1ed2e539769e187a3a166",
+      "file": true,
+      "replaced": "^0.1.20-alpha.0"
+    },
+    "@blocksley/blocksley": {
+      "signature": "13c3f9a2b9dca5bf85818999950821e4",
+      "file": true
+    }
+  }
+}

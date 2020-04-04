@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "@blocksley/root",
   "private": true,
   "scripts": {
     "deploy": "node ./scripts/deploy.js"
