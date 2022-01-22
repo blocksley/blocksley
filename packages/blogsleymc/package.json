@@ -34,7 +34,7 @@
     "graphql-tag": "^2.10.1",
     "js-beautify": "^1.10.3",
     "jwt-decode": "^2.2.0",
-    "nanoid": "^2.1.10",
+    "nanoid": "^3.1.31",
     "quasar": "^1.7.4",
     "subscriptions-transport-ws": "^0.9.16",
     "vue-apollo": "^3.0.2",
